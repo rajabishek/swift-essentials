@@ -21,7 +21,7 @@ var name: String = "Raj Abishek"
 
 In this example `language` is declared as a constant and is given a value Swift but `name` is declared a variable and hence we can change its value if we want.
 ```swift
-language = 'Objective-C'
+language = "Objective-C"
 ```
 
 There are 3 important things that one needs to remember when it come to variable and constants in Swift. Once you have declared a constant or a variable of a certain type, you can't redeclare it again with the same name. You can neither change it to store values of a different type. Nor can you change a variable to a constant or a constant to a variable. Violating any of these above 3 principles gives a compile time error.
