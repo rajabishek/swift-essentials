@@ -15,8 +15,8 @@ Swift is a type safe language, which means that it helps you to be clear about t
 # Variables & Constants
 Variables and constants are just a name given to a piece of data that is stored in memory. The difference between them is that, the value of a constant cannot be changed once it is set, whereas a variable can be set to a different value in the future. Variables are declared with the `var` keyword and constants are declared with the `let` keyword.
 ```swift
-let language: String = 'Swift'
-var name: String = 'Raj Abishek'
+let language: String = "Swift"
+var name: String = "Raj Abishek"
 ```
 
 In this example `language` is declared as a constant and is given a value Swift but `name` is declared a variable and hence we can change its value if we want.
@@ -29,16 +29,16 @@ There are 3 important things that one needs to remember when it come to variable
 # Type Inference & Type Annotation
 We could have declared the `language` and `name` without providing the datatype also. Ok I know what you're thinking "Wait Raj, you just told me Swift is a type safe language, that means every variable or constant should have a definite type and chnaging data types shouldn't be possible". Yes you are right, but Swift has something called a `Type Inference` using which swift can infer or understand the type of variable or constant based on the initial value that you provide.
 ```swift
-let language = 'Swift'
-var name = 'Raj Abishek'
+let language = "Swift"
+var name = "Raj Abishek"
 ```
 
 Since we have given the intial values Swift is smart enough to understand that both `language` and `name` are of datatype `String`. During compile time it can deduce the type of a particular expression automatically, simply by examining the nature of the values you provide. Because of this wondeful feature, Swift requires far fewer type declarations that languages such a C or Objective-C.
 
 You should also note that if you want to explicity specify the type of a variable it is no harm. This is called a `Type Annotation`.
 ```swift
-let language: String = 'Swift'
-var name: String = 'Raj Abishek'
+let language: String = "Swift"
+var name: String = "Raj Abishek"
 ```
 
 A quick thing to note here is that if you do not provide intial values while declaring a variable then type annotation is compulsory as shown below.
