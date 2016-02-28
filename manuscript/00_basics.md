@@ -4,7 +4,7 @@ Swift is a powerful and intuitive programming language for iOS, OS X, tvOS, and 
 # Variables & Constants
 Like any other language swift uses variable to store and refrence values by an identifying name. Swift also makes extensive use of variable whose values cannot be changed. These are know as constants and much more powerful that constants in C.
 
-Swift provides its own versions of all fundamental C and Objective-C types, including ```swift Int``` for integers, ```swift Double``` and ```swift Float``` for floating point values, ```swift Bool``` for boolean values, and ```swift String``` for textual data. These are some of the primitive dataypes that are present in swift. Apart from theses swift provides three powerul collection types ```swift Array```,```swift Set``` and ```swift Dictionary```. 
+Swift provides its own versions of all fundamental C and Objective-C types, including `Int` for integers, `Double` and `Float` for floating point values, `Bool` for boolean values, and `String` for textual data. These are some of the primitive dataypes that are present in swift. Apart from theses swift provides three powerul collection types `Array`,` Set` and `Dictionary`. 
 
 Swift also introduces certain advanced types such a tuples. Tuple enables us to create and pass around a group of values. For example we can use this to return multiple values from a function as a single compound value by creating a tuple.
 
