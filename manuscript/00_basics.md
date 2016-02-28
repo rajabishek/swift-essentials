@@ -41,7 +41,7 @@ let language: String = "Swift"
 var name: String = "Raj Abishek"
 ```
 
-A quick thing to note here is that if you do not provide intial values while declaring a variable then type annotation is compulsory as shown below.
+A quick thing to note here is that if you do not provide intial values while declaring a variable or a constant then type annotation is compulsory as shown below.
 ```swift
 let language: String
 var name: String
