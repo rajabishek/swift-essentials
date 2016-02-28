@@ -57,6 +57,12 @@ You can define multiple related variables of the same type on a single line, sep
 var name, othername, anotherName: Double
 ```
 
+# Comments
+Use comments to include nonexecutable text in your code, as a note or reminder to yourself. Comments are ignored by the Swift compiler when your code is compiled. 
+```swift
+// This is a comment
+```
+
 
 
 
