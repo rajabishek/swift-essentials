@@ -19,7 +19,7 @@ let language: String = "Swift"
 var name: String = "Raj Abishek"
 ```
 
-In this example `language` is declared as a constant and is given a value Swift but `name` is declared a variable and hence we can change its value if we want.
+In this example `language` is declared as a constant and is given a value Swift but `name` is declared a variable and hence we can change its value if we want. You should also note that in Swift a semicolon is not neccessary. You need to use semicolon only when you need to write multiple statements on the same line.
 ```swift
 language = "Objective-C"
 ```
@@ -47,6 +47,15 @@ let language: String
 var name: String
 ```
 
+You can declare multiple contants/variables in the same line, separate by commas.
+```swift
+var i = 0, j = 0, k = 0
+```
+
+You can define multiple related variables of the same type on a single line, separated by commas, with a single type annotation after the final variable name.
+```swift
+var name, othername, anotherName: Double
+```
 
 
 
