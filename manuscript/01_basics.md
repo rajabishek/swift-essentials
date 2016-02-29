@@ -64,7 +64,14 @@ Use comments to include nonexecutable text in your code, as a note or reminder t
 ```
 
 Swift also has multiline comments and unlike C it can have nested multiline comments allowing developers to quickly commenting out a piece of code.
-
+```swift
+/* 
+	This is the outer multiline comment
+/*
+	This is the nested multiline comment
+*/
+*/
+```
 
 
 
