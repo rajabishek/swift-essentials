@@ -96,6 +96,8 @@ var maxAmplitudeFound = AudioSample.min
 
 Here, AudioSample is defined as an alias for UInt16. Because it is an alias, the call to AudioSample.min actually calls UInt16.min, which provides an initial value of 0 for the maxAmplitudeFound variable.
 
+# Tuples
+Tuples group multiple values into a single compound value. The values within a tuple can be of any type and do not have to be of the same type as each other.
 
  
 
