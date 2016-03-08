@@ -47,7 +47,7 @@ let language: String
 var name: String
 ```
 
-You can declare multiple contants/variables in the same line, separate by commas.
+You can declare multiple contants/variables in the same line, separate by commas as shown below.
 ```swift
 var i = 0, j = 0, k = 0
 ```
