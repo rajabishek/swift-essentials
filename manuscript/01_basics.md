@@ -98,6 +98,11 @@ Here, AudioSample is defined as an alias for UInt16. Because it is an alias, the
 
 # Tuples
 Tuples group multiple values into a single compound value. The values within a tuple can be of any type and do not have to be of the same type as each other.
+```swift
+let http404Error = (404, "Not Found")
+// http404Error is of type (Int, String), and equals (404, "Not Found")”
+```
+The above code creates a tuple called `http404Error` that holds a response data, a status code followed by a message.
 
  
 
