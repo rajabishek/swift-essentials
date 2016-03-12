@@ -102,7 +102,10 @@ Tuples group multiple values into a single compound value. The values within a t
 let http404Error = (404, "Not Found")
 // http404Error is of type (Int, String), and equals (404, "Not Found")”
 ```
-The above code creates a tuple called `http404Error` that holds a response data, a status code followed by a message.
-
+The above code creates a tuple called `http404Error` that holds a response data, a status code followed by a message. Now to access the individual elements of the tuple we use the dot syntax on the tuple to access the individual elements.
+```swift
+print(http404Error.0) //404
+print(http404Error.1) //Not Found
+```
  
 
