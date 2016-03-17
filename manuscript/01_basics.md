@@ -107,5 +107,13 @@ The above code creates a tuple called `http404Error` that holds a response data,
 print(http404Error.0) //404
 print(http404Error.1) //Not Found
 ```
+
+We could also give names to the tuple values while assigning them that can help us fetch the individual value using them.
+```swift
+let http404Error = (statusCode: 404, message: "Not Found")
+print(http404Error.statusCode) //404
+print(http404Error.message) //Not Found
+```
+
  
 
