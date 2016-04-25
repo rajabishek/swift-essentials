@@ -49,5 +49,11 @@ array.append("Macbook Air")
 print(array.count) //Prints 5
 ```
 
-
+But the `append` method can only insert elements at the end of the array. To insert an element in between we have to use the `insert(_:atIndex:)` method.
+```swift
+var array: ["iPhone", "iPad", "Macbook Pro"]
+array.insert("iMac", atIndex: 0)
+array.insert("Macbook Air", atIndex: array.count)
+```
+The `atIndex` parameter of the insert method can be supplied with an integer argument ranging from 0 to array.count. Anything exeding this range will result in an compile time error. Thus we can use this function to also insert an element to the end of the array by doing `array.insert(value, atIndex: array.count)`.
 
