@@ -70,3 +70,9 @@ print(array.count) //Prints 2
 ```
 
 To remove the last element from the array we can do `array.removeAtIndex(array.count - 1)` but we have another useful method for this. It is the `removeLast()` method. It removes the last element in array and returns it, if the array is empty then a call to this method results in a run time error.
+
+```swift
+var array: ["iPhone", "iPad", "Macbook Pro"]
+let last = array.removeLast()
+print("The last element that was removed is: \(last)")
+```
