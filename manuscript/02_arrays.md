@@ -104,3 +104,13 @@ print("The minimum element in the array is: \(min)")
 print("The maximum element in the array is: \(max)")
 ```
 
+We can also remove the first n elements or the last n elements from the array. The `removeFirst(_)` method removes the first n elements from the array, n cannot exceed array.count. If n is larger
+than the number of elements in the array then we get a runtime error. The `removeLast(_)` method removes the last n elements from the array, n cannot exceed array.count. If n is larger
+than the number of elements in the array then we get a runtime error.
+```swift
+var array = ["iPhone", "iPad", "Macbook Pro"]
+array.removeFirst(1)
+array.removeLast(2)
+print(array.count) //Prints 0
+```
+
