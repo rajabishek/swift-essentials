@@ -21,6 +21,7 @@ The statement `var simple = []` will not compile because there is no way for swi
 `endIndex` is the successor of last valid subscript argument. If the array has 4 elements then it means that the last index in the array is 3. There `endIndex` is 4 which is one more than the last index. For an empty array `endIndex`. You can think of `endIndex` as the index position from which you will start inserting the next element you append to the end of the array.
 `startIndex` is always zero. Even if the array is empty then `startIndex` property is zero.
 `isEmpty` property returns a boolean whether the array is empty or not. If the array is empty is retuns true otherwise false.
+`first` gets the first element from the array, if array is empty then returns nil, therefore the return type is essentially an optional.
 
 
 ```swift
