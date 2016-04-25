@@ -114,3 +114,11 @@ array.removeLast(2)
 print(array.count) //Prints 0
 ```
 
+We can also sort the elements of the array according to the < operator. The `sort()` method returns a new array with the elements in the sorted order.
+```swift
+var array = [2, 1, 7, 3, 6]
+for number in array.sort() {
+	print(number)	
+}
+```
+
