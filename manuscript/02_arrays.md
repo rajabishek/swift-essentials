@@ -1,5 +1,5 @@
 # Arrays
-Arrays are one of the most powerful data structures in the swift programming language. It is data structure that is used to hold ordered collection of data. Arrays in swift are implemented as generic collections. Every value that is stored in an array is called as an element and the position of the element in the array (0 based) is called the index of the array. An array can have same elements repeated in multiple index positions.
+Arrays are one of the most powerful data structures in the swift programming language. It is data structure that is used to hold ordered collection of data. Arrays in swift are implemented as generic collections. Every value that is stored in an array is called as an element and the position of the element in the array (0 based) is called the index of the array. It is important to know that an array can have same elements repeated in multiple index positions. If you do not want to collection to have repeated elements then you might want to have a look at the `Set` data structure in swift, which is used to hold unordered collection of unique data.
 
 An array in swift is declared as follows.
 ```swift
