@@ -14,7 +14,7 @@ var anotherArray = [String]() //Initialise as an empty array
 
 The statement `var simple = []` will not compile because there is no way for swift to infer the data type of the simple array. What is th data type of simple array ? Is it an array of Int, or array of String, or array of Double ? We can assign the empty array literal `[]` only to already types variable arrays.
 
-# Arrays Properties
+# Array Properties
 
 `count` is a property that gives the number of elements that the array holds currently.
 `description` is a property that gives a textual representation of the array as a string.
@@ -32,7 +32,7 @@ print("The next position for insert is: \(array.endIndex)")
 print("The start index for array is: \(array.startIndex)")
 ```
 
-# Arrays Methods
+# Array Methods
 In swift we cannot use the subscript syntax to append elements to the end of the array. We can only use the subscript syntax to get an element from the array or update an existing element from the array. Whenever an new element is added in an array or whenever an existing element is removed from an array the elements in the array are automatically reordered, i.e if we remove the first element then 2nd becomes 1st, the 3rd becomes 2nd and so on. Similarly if we remove the 3rd element from the array then the 4th element becomes 3rd, 5th becomes 4th and so on.
 
 ```swift
