@@ -64,7 +64,7 @@ To remove an element from an array at a specific index we can use the `removeFro
 The argument supplied to this method is an integer that can range from 0 to array.count - 1.
 If index outside of this range is supplied it gives a runtime error. The method removes the element from the array at the given index and returns the removed element. If the array is empty then any argument supplied to the method will result in a run time error.
 
-```
+```swift
 var array = ["iPhone", "iPad", "Macbook Pro"]
 let name = array.removeAtIndex(0)
 print("The removed element is: \(name)") // The removed element is: iPhone
