@@ -33,7 +33,7 @@ print("The start index for array is: \(array.startIndex)")
 ```
 
 # Arrays Methods
-In swift we cannot use the subscript syntax to append elements to the end of the array. We can only use the subscript syntax to get an element from the array or update an existing element from the array. Whenever an new element is added in an array or whenever an existing element is removed from an array the elements in the array are automatically reordered, i.e if we remove the first element then 2nd becomes 1st, the 3rd becomes 2nd and so on. Similarly if we remove the 3rd element from the array then the 4th element becomes 3rd, 5th becomes 4th and so on. 
+In swift we cannot use the subscript syntax to append elements to the end of the array. We can only use the subscript syntax to get an element from the array or update an existing element from the array. Whenever an new element is added in an array or whenever an existing element is removed from an array the elements in the array are automatically reordered, i.e if we remove the first element then 2nd becomes 1st, the 3rd becomes 2nd and so on. Similarly if we remove the 3rd element from the array then the 4th element becomes 3rd, 5th becomes 4th and so on.
 
 ```swift
 let array = ["iPhone", "iPad", "Macbook"]
@@ -118,7 +118,7 @@ We can also sort the elements of the array according to the < operator. The `sor
 ```swift
 var array = [2, 1, 7, 3, 6]
 for number in array.sort() {
-	print(number)	
+	print(number)
 }
 ```
 
