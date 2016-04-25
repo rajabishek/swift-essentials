@@ -25,7 +25,7 @@ The statement `var simple = []` will not compile because there is no way for swi
 `last` gets the last element from the array, if array is empty then returns nil, therefore the return type is essentially an optional.
 
 ```swift
-let array: ["iPhone", "iPad", "Macbook"]
+let array = ["iPhone", "iPad", "Macbook"]
 print("The number of elements in the array is: \(array.count)")
 print("The array contents are \(array.description)");
 print("The next position for insert is: \(array.endIndex)")
@@ -36,7 +36,7 @@ print("The start index for array is: \(array.startIndex)")
 In swift we cannot use the subscript syntax to append elements to the end of the array. We can only use the subscript syntax to get an element from the array or update an existing element from the array. Whenever an new element is added in an array or whenever an existing element is removed from an array the elements in the array are automatically reordered, i.e if we remove the first element then 2nd becomes 1st, the 3rd becomes 2nd and so on. Similarly if we remove the 3rd element from the array then the 4th element becomes 3rd, 5th becomes 4th and so on. 
 
 ```swift
-let array: ["iPhone", "iPad", "Macbook"]
+let array = ["iPhone", "iPad", "Macbook"]
 print("The first element in the array is: \(array[0])")
 print("The second element in the array is: \(array[1])")
 array[2] = "Macbook Pro"
@@ -46,7 +46,7 @@ The above statements are perfectly valid because whatever is placed within the s
 
 To append elements to the end of the array we use the `append(_)` method.
 ```swift
-var array: ["iPhone", "iPad", "Macbook Pro"] //array is decalared as var to make it mutable
+var array = ["iPhone", "iPad", "Macbook Pro"] //array is decalared as var to make it mutable
 array.append("iMac")
 array.append("Macbook Air")
 print(array.count) //Prints 5
@@ -54,7 +54,7 @@ print(array.count) //Prints 5
 
 But the `append` method can only insert elements at the end of the array. To insert an element in between we have to use the `insert(_:atIndex:)` method.
 ```swift
-var array: ["iPhone", "iPad", "Macbook Pro"]
+var array = ["iPhone", "iPad", "Macbook Pro"]
 array.insert("iMac", atIndex: 0)
 array.insert("Macbook Air", atIndex: array.count)
 ```
@@ -65,7 +65,7 @@ The argument supplied to this method is an integer that can range from 0 to arra
 If index outside of this range is supplied it gives a runtime error. The method removes the element from the array at the given index and returns the removed element. If the array is empty then any argument supplied to the method will result in a run time error.
 
 ```
-var array: ["iPhone", "iPad", "Macbook Pro"]
+var array = ["iPhone", "iPad", "Macbook Pro"]
 let name = array.removeAtIndex(0)
 print("The removed element is: \(name)") // The removed element is: iPhone
 print(array.count) //Prints 2
@@ -74,7 +74,7 @@ print(array.count) //Prints 2
 To remove the last element from the array we can do `array.removeAtIndex(array.count - 1)` but we have another useful method for this. It is the `removeLast()` method. It removes the last element in array and returns it, if the array is empty then a call to this method results in a run time error.
 
 ```swift
-var array: ["iPhone", "iPad", "Macbook Pro"]
+var array = ["iPhone", "iPad", "Macbook Pro"]
 let last = array.removeLast()
 print("The last element that was removed is: \(last)")
 ```
@@ -82,6 +82,15 @@ print("The last element that was removed is: \(last)")
 To check whether an element is present in an array or not we use the `contains(_)` method. It returns a boolean response, if the element is present in the array it returns true otherwise false.
 
 ```swift
-var array: ["iPhone", "iPad", "Macbook Pro"]
+var array = ["iPhone", "iPad", "Macbook Pro"]
 let last = array.contains("Macbook Pro") //Prints true
 ```
+
+To get the index of a particular element from the array we use the `indexOf(_)` method.
+It gets the index of the given element in the array, if the element is not found or if the array is empty then it returns nil, therefore return type is essentialy `Int?`.
+```swift
+var array = ["iPhone", "iPad", "Macbook Pro"]
+let index = array.indexOf("Macbook Pro")
+print("The index of the element Macbook Pro is: \(index)")
+```
+
