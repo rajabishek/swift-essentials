@@ -94,3 +94,13 @@ let index = array.indexOf("Macbook Pro")
 print("The index of the element Macbook Pro is: \(index)")
 ```
 
+We can also get the minimum and the maximum element in the array according to the < operator.
+The `maxElement` method returns the maximum element in the array, if the array is empty it returns nil. The `minElement` method returns the minimum element in the array, if the array is empty it returns nil.
+```swift
+var array = ["iPhone", "iPad", "Macbook Pro"]
+let min = array.minElement()
+let max = array.maxElement()
+print("The minimum element in the array is: \(min)")
+print("The maximum element in the array is: \(max)")
+```
+
