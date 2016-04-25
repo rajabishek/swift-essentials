@@ -1,7 +1,7 @@
 # Arrays
-Arrays are one of the most powerful data structures in the swift programming language. It is data structure that is used to hold ordered collection of data. Arrays in swift are implemented as generic collections. Every value that is stored in an array is called as an element and the position of the element in the array (0 based) is called the index of the array. It is important to know that an array can have same elements repeated in multiple index positions. If you do not want to collection to have repeated elements then you might want to have a look at the `Set` data structure in swift, which is used to hold unordered collection of unique data.
+Arrays are one of the most powerful data structures in the Swift programming language. It is data structure that is used to hold ordered collection of data. Arrays in Swift are implemented as generic collections. Every value that is stored in an array is called as an element and the position of the element in the array (0 based) is called the index of the array. It is important to know that an array can have same elements repeated in multiple index positions. If you do not want to collection to have repeated elements then you might want to have a look at the `Set` data structure in Swift, which is used to hold unordered collection of unique data.
 
-An array in swift is declared as follows.
+An array in Swift is declared as follows.
 ```swift
 var data: Array<String> //declare data as an array of strings - Longer form of type annotation
 var names: [String] //declare names as an array of strings - Shorter form of type annotation
@@ -12,7 +12,7 @@ var strings: [String] = [] //Initialise as an empty array
 var anotherArray = [String]() //Initialise as an empty array
 ```
 
-The statement `var simple = []` will not compile because there is no way for swift to infer the data type of the simple array. What is th data type of simple array ? Is it an array of Int, or array of String, or array of Double ? We can assign the empty array literal `[]` only to already types variable arrays.
+The statement `var simple = []` will not compile because there is no way for Swift to infer the data type of the simple array. What is th data type of simple array ? Is it an array of Int, or array of String, or array of Double ? We can assign the empty array literal `[]` only to already types variable arrays.
 
 # Array Properties
 
@@ -33,7 +33,7 @@ print("The start index for array is: \(array.startIndex)")
 ```
 
 # Array Methods
-In swift we cannot use the subscript syntax to append elements to the end of the array. We can only use the subscript syntax to get an element from the array or update an existing element from the array. Whenever an new element is added in an array or whenever an existing element is removed from an array the elements in the array are automatically reordered, i.e if we remove the first element then 2nd becomes 1st, the 3rd becomes 2nd and so on. Similarly if we remove the 3rd element from the array then the 4th element becomes 3rd, 5th becomes 4th and so on.
+In Swift we cannot use the subscript syntax to append elements to the end of the array. We can only use the subscript syntax to get an element from the array or update an existing element from the array. Whenever an new element is added in an array or whenever an existing element is removed from an array the elements in the array are automatically reordered, i.e if we remove the first element then 2nd becomes 1st, the 3rd becomes 2nd and so on. Similarly if we remove the 3rd element from the array then the 4th element becomes 3rd, 5th becomes 4th and so on.
 
 ```swift
 let array = ["iPhone", "iPad", "Macbook"]
