@@ -131,3 +131,9 @@ for number in array {
 }
 ```
 
+We can also remove all the elements in the array with a single method call. We use the `removeAll` method for this purpose. It removes all the elements and has no effect on an empty array.
+```swift
+var array = [2, 1, 7, 3, 6]
+array.removeAll()
+print(array.count) //Prints 0
+```
