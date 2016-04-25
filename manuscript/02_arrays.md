@@ -22,6 +22,7 @@ The statement `var simple = []` will not compile because there is no way for swi
 `startIndex` is always zero. Even if the array is empty then `startIndex` property is zero.
 `isEmpty` property returns a boolean whether the array is empty or not. If the array is empty is retuns true otherwise false.
 
+
 ```swift
 let array: ["iPhone", "iPad", "Macbook"]
 print("The number of elements in the array is: \(array.count)")
@@ -75,4 +76,11 @@ To remove the last element from the array we can do `array.removeAtIndex(array.c
 var array: ["iPhone", "iPad", "Macbook Pro"]
 let last = array.removeLast()
 print("The last element that was removed is: \(last)")
+```
+
+To check whether an element is present in an array or not we use the `contains(_)` method. It returns a boolean response, if the element is present in the array it returns true otherwise false.
+
+```swift
+var array: ["iPhone", "iPad", "Macbook Pro"]
+let last = array.contains("Macbook Pro") //Prints true
 ```
