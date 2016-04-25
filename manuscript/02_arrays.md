@@ -122,3 +122,12 @@ for number in array.sort() {
 }
 ```
 
+Instead of returing a new array with the elements in sorted order, if we would like to sort the elements of the array in place then we can use the `sortInPlace()` method.
+```swift
+var array = [2, 1, 7, 3, 6]
+array.sortInPlace()
+for number in array {
+	print(number)
+}
+```
+
