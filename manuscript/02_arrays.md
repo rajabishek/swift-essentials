@@ -6,7 +6,7 @@ An array in Swift is declared as follows.
 var data: Array<String> //declare data as an array of strings - Longer form of type annotation
 var names: [String] //declare names as an array of strings - Shorter form of type annotation
 
-var array = ["Raj Abishek", "Sailesh Dev"] //type inference
+var array = ["Macbook", "iMac"] //type inference
 
 var strings: [String] = [] //Initialise as an empty array
 var anotherArray = [String]() //Initialise as an empty array
