@@ -89,7 +89,7 @@ let last = array.contains("Macbook Pro") //Prints true
 ```
 
 To get the index of a particular element from the array we use the `indexOf(_:)` method.
-It gets the index of the given element in the array, if the element is not found or if the array is empty then it returns nil, therefore return type is essentialy `Int?`.
+It gets the index of the given element in the array, if the element is not found or if the array is empty then it returns nil, therefore return type is essentialy `Int?` (Optional Int).
 ```swift
 var array = ["iPhone", "iPad", "Macbook Pro"]
 let index = array.indexOf("Macbook Pro")
