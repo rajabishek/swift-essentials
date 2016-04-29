@@ -48,7 +48,7 @@ The above statements are perfectly valid because whatever is placed within the s
 
 To append elements to the end of the array we use the `append(_:)` method.
 ```swift
-var array = ["iPhone", "iPad", "Macbook Pro"] //array is decalared as var to make it mutable
+var array = ["iPhone", "iPad", "Macbook Pro"] //array is decalared as a variable for mutability
 array.append("iMac")
 array.append("Macbook Air")
 print(array.count) //Prints 5
