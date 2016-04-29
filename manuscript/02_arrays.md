@@ -81,7 +81,7 @@ let last = array.removeLast(_:)
 print("The last element that was removed is: \(last)")
 ```
 
-To check whether an element is present in an array or not we use the `contains(_:)` method. It returns a boolean response, if the element is present in the array it returns true otherwise false.
+To check whether an element is present in an array or not we use the `contains(_:)` method. It returns a boolean response, if the element is present in the array it returns `true` otherwise `false`.
 
 ```swift
 var array = ["iPhone", "iPad", "Macbook Pro"]
