@@ -60,7 +60,7 @@ var array = ["iPhone", "iPad", "Macbook Pro"]
 array.insert("iMac", atIndex: 0)
 array.insert("Macbook Air", atIndex: array.count)
 ```
-The `atIndex` parameter of the insert method can be supplied with an integer argument ranging from 0 to array.count. Anything exeding this range will result in an run time error. Thus we can use this function to also insert an element to the end of the array by doing `array.insert(value, atIndex: array.count)`. If the array is empty then we can pass only 0 to the`atIndex` parameter of the method.
+The `atIndex` parameter of the insert method can be supplied with an integer argument ranging from 0 to array.count. Anything exceeding this range will result in an run time error. Thus we can use this function to also insert an element to the end of the array by doing `array.insert(value, atIndex: array.count)`. If the array is empty then we can pass only 0 to the`atIndex` parameter of the method.
 
 To remove an element from an array at a specific index we can use the `removeFromIndex(_:)` method.
 The argument supplied to this method is an integer that can range from 0 to array.count - 1.
