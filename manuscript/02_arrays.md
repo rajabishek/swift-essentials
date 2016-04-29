@@ -36,7 +36,6 @@ print("The start index for array is: \(array.startIndex)")
 
 # Array Methods
 In Swift we cannot use the subscript syntax to append elements to the end of the array. We can only use the subscript syntax to get an element from the array or update an existing element from the array. It is also important to remember that whenever a new element is added in an array or an existing element is removed from an array the elements in the array are automatically reordered, i.e if we remove the first element then 2nd becomes 1st, the 3rd becomes 2nd and so on. Similarly if we remove the 3rd element from the array then the 4th element becomes 3rd, 5th becomes 4th and so on.
-
 ```swift
 let array = ["iPhone", "iPad", "Macbook"]
 print("The first element in the array is: \(array[0])")
@@ -44,6 +43,7 @@ print("The second element in the array is: \(array[1])")
 array[2] = "Macbook Pro"
 print("The third element in the array is: \(array[2])")
 ``` 
+
 The above statements are perfectly valid because whatever is placed within the square brackets only ranges from 0 to array.count - 1, anything supplied outside this range will result in a run time error. We cannot append an element to the end of the array using the subscript syntax, ie statement `array[array.count] = newvalue` will result in a run time error.
 
 To append elements to the end of the array we use the `append(_:)` method.
@@ -60,12 +60,12 @@ var array = ["iPhone", "iPad", "Macbook Pro"]
 array.insert("iMac", atIndex: 0)
 array.insert("Macbook Air", atIndex: array.count)
 ```
+
 The `atIndex` parameter of the insert method can be supplied with an integer argument ranging from 0 to array.count. Anything exceeding this range will result in an run time error. Thus we can use this function to also insert an element to the end of the array by doing `array.insert(value, atIndex: array.count)`. If the array is empty then we can pass only 0 to the`atIndex` parameter of the method.
 
 To remove an element from an array at a specific index we can use the `removeFromIndex(_:)` method.
 The argument supplied to this method is an integer that can range from 0 to array.count - 1.
 If index outside of this range is supplied it gives a runtime error. The method removes the element from the array at the given index and returns the removed element. If the array is empty then any argument supplied to the method will result in a run time error.
-
 ```swift
 var array = ["iPhone", "iPad", "Macbook Pro"]
 let name = array.removeAtIndex(0)
@@ -74,7 +74,6 @@ print(array.count) //Prints 2
 ```
 
 To remove the last element from the array we can do `array.removeAtIndex(array.count - 1)` but we have another useful method for this. It is the `removeLast(_:)` method. It removes the last element in array and returns it, if the array is empty then a call to this method results in a run time error.
-
 ```swift
 var array = ["iPhone", "iPad", "Macbook Pro"]
 let last = array.removeLast(_:)
@@ -82,7 +81,6 @@ print("The last element that was removed is: \(last)")
 ```
 
 To check whether an element is present in an array or not we use the `contains(_:)` method. It returns a boolean response, if the element is present in the array it returns `true` otherwise `false`.
-
 ```swift
 var array = ["iPhone", "iPad", "Macbook Pro"]
 let last = array.contains("Macbook Pro") //Prints true
@@ -106,9 +104,7 @@ print("The minimum element in the array is: \(min)")
 print("The maximum element in the array is: \(max)")
 ```
 
-We can also remove the first n elements or the last n elements from the array. The `removeFirst(_:)` method removes the first n elements from the array, n cannot exceed array.count. If n is larger
-than the number of elements in the array then we get a runtime error. The `removeLast(_:)` method removes the last n elements from the array, n cannot exceed array.count. If n is larger
-than the number of elements in the array then we get a runtime error.
+We can also remove the first n elements or the last n elements from the array. The `removeFirst(_:)` method removes the first n elements from the array. Similarly the `removeLast(_:)` method removes the last n elements from the array. In both the methods n cannot exceed array.count. If n is larger than the number of elements in the array then we get a runtime error.  
 ```swift
 var array = ["iPhone", "iPad", "Macbook Pro"]
 array.removeFirst(1)
