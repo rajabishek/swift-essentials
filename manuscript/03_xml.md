@@ -35,7 +35,7 @@ func refreshData() {
     }
 }
 ```
-The above code makes a http GET request to get the XML data from the web. Once the XML data is downloaded it is made available in data variable ( which is of type NSData? ) of the completion handler. To understand more about the above code, I would suggest you to read the following. They will give you a lot more insight on how we can use the NSURLSession class, which is a complete suite of networking API methods for uploading and downloading content via HTTP.
+The above code makes a http GET request to get the XML data from the web. Once the XML data is downloaded it is made available in data variable ( which is of type NSData? ) of the completion handler. To understand more about the above code, I would suggest you to read the following. They will give you a lot more insight on how we can use the NSURLSession class, which is a complete suite of networking API methods for uploading and downloading content via HTTP. We make sure that we call this refreshData method from the viewDidLoad method on the table view controller to make sure the we start the process as soon as the view is loaded into the memory.
 
 > https://www.objc.io/issues/5-ios7/from-nsurlconnection-to-nsurlsession/
 > https://www.raywenderlich.com/110458/nsurlsession-tutorial-getting-started
