@@ -37,3 +37,4 @@ func refreshData() {
     }
 }
 ```
+The above code makes a http GET request to get the XML data from the web. Once the XML data is downloaded it is made available in data variable ( which is of type NSData? ) of the completion handler. To understand more about the above code, I would suggest you to read the following. They will give you a lot more insight on how we can use the NSURLSession class, which is a complete suite of networking API methods for uploading and downloading content via HTTP.
