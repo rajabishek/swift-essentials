@@ -58,3 +58,6 @@ This method is called by the parser object on its delegate whenever it is readin
 
 ### didEndElement method 
 This method is called by the parser object on its delegate whenever it encounters a closing xml tag.
+
+### didEndDocument method 
+This method is called by the parser object on its delegate when it has completed parsing the entire document.
