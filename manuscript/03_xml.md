@@ -261,3 +261,6 @@ extension FoodTableViewController: NSXMLParserDelegate {
 
 Once the XML document has been finished parsing, the parser object calls the parserDidEndDocument and we ask the table view to reload the data. You should remember that we called the parse method on the parser to start the parsing from the callback once the XML data has been downloaded. That callback is executed in the background thread when the XML downloading process is complete. Therefore all the parsing ( the method calls by parser on the delegate ) also happens in the background thread, i.e why we make sure that reloading the table data happens in the main thread, because any UI updates or changes that we make should always happen on the main thread.
 
+Once the list is populated with data. It would look like the following.
+![Screenshot 1](images/xml-screenshot1.png)
+![Screenshot 1](images/xml-screenshot2.png)
