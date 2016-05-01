@@ -52,3 +52,6 @@ We will be using 4 delegate methods to parse the file. The 4 delegate methods we
 > parser:foundCharacters:
 > parser:didEndElement:namespaceURI:qualifiedName:
 > parserDidEndDocument:
+
+### didStartElement method 
+This method is called by the parser object on its delegate whenever it encounters an opening xml tag.
