@@ -188,3 +188,74 @@ We are interested only in the data within each of the food item. If we have lets
 
 The currentlyParsingElement variable holds the name of the tag that we are currently parsing, i.e if we encounter a opening <name> tag then we set `currentlyParsingElement = "name"`
 
+```swift
+extension FoodTableViewController: NSXMLParserDelegate {
+    
+    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+        if elementName == "food" {
+            insideFoodItem = true
+        }
+        if insideFoodItem {
+            switch elementName {
+            case "name":
+                name = ""
+                currentlyParsingElement = "name"
+            case "price":
+                price = ""
+                currentlyParsingElement = "price"
+            case "desc":
+                desc = ""
+                currentlyParsingElement = "desc"
+            case "calories":
+                calories = ""
+                currentlyParsingElement = "calories"
+            default: break
+            }
+        }
+    }
+    
+    func parser(parser: NSXMLParser, foundCharacters string: String) {
+        if insideFoodItem {
+            switch currentlyParsingElement {
+            case "name":
+                name = name + string
+            case "price":
+                price = price + string
+            case "desc":
+                desc = desc + string
+            case "calories":
+                calories = calories + string
+            default: break
+            }
+        }
+    }
+    
+    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        if insideFoodItem {
+            switch elementName {
+            case "name":
+                currentlyParsingElement = ""
+            case "price":
+                currentlyParsingElement = ""
+            case "desc":
+                currentlyParsingElement = ""
+            case "calories":
+                currentlyParsingElement = ""
+            default: break
+            }
+            if elementName == "food" {
+                let food = Food(name: name, price: price, desc: desc, calories: calories)
+                list.append(food)
+                insideFoodItem = false
+            }
+        }
+    }
+    
+    func parserDidEndDocument(parser: NSXMLParser) {
+        dispatch_async(dispatch_get_main_queue()) {
+            self.tableView.reloadData()
+        }
+    }
+}
+```
+
