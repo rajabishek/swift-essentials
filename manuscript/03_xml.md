@@ -186,3 +186,5 @@ class FoodTableViewController: UITableViewController {
 
 We are interested only in the data within each of the food item. If we have lets say the <name> tag anywhere else in the XML we would not like to take that into account. Therefore when we encounter <food> i.e when we enter into a food tag we mark the insideFoodItem variable as true and set to false once we encounter </food>
 
+The currentlyParsingElement variable holds the name of the tag that we are currently parsing, i.e if we encounter a opening <name> tag then we set `currentlyParsingElement = "name"`
+
