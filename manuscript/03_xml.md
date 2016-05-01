@@ -61,3 +61,14 @@ This method is called by the parser object on its delegate whenever it encounter
 
 ### didEndDocument method 
 This method is called by the parser object on its delegate when it has completed parsing the entire document.
+
+Consider the following XML data.
+
+```xml
+<note>
+  <to>Tove</to>
+  <from>Jani</from>
+  <heading>Reminder</heading>
+  <body>Don’t forget me this weekend!</body>
+</note>
+```
