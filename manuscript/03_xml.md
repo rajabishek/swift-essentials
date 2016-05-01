@@ -1,11 +1,9 @@
 # Parsing XML in iOS using NSXMLParser
-
 We are going to populate a table view controller using a simple xml file from the web. The code examples in this article will be written using Swift. I assume that you have already setup the TableViewController to read the input and populate the table. We will be concentrating on parsing the xml file in article.
 
 To parse an xml file in iOS we can make use of the NSXMLParser class from the foundation framework. Since we are working with food menu xml data lets say that our table view controller class is called FoodTableViewController.
 
 ## Downloading the XML data
-
 The first thing that we have to do is download the XML data from the web. Lets use this simple XML file that represents a food menu. The NSURLSession class and related classes provide an API for downloading content.
 
 ```swift
@@ -44,7 +42,6 @@ The above code makes a http GET request to get the XML data from the web. Once t
 > https://developer.apple.com/library/ios/documentation/Foundation/Reference/NSURLSession_class/
 
 ## Parsing the XML 
-
 Now that we have the data we need to parse the XML to get some meaningful information that we require. We use the delegation pattern in iOS to parse the XML data. We create an instance of NSXMLParser class to help with the parsing. The parser will call certain methods on its delegate as it parses the XML document. Lets assign the FoodTableViewController class as the delegate for the parser. The NSXMLParserDelegate protocol defines the optional methods implemented by delegates of NSXMLParser objects.
 
 We will be using 4 delegate methods to parse the file. The 4 delegate methods we will be focusing are 
@@ -55,3 +52,6 @@ We will be using 4 delegate methods to parse the file. The 4 delegate methods we
 
 ### didStartElement method 
 This method is called by the parser object on its delegate whenever it encounters an opening xml tag.
+
+###foundCharacters method 
+This method is called by the parser object on its delegate whenever it is reading data between an opening tag and closing tag. The data between a tag may be read all at once or it may be read in pieces.
