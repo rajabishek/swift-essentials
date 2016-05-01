@@ -38,3 +38,11 @@ func refreshData() {
 }
 ```
 The above code makes a http GET request to get the XML data from the web. Once the XML data is downloaded it is made available in data variable ( which is of type NSData? ) of the completion handler. To understand more about the above code, I would suggest you to read the following. They will give you a lot more insight on how we can use the NSURLSession class, which is a complete suite of networking API methods for uploading and downloading content via HTTP.
+
+> https://www.objc.io/issues/5-ios7/from-nsurlconnection-to-nsurlsession/
+> https://www.raywenderlich.com/110458/nsurlsession-tutorial-getting-started
+> https://developer.apple.com/library/ios/documentation/Foundation/Reference/NSURLSession_class/
+
+## Parsing the XML 
+
+Now that we have the data we need to parse the XML to get some meaningful information that we require. We use the delegation pattern in iOS to parse the XML data. We create an instance of NSXMLParser class to help with the parsing. The parser will call certain methods on its delegate as it parses the XML document. Lets assign the FoodTableViewController class as the delegate for the parser. The NSXMLParserDelegate protocol defines the optional methods implemented by delegates of NSXMLParser objects.
