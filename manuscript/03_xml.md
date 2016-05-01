@@ -93,3 +93,33 @@ extension FoodTableViewController: NSXMLParserDelegate {
     }
 }
 ```
+
+If we implement the delegate methods as shown above then the output that we get is.
+```txt
+Did start element: note
+Found characters:
+
+Did start element: to
+Found characters: Tove
+Did end element: to
+Found characters:
+
+Did start element: from
+Found characters: Jani
+Did end element: from
+Found characters:
+
+Did start element: heading
+Found characters: Reminder
+Did end element: heading
+Found characters:
+
+Did start element: body
+Found characters: Don’t forget me this weekend!
+Did end element: body
+Found characters:
+
+Did end element: note
+Completed parsing document
+```
+
