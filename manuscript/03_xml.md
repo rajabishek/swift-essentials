@@ -72,3 +72,24 @@ Consider the following XML data.
   <body>Don’t forget me this weekend!</body>
 </note>
 ```
+
+```swift
+extension FoodTableViewController: NSXMLParserDelegate {
+    
+    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+        print("Did start element: \(elementName)")
+    }
+    
+    func parser(parser: NSXMLParser, foundCharacters string: String) {
+        print("Found characters: \(string)")
+    }
+    
+    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        print("Did end element: \(elementName)")
+    }
+    
+    func parserDidEndDocument(parser: NSXMLParser) {
+        print("Completed parsing document")
+    }
+}
+```
