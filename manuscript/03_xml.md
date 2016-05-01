@@ -263,4 +263,3 @@ Once the XML document has been finished parsing, the parser object calls the par
 
 Once the list is populated with data. It would look like the following.
 ![Screenshot 1](images/xml-screenshot1.png)
-![Screenshot 1](images/xml-screenshot2.png)
