@@ -55,3 +55,6 @@ This method is called by the parser object on its delegate whenever it encounter
 
 ###foundCharacters method 
 This method is called by the parser object on its delegate whenever it is reading data between an opening tag and closing tag. The data between a tag may be read all at once or it may be read in pieces.
+
+### didEndElement method 
+This method is called by the parser object on its delegate whenever it encounters a closing xml tag.
