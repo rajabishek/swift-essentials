@@ -180,7 +180,7 @@ class FoodTableViewController: UITableViewController {
     
     var currentlyParsingElement: String = ""
     var insideFoodItem = false
-    //Rest of your table view cotroller code here
+    //Rest of your table view controller code here
 }
 ```
 
