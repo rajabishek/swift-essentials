@@ -160,4 +160,27 @@ We will be using the following XML file for our demo.
 	</food>
 </breakfast_menu>
 ```
+Lets define a few variable in Swift that can help us with the parsing.
+```swift
+struct Food {
+    let name: String
+    let price: String
+    let desc: String
+    let calories: String
+}
+
+class FoodTableViewController: UITableViewController {
+    
+    var list = [Food]()
+    
+    var name: String = ""
+    var price: String = ""
+    var desc: String = ""
+    var calories: String = ""
+    
+    var currentlyParsingElement: String = ""
+    var insideFoodItem = false
+    //Rest of your table view cotroller code here
+}
+```
 
