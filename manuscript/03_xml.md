@@ -46,3 +46,9 @@ The above code makes a http GET request to get the XML data from the web. Once t
 ## Parsing the XML 
 
 Now that we have the data we need to parse the XML to get some meaningful information that we require. We use the delegation pattern in iOS to parse the XML data. We create an instance of NSXMLParser class to help with the parsing. The parser will call certain methods on its delegate as it parses the XML document. Lets assign the FoodTableViewController class as the delegate for the parser. The NSXMLParserDelegate protocol defines the optional methods implemented by delegates of NSXMLParser objects.
+
+We will be using 4 delegate methods to parse the file. The 4 delegate methods we will be focusing are 
+> parser:didStartElement:namespaceURI:qualifiedName:attributes:
+> parser:foundCharacters:
+> parser:didEndElement:namespaceURI:qualifiedName:
+> parserDidEndDocument:
