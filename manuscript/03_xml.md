@@ -199,7 +199,7 @@ class FoodTableViewController: UITableViewController {
 }
 ```
 
-We are interested only in the data within each of the food item. If we have lets say the <name> tag anywhere else in the XML we would not like to take that into account. Therefore when we encounter <food> i.e when we enter into a food tag we mark the insideFoodItem variable as true and set to false once we encounter </food>
+We are interested only in the data within each of the food item. If we have lets say the <name> tag anywhere else in the XML we would not like to take that into account. Therefore when we encounter <food> i.e when we enter into a food tag we mark the insideFoodItem variable as true and set to false once we encounter </food>. This helps us identity at any point whether we are currently inside of a food item or not during the parsing process.
 
 The currentlyParsingElement variable holds the name of the tag that we are currently parsing, i.e if we encounter a opening <name> tag then we set `currentlyParsingElement = "name"`
 
@@ -272,6 +272,8 @@ extension FoodTableViewController: NSXMLParserDelegate {
     }
 }
 ```
+
+As you can see in the code above in the didStartElement method we clear out any existing data from the curresponding temporary variable and mark the element that is beign currently parsed. We have the currentlyParsingElement variable because without it the foundCharacters method does not know for which tag the data that we are currently parsing belongs to. And in the foundCharacters method all that we do is append the data that we are parsing to the curresponding temporary variable ( we are appending because the data may not be parsed in a single go, it may be parsed in chunks ). In the dodEndElement method we clear out the currenlyParsingElement. If we don't clear out the currentlyParsingElement then the data inside the non interested tags will also get appended. Lets say we don't clear out the currenlyParsingElement variable which is set to "name", then lets say now if we encounted a disintested tad <date> then its content will also be appended to the name temporary variable, which is clearly what we don't want.
 
 Once the XML document has been finished parsing, the parser object calls the parserDidEndDocument and we ask the table view to reload the data. You should remember that we called the parse method on the parser to start the parsing from the callback once the XML data has been downloaded. That callback is executed in the background thread when the XML downloading process is complete. Therefore all the parsing ( the method calls by parser on the delegate ) also happens in the background thread, i.e why we make sure that reloading the table data happens in the main thread, because any UI updates or changes that we make should always happen on the main thread.
 
