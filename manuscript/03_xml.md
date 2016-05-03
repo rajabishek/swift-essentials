@@ -9,6 +9,8 @@ The first thing that we have to do is download the XML data from the web. The NS
 ```swift
 func getData() {
     let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+
+    //tells iOS to start the loading button on the status bar
     UIApplication.sharedApplication().networkActivityIndicatorVisible = true
 
     let link = "http://www.w3schools.com/xml/simple.xml"
