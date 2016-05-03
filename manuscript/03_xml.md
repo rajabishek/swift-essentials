@@ -7,7 +7,7 @@ To parse an xml file in iOS we can make use of the NSXMLParser class from the fo
 The first thing that we have to do is download the XML data from the web. The NSURLSession class and related classes provide an API for downloading content.
 
 ```swift
-func refreshData() {
+func getData() {
     let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
     UIApplication.sharedApplication().networkActivityIndicatorVisible = true
 
@@ -36,7 +36,7 @@ func refreshData() {
 ```
 The above code makes a http GET request to the link present in the link variable. Since the link represents a static xml file that is hosted on the server the response of the request will be the xml data.
 
-Once the XML data is downloaded it is made available in data variable ( which is of type NSData? ) of the completion handler. To understand more about the above code, I would suggest you to read the following. They will give you a lot more insight on how we can use the NSURLSession class, which is a complete suite of networking API methods for uploading and downloading content via HTTP.
+Once the XML data is downloaded it is made available in data variable ( which is of type NSData? ) of the completion handler. The entire process of making and sending the request and waiting for the response is performed in the background thread so that the UI remains responsive. The callback handler that we provide to the dataTaskWithUrl method of the defaultSession object is also called from the background thread only after the data becomes available, thefore we must remember that any code that we write inside of the completion handler does not run in the main thread. To understand more about the above code, I would suggest you to read the following. They will give you a lot more insight on how we can use the NSURLSession class, which is a complete suite of networking API methods for uploading and downloading content via HTTP.
 
 > https://www.objc.io/issues/5-ios7/from-nsurlconnection-to-nsurlsession/
 > https://www.raywenderlich.com/110458/nsurlsession-tutorial-getting-started
@@ -51,7 +51,7 @@ override func viewDidLoad() {
 ```
 
 ## Parsing the XML
-Now that we have the data we need to parse the XML to get some meaningful information that we require. We use the delegation pattern in iOS to parse the XML data. We create an instance of NSXMLParser class to help with the parsing. The parser will call certain methods on its delegate as it parses the XML document. Lets assign the FoodTableViewController class as the delegate for the parser. The NSXMLParserDelegate protocol defines the optional methods implemented by delegates of NSXMLParser objects.
+Like how every other functionality is built in iOS the XML parsing is also done through the delegation pattern. Now that we have the data we need to parse the XML to get some meaningful information that we require. We use the delegation pattern in iOS to parse the XML data. We create an instance of NSXMLParser class to help with the parsing. The parser will call certain methods on its delegate as it parses the XML document. Lets assign the FoodTableViewController class as the delegate for the parser. The NSXMLParserDelegate protocol defines the optional methods implemented by delegates of NSXMLParser objects.
 
 We will be using 4 delegate methods to parse the file. The 4 delegate methods we will be focusing are
 > parser:didStartElement:namespaceURI:qualifiedName:attributes:
