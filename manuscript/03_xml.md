@@ -9,18 +9,17 @@ The first thing that we have to do is download the XML data from the web. Lets u
 ```swift
 func refreshData() {
     let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-        
     UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-    
+
     let link = "http://www.w3schools.com/xml/simple.xml"
     if let url = NSURL(string: link) {
         let dataTask = defaultSession.dataTaskWithURL(url) {
             data, response, error in
-            
+
             dispatch_async(dispatch_get_main_queue()) {
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             }
-            
+
             if let error = error {
                 print(error.localizedDescription)
             } else if let httpResponse = response as? NSHTTPURLResponse {
@@ -41,25 +40,25 @@ The above code makes a http GET request to get the XML data from the web. Once t
 > https://www.raywenderlich.com/110458/nsurlsession-tutorial-getting-started
 > https://developer.apple.com/library/ios/documentation/Foundation/Reference/NSURLSession_class/
 
-## Parsing the XML 
+## Parsing the XML
 Now that we have the data we need to parse the XML to get some meaningful information that we require. We use the delegation pattern in iOS to parse the XML data. We create an instance of NSXMLParser class to help with the parsing. The parser will call certain methods on its delegate as it parses the XML document. Lets assign the FoodTableViewController class as the delegate for the parser. The NSXMLParserDelegate protocol defines the optional methods implemented by delegates of NSXMLParser objects.
 
-We will be using 4 delegate methods to parse the file. The 4 delegate methods we will be focusing are 
+We will be using 4 delegate methods to parse the file. The 4 delegate methods we will be focusing are
 > parser:didStartElement:namespaceURI:qualifiedName:attributes:
 > parser:foundCharacters:
 > parser:didEndElement:namespaceURI:qualifiedName:
 > parserDidEndDocument:
 
-### didStartElement method 
+### didStartElement method
 This method is called by the parser object on its delegate whenever it encounters an opening xml tag.
 
-###foundCharacters method 
+###foundCharacters method
 This method is called by the parser object on its delegate whenever it is reading data between an opening tag and closing tag. The data between a tag may be read all at once or it may be read in pieces.
 
-### didEndElement method 
+### didEndElement method
 This method is called by the parser object on its delegate whenever it encounters a closing xml tag.
 
-### didEndDocument method 
+### didEndDocument method
 This method is called by the parser object on its delegate when it has completed parsing the entire document.
 
 Consider the following XML data.
@@ -75,19 +74,19 @@ Consider the following XML data.
 
 ```swift
 extension FoodTableViewController: NSXMLParserDelegate {
-    
+
     func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         print("Did start element: \(elementName)")
     }
-    
+
     func parser(parser: NSXMLParser, foundCharacters string: String) {
         print("Found characters: \(string)")
     }
-    
+
     func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         print("Did end element: \(elementName)")
     }
-    
+
     func parserDidEndDocument(parser: NSXMLParser) {
         print("Completed parsing document")
     }
@@ -170,14 +169,14 @@ struct Food {
 }
 
 class FoodTableViewController: UITableViewController {
-    
+
     var list = [Food]()
-    
+
     var name: String = ""
     var price: String = ""
     var desc: String = ""
     var calories: String = ""
-    
+
     var currentlyParsingElement: String = ""
     var insideFoodItem = false
     //Rest of your table view controller code here
@@ -190,7 +189,6 @@ The currentlyParsingElement variable holds the name of the tag that we are curre
 
 ```swift
 extension FoodTableViewController: NSXMLParserDelegate {
-    
     func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         if elementName == "food" {
             insideFoodItem = true
@@ -213,7 +211,7 @@ extension FoodTableViewController: NSXMLParserDelegate {
             }
         }
     }
-    
+
     func parser(parser: NSXMLParser, foundCharacters string: String) {
         if insideFoodItem {
             switch currentlyParsingElement {
@@ -229,7 +227,7 @@ extension FoodTableViewController: NSXMLParserDelegate {
             }
         }
     }
-    
+
     func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if insideFoodItem {
             switch elementName {
@@ -250,7 +248,7 @@ extension FoodTableViewController: NSXMLParserDelegate {
             }
         }
     }
-    
+
     func parserDidEndDocument(parser: NSXMLParser) {
         dispatch_async(dispatch_get_main_queue()) {
             self.tableView.reloadData()
