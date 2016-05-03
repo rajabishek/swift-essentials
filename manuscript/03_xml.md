@@ -18,6 +18,7 @@ func getData() {
         let dataTask = defaultSession.dataTaskWithURL(url) {
             data, response, error in
 
+            //Stop the loading button in status bar - make sure this UI change is made in the main thread
             dispatch_async(dispatch_get_main_queue()) {
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             }
@@ -26,6 +27,7 @@ func getData() {
                 print(error.localizedDescription)
             } else if let httpResponse = response as? NSHTTPURLResponse {
                 if httpResponse.statusCode == 200 {
+                    //Create an xml parser with the NSData from the server and set the FoodTableViewController as the delegate
                     let xmlParser = NSXMLParser(data: data!)
                     xmlParser.delegate = self
                     xmlParser.parse()
