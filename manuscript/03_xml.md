@@ -1,7 +1,7 @@
 # Parsing XML in iOS using NSXMLParser
-We are going to populate a table view controller using a simple xml file from the web. The code examples in this article will be written using Swift. I assume that you have already setup the TableViewController to read the input and populate the table. We will be concentrating on parsing the xml file in article.
+We are going to populate a table view controller using a simple xml file from the web. The code examples in this article will be written using Swift. I assume that you have already setup the TableViewController to read the input and populate the table. We will be concentrating on parsing the xml file in this article.
 
-To parse an xml file in iOS we can make use of the NSXMLParser class from the foundation framework. Since we are working with food menu xml data lets say that our table view controller class is called FoodTableViewController.
+To parse an xml file in iOS we can make use of the NSXMLParser class from the foundation framework. We will be working with an xml data that represents food menu so lets say that our table view controller class is called FoodTableViewController.
 
 ## Downloading the XML data
 The first thing that we have to do is download the XML data from the web. Lets use this simple XML file that represents a food menu. The NSURLSession class and related classes provide an API for downloading content.
