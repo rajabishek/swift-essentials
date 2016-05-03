@@ -4,7 +4,7 @@ We are going to populate a table view controller using a simple xml file from th
 To parse an xml file in iOS we can make use of the NSXMLParser class from the foundation framework. We will be working with an xml data that represents food menu so lets say that our table view controller class is called FoodTableViewController.
 
 ## Downloading the XML data
-The first thing that we have to do is download the XML data from the web. Lets use this simple XML file that represents a food menu. The NSURLSession class and related classes provide an API for downloading content.
+The first thing that we have to do is download the XML data from the web. The NSURLSession class and related classes provide an API for downloading content.
 
 ```swift
 func refreshData() {
@@ -34,11 +34,21 @@ func refreshData() {
     }
 }
 ```
-The above code makes a http GET request to get the XML data from the web. Once the XML data is downloaded it is made available in data variable ( which is of type NSData? ) of the completion handler. To understand more about the above code, I would suggest you to read the following. They will give you a lot more insight on how we can use the NSURLSession class, which is a complete suite of networking API methods for uploading and downloading content via HTTP. We make sure that we call this refreshData method from the viewDidLoad method on the table view controller to make sure the we start the process as soon as the view is loaded into the memory.
+The above code makes a http GET request to the link present in the link variable. Since the link represents a static xml file that is hosted on the server the response of the request will be the xml data.
+
+Once the XML data is downloaded it is made available in data variable ( which is of type NSData? ) of the completion handler. To understand more about the above code, I would suggest you to read the following. They will give you a lot more insight on how we can use the NSURLSession class, which is a complete suite of networking API methods for uploading and downloading content via HTTP.
 
 > https://www.objc.io/issues/5-ios7/from-nsurlconnection-to-nsurlsession/
 > https://www.raywenderlich.com/110458/nsurlsession-tutorial-getting-started
 > https://developer.apple.com/library/ios/documentation/Foundation/Reference/NSURLSession_class/
+
+This refreshData method is called from the viewDidLoad method on the table view controller to make sure the we start the process as soon as the view is loaded into the memory.
+```swift
+override func viewDidLoad() {
+    super.viewDidLoad()
+    getData()
+}
+```
 
 ## Parsing the XML
 Now that we have the data we need to parse the XML to get some meaningful information that we require. We use the delegation pattern in iOS to parse the XML data. We create an instance of NSXMLParser class to help with the parsing. The parser will call certain methods on its delegate as it parses the XML document. Lets assign the FoodTableViewController class as the delegate for the parser. The NSXMLParserDelegate protocol defines the optional methods implemented by delegates of NSXMLParser objects.
