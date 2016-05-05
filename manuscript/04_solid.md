@@ -92,3 +92,53 @@ We now have two smaller classes that handle the two specific tasks. We have `Tax
 
 ## Open/Closed Principle
 In object-oriented programming, the open/closed principle states that classes or methods should be open for extension, but closed for modification i.e, such an entity can allow its behavior to be extended without modifying its source code. Let’s look at an example of some code that isn’t following the principle:
+```swift
+class ReportManager {
+    
+    var data: [String]
+    
+    init(data:[String]) {
+        self.data = data
+    }
+    
+    func generateExcelReport() {
+        //Generate the report in Excel format
+    }
+    
+    func generatePDFReport() {
+        //Generate the report in PDF format
+    }
+}
+```
+
+As you can see in the above code if we have to generate report in HTML format, now we will have to update the `ReportManager` class. This violates the Open/Closed Principle. What we essentially want is the ability to change the behavior of the system without making modifications to the existing code. This is generally achieved through the use of patterns such as the strategy pattern. Let’s take a look at how we might modify this code to make it open to extension:
+```swift
+protocol CanGenerateReport {
+    func generate(data: [String])
+}
+
+class ExcelReportGenerator: CanGenerateReport {
+    func generate(data: [String]) {
+        //Generate the report in Excel format
+    }
+}
+
+class PDFReportGenerator: CanGenerateReport {
+    func generate(data: [String]) {
+        //Generate the report in PDF format
+    }
+}
+
+class ReportManager {
+    
+    var data: [String]
+    
+    init(data:[String]) {
+        self.data = data
+    }
+    
+    func generateReport(generator: CanGenerateReport) {
+        generator.generate(data)
+    }
+}
+```
