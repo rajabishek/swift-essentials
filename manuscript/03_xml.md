@@ -1,7 +1,7 @@
 # Parsing XML in iOS using NSXMLParser
-We are going to populate a table view controller using a simple xml file from the web. The code examples in this article will be written using Swift. I assume that you have already setup the TableViewController to read the input and populate the table. We will be concentrating on parsing the xml file in this article.
+We are going to populate a table view controller using a simple XML file from the web. The code examples in this article will be written using Swift. I assume that you have already setup the TableViewController to read the input and populate the table. We will be concentrating on parsing the XML file in this article.
 
-To parse an xml file in iOS we can make use of the NSXMLParser class from the foundation framework. We will be working with an xml data that represents food menu so lets say that our table view controller class is called FoodTableViewController.
+To parse an XML file in iOS we can make use of the NSXMLParser class from the foundation framework. We will be working with an XML data that represents food menu so lets say that our table view controller class is called FoodTableViewController.
 
 ## Downloading the XML data
 The first thing that we have to do is download the XML data from the web. The NSURLSession class and related classes provide an API for downloading content.
@@ -27,7 +27,7 @@ func getData() {
                 print(error.localizedDescription)
             } else if let httpResponse = response as? NSHTTPURLResponse {
                 if httpResponse.statusCode == 200 {
-                    //Create an xml parser with the NSData from the server and set the FoodTableViewController as the delegate
+                    //Create an XML parser with the NSData from the server and set the FoodTableViewController as the delegate
                     let xmlParser = NSXMLParser(data: data!)
                     xmlParser.delegate = self
                     xmlParser.parse()
@@ -38,9 +38,9 @@ func getData() {
     }
 }
 ```
-The above code makes a http GET request to the link present in the link variable. Since the link represents a static xml file that is hosted on the server the response of the request will be the xml data. The link could also be an API that returns the data in XML format.
+The above code makes a http GET request to the link present in the link variable. Since the link represents a static XML file that is hosted on the server the response of the request will be the XML data. The link could also be an API that returns the data in XML format.
 
-Once the XML data is downloaded it is made available in data variable ( which is of type NSData? ) of the completion handler. The entire process of making and sending the request and waiting for the response is performed in the background thread by the networking API so that the UI remains responsive. The callback handler that we provide to the dataTaskWithUrl method of the defaultSession object is also called from the background thread only after the data becomes available, thefore we must remember that any code that we write inside of the completion handler does not run in the main thread. 
+Once the XML data is downloaded it is made available in data variable ( which is of type NSData? ) of the completion handler. The entire process of making and sending the request and waiting for the response is performed in the background thread by the networking API so that the UI remains responsive. The callback handler that we provide to the dataTaskWithUrl method of the defaultSession object is also called from the background thread only after the data becomes available, therefore we must remember that any code that we write inside of the completion handler does not run in the main thread. 
 
 To understand more about the above code, I would suggest you to read the following. They will give you a lot more insight on how we can use the NSURLSession class, which is a complete suite of networking API methods for uploading and downloading content via HTTP.
 
@@ -66,13 +66,13 @@ We will be using 4 delegate methods to parse the file. The 4 delegate methods we
 > parserDidEndDocument:
 
 ### didStartElement method
-This method is called by the parser object on its delegate whenever it encounters an opening xml tag.
+This method is called by the parser object on its delegate whenever it encounters an opening XML tag.
 
 ###foundCharacters method
 This method is called by the parser object on its delegate whenever it is reading data between an opening tag and closing tag. The data between a tag may be read all at once or it may be read in pieces.
 
 ### didEndElement method
-This method is called by the parser object on its delegate whenever it encounters a closing xml tag.
+This method is called by the parser object on its delegate whenever it encounters a closing XML tag.
 
 ### didEndDocument method
 This method is called by the parser object on its delegate when it has completed parsing the entire document.
@@ -175,7 +175,7 @@ We will be using the following XML file for our demo.
 	</food>
 </breakfast_menu>
 ```
-Lets define a few variable in Swift that can help us with the parsing. We create a food structure that represents a single food item. In swift if we don't provide an inititlizer for a structure it automatically provides a memberwise initializer that we can use to create an instance.
+Lets define a few variable in Swift that can help us with the parsing. We create a food structure that represents a single food item. In swift if we don't provide an initializer for a structure it automatically provides a member wise initializer that we can use to create an instance.
 ```swift
 struct Food {
     let name: String
@@ -273,7 +273,7 @@ extension FoodTableViewController: NSXMLParserDelegate {
 }
 ```
 
-As you can see in the code above in the didStartElement method we clear out any existing data from the curresponding temporary variable and mark the element that is beign currently parsed. We have the currentlyParsingElement variable because without it the foundCharacters method does not know for which tag the data that we are currently parsing belongs to. And in the foundCharacters method all that we do is append the data that we are parsing to the curresponding temporary variable ( we are appending because the data may not be parsed in a single go, it may be parsed in chunks ). In the dodEndElement method we clear out the currenlyParsingElement. If we don't clear out the currentlyParsingElement then the data inside the non interested tags will also get appended. Lets say we don't clear out the currenlyParsingElement variable which is set to "name", then lets say now if we encounted a disintested tad <date> then its content will also be appended to the name temporary variable, which is clearly what we don't want.
+As you can see in the code above in the didStartElement method we clear out any existing data from the corresponding temporary variable and mark the element that is being currently parsed. We have the currentlyParsingElement variable because without it the foundCharacters method does not know for which tag the data that we are currently parsing belongs to. And in the foundCharacters method all that we do is append the data that we are parsing to the corresponding temporary variable ( we are appending because the data may not be parsed in a single go, it may be parsed in chunks ). In the dodEndElement method we clear out the currenlyParsingElement. If we don't clear out the currentlyParsingElement then the data inside the non interested tags will also get appended. Lets say we don't clear out the currenlyParsingElement variable which is set to "name", then lets say now if we encounter a disinterested tad <date> then its content will also be appended to the name temporary variable, which is clearly what we don't want.
 
 Once the XML document has been finished parsing, the parser object calls the parserDidEndDocument and we ask the table view to reload the data. You should remember that we called the parse method on the parser to start the parsing from the callback once the XML data has been downloaded. That callback is executed in the background thread when the XML downloading process is complete. Therefore all the parsing ( the method calls by parser on the delegate ) also happens in the background thread, i.e why we make sure that reloading the table data happens in the main thread, because any UI updates or changes that we make should always happen on the main thread.
 
