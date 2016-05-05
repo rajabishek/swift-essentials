@@ -8,4 +8,10 @@
 - I - [Interface Segregation Principle](https://en.wikipedia.org/wiki/Interface_segregation_principle)
 - D - [Dependency Inversion Principle](https://en.wikipedia.org/wiki/Dependency_inversion_principle)
 
-Let's dive deeper into each one of these principles and look at some examples.
+Let's dive deeper into each one of these principles and look at some examples. The code sample presented in this article will 
+
+# Single Responsibility Principle
+The single responsibility principle states that every module or class should have responsibility over a single part of the functionality provided by the software. It helps keep classes and methods small and maintainable. In addition to keeping classes small and focused it also makes them easier to understand.
+
+
+
