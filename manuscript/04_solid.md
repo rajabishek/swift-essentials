@@ -1,12 +1,13 @@
 
-# Collection views in iOS
+# SOLID
 
-## UICollectionView is not a replacement for UITableView
+## Introduction
 
-Collection views were first introduced by Apple with the release of iOS 6 during 2012 wwdc. Collection views allows us to easily create dynamic and incredible interfaces by organizing data in grid-like layouts using the built-in UICollectionViewFlowLayout class. If you have no idea about what grid layout means, just take a look at the built-in Photos app.
+SOLID is a mnemonic acronym introduced by Michael Feathers and Bob Martin that refers to a set of five principles, when applied together, intend to make it more likely that a programmer will create a system that is easy to maintain and extend over time. The five principles are as follows:
+> - S - Single Responsibility Principle
+> - O - Open/Closed Principle
+> - L - Liskov Substitution Principle
+> - I - Interface Segregation Principle
+> - D - Dependency Inversion Principle
 
-The UICollectionView that we will be learning about is very similar in nature and principles when it comes to UITableView. You should note that UICollectionView is not a replacement for the UITableView. We have many built in behaviours in the table view like headers, footers, row animations, edit mode etc which is the core of many iOS apps and if you think about it these features don't really make sense with respect to a collection view, because collection view is more abstract and generic than table view and that is why Apple did not introduce UICollectionView as a replacement of UITableView but just as a sibling for the UITableView.
-
-
-## Why Collection Views ?
-To learning more about collection views you can look at session 205 during wwdc 2012 (https://developer.apple.com/videos/play/wwdc2012/205/).
+Let's dive deeper into each one of these principles and look at some examples.
