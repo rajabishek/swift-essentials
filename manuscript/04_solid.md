@@ -179,7 +179,7 @@ class Controller {
     }
 }
 ```
-Here we have a violation of the Interface Segregation Principle. Here the `generate` method of the `Controller` class depends on the `ReportManager` class for its implementation. The `ReportManager` class has two methods one for generating a report and another for uploading the report. Here the `generate` method of the `Controller` class depends on `generateReport` bu does not care about `uploadReport`. Let’s take advantage of Swift’s protocols to fix this to adhere to the Interface Segregation Principle.
+Here we have a violation of the Interface Segregation Principle. Here the `generate` method of the `Controller` class depends on the `ReportManager` class for its implementation. The `ReportManager` class has two methods one for generating a report and another for uploading a report. Here the `generate` method of the `Controller` class depends on `generateReport` but does not care about `uploadReport`. Let’s take advantage of Swift’s protocols to fix this to adhere to the Interface Segregation Principle.
 ```swift
 protocol CanGenerateReport {
     var data: [String] { get }
@@ -211,7 +211,8 @@ class Controller {
     }
 }
 ```
-Here as you can see now that the `generate` method now depends on the `CanGenerateReport` type. This is an improvement because now we can pass any instance to the `generate` method that adhere to the `CanGenerateReport` protocol. If you really think about it, all that the `generate` method needs is just a instance that knows how to generate a report, it doesn't actually depend on a `ReportManager` that know to do a lot of other things also. We can also pass the instance of the following class to the `generate` method.
+Here as you can see now that the `generate` method now depends on the `CanGenerateReport` type. This is an improvement because now we can pass any instance to the `generate` method that adheres to the `CanGenerateReport` protocol. If you really think about it, all that the `generate` method needs is just a instance that knows how to generate a report, it doesn't actually depend on a `ReportManager` that knows to do a lot of other things also. 
+We can also pass an instance of the following class to the `generate` method.
 ```swift
 class PDFReportGenerator: CanGenerateReport {
     
@@ -220,4 +221,4 @@ class PDFReportGenerator: CanGenerateReport {
     }
 }
 ```
-Therefore interface segregation is all about being minimal on what type of dependencies that you require to implement a particular piece of functionality.
+Therefore interface segregation is all about being minimal on the data type of dependencies that you require to implement a particular piece of functionality.
