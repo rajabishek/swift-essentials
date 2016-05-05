@@ -15,4 +15,4 @@ Binary operators operate on two targets (such as 5 * 6) and are infix because th
 
 Ternary operators operate on three targets. Like C, Swift has only one ternary operator, the ternary conditional operator (a ? b : c).
 
-
+## Fixity
