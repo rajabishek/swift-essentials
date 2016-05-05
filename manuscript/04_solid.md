@@ -154,3 +154,28 @@ class HTMLReportGenerator: CanGenerateReport {
 ## Interface Segregation Principle
 
 This principle is less relevant in dynamic languages. Since loosely typed languages don’t require that types be specified in our code this principle can’t be violated.The principle states that no client should be forced to depend on methods it does not use. Let’s look at an example of some code that isn’t following the principle:
+``swift
+class ReportManager {
+    
+    var data: [String]
+    
+    init(data:[String]) {
+        self.data = data
+    }
+    
+    func generateReport() {
+        //Generate the report with the data
+    }
+    
+    func uploadReport(data: [String]) {
+        // Upload the report with the data
+    }
+}
+
+class Controller {
+    
+    func generate(generator: ReportManager) {
+        generator.generateReport()
+    }
+}
+```
