@@ -264,4 +264,4 @@ let manager = ReportManager(["Apple Watch","Apple iPhone"]);
 manager.generateReport(PDFReportGenerator()); //Generates report in PDF format
 manager.generateReport(ExcelReportGenerator()); //Generates report in Excel format
 ```
-As you can see above we could easily pass in the Excel report generator instead of the PDF report generator in a single line of code. We could easily invert the dependency on the fly. If you give it a thought it really makes sense, why should the ReportManager class worry about generating an Excel/PDF/HTML report all that it cares is that it should have an instance that it can use to generate a report. It should'nt really worry about the lower level implementation details.
+As you can see above we could easily change the report generating from PDF to XML in a single line of code. We could easily invert the dependency on the fly. If you give it a thought it really makes sense, why should the ReportManager class worry about generating an Excel/PDF/HTML report all that it cares is that it should have an instance that it can use to generate a report. It should'nt really worry about the lower level implementation details.
