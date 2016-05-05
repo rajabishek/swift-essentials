@@ -13,5 +13,9 @@ Let's dive deeper into each one of these principles and look at some examples. T
 # Single Responsibility Principle
 The single responsibility principle states that every module or class should have responsibility over a single part of the functionality provided by the software. It helps keep classes and methods small and maintainable. In addition to keeping classes small and focused it also makes them easier to understand.
 
+Ok now that we understand that a class should be responsible for only one thing, so how do we identify the responsiblty of a class ?
+
+Identifying the resposibilites of a class is pretty simple. Lets say you want to change the way how a particular feature is implemented and now to make that change if you have to make structural changes to the class, then that feature is a responsibility of this class. Therefore is you follow single resposibilty principle then any class in your project should have only one reason to change.
+
 
 
