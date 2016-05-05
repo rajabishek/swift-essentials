@@ -142,7 +142,7 @@ class ReportManager {
     }
 }
 ```
-With this refactor we’ve made it possible to add new report generators without changing any existing code. To add a new report generator that can generate reports in HTML format we just add another new class called `HTMLReportGenerator` that conforms to the `CanGenerateReport` protocol and write its implementation. We don't even need to touch the `ReportManager` class to bring about this change.
+With this refactor we’ve made it possible to add new report generators without changing any existing code. To add a new report generator that can generate reports in HTML format we just add another new class that conforms to the `CanGenerateReport` protocol and write its implementation. We don't even need to touch the `ReportManager` class to bring about this change.
 ```swift
 class HTMLReportGenerator: CanGenerateReport {
     func generate(data: [String]) {
