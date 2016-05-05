@@ -274,7 +274,7 @@ class PDFReportGenerator: CanGenerateReport {
     }
 }
 ```
-Therefore interface segregation is all about being minimal on the data type of dependencies that you require to implement a particular piece of functionality.
+Therefore interface segregation is all about being minimal with respect to the data type of dependencies that you require to implement a particular piece of functionality.
 
 ## Dependency Inversion Principle
 The Dependency Inversion Principle states that the  high-level modules (business logic) should not depend on low-level modules (database querying/IO). Often this pattern is used to achieve the Open/Closed Principle that we discussed above. Let’s look at an example following the principle:
