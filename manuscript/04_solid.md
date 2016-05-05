@@ -225,3 +225,33 @@ Therefore interface segregation is all about being minimal on the data type of d
 
 ## Dependency Inversion Principle
 The Dependency Inversion Principle states that the  high-level modules (business logic) should not depend on low-level modules (database querying/IO). Often this pattern is used to achieve the Open/Closed Principle that we discussed above. Let’s look at an example following the principle:
+```swift
+protocol CanGenerateReport {
+    func generate(data: [String])
+}
+
+class ExcelReportGenerator: CanGenerateReport {
+    func generate(data: [String]) {
+        //Generate the report in Excel format
+    }
+}
+
+class PDFReportGenerator: CanGenerateReport {
+    func generate(data: [String]) {
+        //Generate the report in PDF format
+    }
+}
+
+class ReportManager {
+    
+    var data: [String]
+    
+    init(data:[String]) {
+        self.data = data
+    }
+    
+    func generateReport(generator: CanGenerateReport) {
+        generator.generate(data)
+    }
+}
+```
