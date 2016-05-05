@@ -17,5 +17,5 @@ Ok now that we understand that a class should be responsible for only one thing,
 
 Identifying the resposibilites of a class is pretty simple. Lets say you want to change the way how a particular feature is implemented and now to make that change if you have to make structural changes to the class, then that feature is a responsibility of this class. Therefore is you follow single resposibilty principle then any class in your project should have only one reason to change.
 
-
+A TaxCalculator class will need to change only if you want the to change the way in how the tax is calculated. For any other reason if the project requires a change in TaxCalculator class then it means that TaxCalculator is responsible for multiple things, which clearly violates the Single Responsibility Principle.
 
