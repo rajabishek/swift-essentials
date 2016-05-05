@@ -206,7 +206,7 @@ print(r.getArea())
 
 ## Interface Segregation Principle
 
-This principle is less relevant in dynamic languages. Since loosely typed languages don’t require that types be specified in our code this principle can’t be violated.The principle states that no client should be forced to depend on methods it does not use. Let’s look at an example of some code that isn’t following the principle:
+This principle is less relevant in dynamic languages. Since loosely typed languages don’t require the data types be specified in code this principle can’t be violated. The principle states that no client should be forced to depend on methods it does not use. Let’s look at an example of some code that isn’t following the principle:
 ```swift
 class ReportManager {
     
@@ -265,7 +265,7 @@ class Controller {
 }
 ```
 Here as you can see now that the `generate` method now depends on the `CanGenerateReport` type. This is an improvement because now we can pass any instance to the `generate` method that adheres to the `CanGenerateReport` protocol. If you really think about it, all that the `generate` method needs is just a instance that knows how to generate a report, it doesn't actually depend on a `ReportManager` that knows to do a lot of other things also. 
-We can also pass an instance of the following class to the `generate` method.
+We can also pass an instance of the following class to the `generate` method and it would work absolutely fine.
 ```swift
 class PDFReportGenerator: CanGenerateReport {
     
