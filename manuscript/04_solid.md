@@ -254,6 +254,10 @@ class ReportManager {
         generator.generate(data)
     }
 }
+
+let manager = ReportManager(["Apple Watch","Apple iPhone"]);
+
+manager.generateReport(PDFReportGenerator()); //Generates report in PDF format
 ```
 As you can see, our high-level object, the report manager, does not depend directly on an implementation of a lower-level object, PDF and Excel report generators. All that the `generateReport` method of the `ReportManager` class depends on is an instance that conforms to the `CanGenerateReport` protocol i.e an instance that knows how to generate a report. It can be any report generator (XML, PDF, HTML, Excel). It doesn't depend on the lower level implementation details, it only depends on a higher level abstraction.
 
@@ -261,7 +265,21 @@ The flexibility that we get by following this rule is that we can substitute any
 ```swift
 let manager = ReportManager(["Apple Watch","Apple iPhone"]);
 
-manager.generateReport(PDFReportGenerator()); //Generates report in PDF format
+//manager.generateReport(PDFReportGenerator()); //Generates report in PDF format
 manager.generateReport(ExcelReportGenerator()); //Generates report in Excel format
 ```
-As you can see above we could easily change the report generating from PDF to XML in a single line of code. We could easily invert the dependency on the fly. If you give it a thought it really makes sense, why should the ReportManager class worry about generating an Excel/PDF/HTML report all that it cares is that it should have an instance that it can use to generate a report. It should'nt really worry about the lower level implementation details.
+As you can see above we can easily change the report to be generated in Excel format instead of PDF by altering just a single line of code. It becomes easy to invert the dependency on the fly.
+
+Lets say now your company wants you to generate reports in XML format. All that we need to do now is first create a `XMLReportGenerator` class that conforms to the `CanGenerateReport` protocol and write the implementation ( Open/Closed principle ) . Then change the dependency for the `generateReport` method to an instance of `XMLReportGenerator` class ( Dependency Inversion principle).
+```swift
+class XMLReportGenerator: CanGenerateReport {
+    func generate(data: [String]) {
+        //Generate the report in XML format
+    }
+}
+
+let manager = ReportManager(["Apple Watch","Apple iPhone"]);
+
+manager.generateReport(XMLReportGenerator()); //Generates report in XML format
+```
+If you give it a thought it really makes sense, why should the ReportManager class worry about generating an Excel / PDF / HTML report, all that it cares is that it should have an instance that it can use to generate a report. It should'nt really worry about the lower level implementation details.
