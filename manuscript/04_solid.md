@@ -54,4 +54,38 @@ class BillCalculator {
 }
 ```
 
-First lets analyse the responsibilties of this class.
+First lets analyse the responsibilties of this class. If we need to change how the bill is calculated, let say we don't bill the deserts anymore (deserts are free ) then we will have to change the `calculateAmount` method. If we need to change how tax is calculate for a food item then will have to change the `calculateTax` method. So as you can see here the `BillCalculator` class is responsible for multiple things, it is responsible for how the food items are billed and how the tax is calculated for a food item. The fact that we can identify multiple reasons to change signals a violation of the Single Responsibility Principle.
+
+We can do a quick refactor and get our code in compliance with the Single Responsibility Principle. Let’s take a look:
+
+```swift
+class TaxCalculator {
+    
+    static func calculateTax(food: Food) -> Double {
+        return 0.10 * food.price
+    }
+}
+
+class BillCalculator {
+    
+    var items: [Food]
+
+    init(items: [Food]) {
+        self.items = items
+    }
+    
+    func calculateAmount() -> Double {
+        var price = 0.0
+        for food in items {
+            price += food.price + calculateTax(food)
+        }
+        return price
+    }
+    
+    func calculateTax(food: Food) -> Double {
+        return TaxCalculator.calculateTax(food)
+    }
+}
+```
+
+We now have two smaller classes that handle the two specific tasks. We have `TaxCalculator` class that is responsible for calculating the tax amount for a given food item and the `BillCalculator` is responsible for how the food items are billed.
