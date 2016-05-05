@@ -88,4 +88,4 @@ class BillCalculator {
 }
 ```
 
-We now have two smaller classes that handle the two specific tasks. We have `TaxCalculator` class that is responsible for calculating the tax amount for a given food item and the `BillCalculator` is responsible for how the food items are billed.
+We now have two smaller classes that handle the two specific tasks. We have `TaxCalculator` class that is responsible for calculating the tax amount for a given food item and the `BillCalculator` is responsible for how the food items are billed. Now if we will have to change the `TaxCalculator` only if we need to change the way in which tax is calculated for a food item, similarily we will need to change the `BillCalculator` class only if we want to change the way in which food items are billed.
