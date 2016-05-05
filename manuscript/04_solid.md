@@ -211,3 +211,13 @@ class Controller {
     }
 }
 ```
+Here as you can see now that the `generate` method now depends on the `CanGenerateReport` type. This is an improvement because now we can pass any instance to the `generate` method that adhere to the `CanGenerateReport` protocol. If you really think about it, all that the `generate` method needs is just a instance that knows how to generate a report, it doesn't actually depend on a `ReportManager` that know to do a lot of other things also. We can also pass the instance of the following class to the `generate` method.
+```swift
+class PDFReportGenerator: CanGenerateReport {
+    
+    func generateReport() {
+        //Generate the report in PDF format with the data
+    }
+}
+```
+Therefore interface segregation is all about being minimal on what type of dependencies that you require to implement a particular piece of functionality.
