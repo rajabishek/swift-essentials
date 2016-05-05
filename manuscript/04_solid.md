@@ -179,3 +179,35 @@ class Controller {
     }
 }
 ```
+Here we have a violation of the Interface Segregation Principle. Here the `generate` method of the `Controller` class depends on the `ReportManager` class for its implementation. The `ReportManager` class has two methods one for generating a report and another for uploading the report. Here the `generate` method of the `Controller` class depends on `generateReport` bu does not care about `uploadReport`. Let’s take advantage of Swift’s protocols to fix this to adhere to the Interface Segregation Principle.
+```swift
+protocol CanGenerateReport {
+    var data: [String] { get }
+    
+    func generateReport()
+}
+
+class ReportManager: CanGenerateReport {
+    
+    var data: [String]
+    
+    init(data:[String]) {
+        self.data = data
+    }
+    
+    func generateReport() {
+        //Generate the report with the data
+    }
+    
+    func uploadReport(data: [String]) {
+        // Upload the report with the data
+    }
+}
+
+class Controller {
+    
+    func generate(generator: CanGenerateReport) {
+        generator.generateReport()
+    }
+}
+```
