@@ -111,7 +111,7 @@ class ReportManager {
 }
 ```
 
-As you can see in the above code if we have to generate report in HTML format, now we will have to update the `ReportManager` class. This violates the Open/Closed Principle. What we essentially want is the ability to change the behavior of the system without making modifications to the existing code. This is generally achieved through the use of patterns such as the strategy pattern. Let’s take a look at how we might modify this code to make it open to extension:
+As you can see in the above code if we have to generate report in HTML format, now we will have to update the `ReportManager` class. This violates the Open/Closed Principle. What we essentially want is the ability to extend the behavior of the system without making modifications to the existing code. This is generally achieved through the use of patterns such as the strategy pattern. Let’s take a look at how we might modify this code to make it open to extension:
 ```swift
 protocol CanGenerateReport {
     func generate(data: [String])
@@ -142,7 +142,7 @@ class ReportManager {
     }
 }
 ```
-With this refactor we’ve made it possible to add new report generators without changing any existing code. To add a new report generator that can generate reports in HTML format is just add another new class called `HTMLReportGenerator` that conforms to the `CanGenerateReport` protocol and write its implementation. We don't even have to touch the `ReportManager` class to bring about this change.
+With this refactor we’ve made it possible to add new report generators without changing any existing code. To add a new report generator that can generate reports in HTML format we just add another new class called `HTMLReportGenerator` that conforms to the `CanGenerateReport` protocol and write its implementation. We don't even need to touch the `ReportManager` class to bring about this change.
 ```swift
 class HTMLReportGenerator: CanGenerateReport {
     func generate(data: [String]) {
