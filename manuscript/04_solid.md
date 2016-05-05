@@ -152,7 +152,40 @@ class HTMLReportGenerator: CanGenerateReport {
 ```
 
 ## Liskov Substitution Principle
-This principle states that if S is a subtype of T, then objects of type T may be replaced with objects of type S without creating any unexpected or incorrect behaviors, i.e we should be able to replace any instances of a parent class with an instance of one of its children. Let’s look at an example of some code that isn’t following the principle:
+This principle states that if S is a subtype of T, then objects of type T may be replaced with objects of type S without creating any unexpected or incorrect behaviors, i.e we should be able to replace any instances of a parent class with an instance of one of its children. 
+In essence if a program module is using a Base class, then the reference to the Base class can be replaced with a Derived class without affecting the functionality of the program module. Let’s look at an example of some code that isn’t following the principle:
+```swift
+class Rectangle
+{
+    var width: Int = 0
+    var height: Int = 0
+    
+    func setWidth(width: Int) {
+        self.width = width;
+    }
+    
+    func setHeight(height: Int) {
+        self.height = height;
+    }
+
+    func getArea() -> Int {
+        return self.width * self.height;
+    }
+}
+
+class Square: Rectangle
+{
+    override func setWidth(width: Int) {
+        self.width = width;
+        self.height = width;
+    }
+    
+    override func setHeight(height: Int) {
+        self.height = height;
+        self.width = height;
+    }
+}
+```
 
 
 ## Interface Segregation Principle
