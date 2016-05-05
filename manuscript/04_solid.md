@@ -111,7 +111,7 @@ class ReportManager {
 }
 ```
 
-As you can see in the above code if we have to generate report in HTML format, now we will have to update the `ReportManager` class. This violates the Open/Closed Principle. What we essentially want is the ability to extend the behavior of the system without making modifications to the existing code. This is generally achieved through the use of patterns such as the strategy pattern. Let’s take a look at how we might modify this code to make it open to extension:
+As you can see in the above code if we have to now generate report in HTML format also, now we will have to update the `ReportManager` class. This violates the Open/Closed Principle. Always remember that whenever you touch an existing code there is always a possibility for breakage. What we essentially want is the ability to extend the behavior of the system without making modifications to the existing code. This is generally achieved through the use of patterns such as the [strategy pattern](https://en.wikipedia.org/wiki/Strategy_pattern). Let’s take a look at how we might modify this code to make it open to extension:
 ```swift
 protocol CanGenerateReport {
     func generate(data: [String])
