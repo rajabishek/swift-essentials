@@ -1,8 +1,6 @@
 
 # SOLID
 
-## Introduction
-
 [SOLID](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)) is a mnemonic acronym introduced by Michael Feathers and Bob Martin that refers to a set of five principles, when applied together, intend to make it more likely that a programmer will create a system that is easy to maintain and extend over time. The five principles are as follows:
 - S - [Single Responsibility Principle](https://en.wikipedia.org/wiki/Single_responsibility_principle)
 - O - [Open/Closed Principle](https://en.wikipedia.org/wiki/Open/closed_principle)
