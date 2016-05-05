@@ -151,6 +151,10 @@ class HTMLReportGenerator: CanGenerateReport {
 }
 ```
 
+## Liskov Substitution Principle
+This principle states that if S is a subtype of T, then objects of type T may be replaced with objects of type S without creating any unexpected or incorrect behaviors, i.e we should be able to replace any instances of a parent class with an instance of one of its children. Let’s look at an example of some code that isn’t following the principle:
+
+
 ## Interface Segregation Principle
 
 This principle is less relevant in dynamic languages. Since loosely typed languages don’t require that types be specified in our code this principle can’t be violated.The principle states that no client should be forced to depend on methods it does not use. Let’s look at an example of some code that isn’t following the principle:
