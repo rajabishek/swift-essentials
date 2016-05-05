@@ -17,5 +17,41 @@ Ok now that we understand that a class should be responsible for only one thing,
 
 Identifying the resposibilites of a class is pretty simple. Lets say you want to change the way how a particular feature is implemented and now to make that change if you have to make structural changes to the class, then that feature is a responsibility of this class. Therefore is you follow single resposibilty principle then any class in your project should have only one reason to change.
 
-A TaxCalculator class will need to change only if you want to change the way in which tax is calculated. For any other reason if you are making a change in the TaxCalculator class then it means that TaxCalculator is responsible for multiple things, which clearly violates the Single Responsibility Principle.
+A TaxCalculator class will need to change only if you want to change the way in which tax is calculated. For any other reason if you are making a change in the TaxCalculator class then it means that TaxCalculator is responsible for multiple things, which clearly violates the Single Responsibility Principle. Let’s look at an example of some code that isn’t following the principle:
 
+```swift
+enum FoodType {
+    case Starter
+    case MainCourse
+    case Desert
+}
+
+struct Food {
+    var name: String
+    var price: Double
+    var type: FoodType
+}
+
+class BillCalculator {
+    
+    var items: [Food]
+
+    init(items: [Food]) {
+        self.items = items
+    }
+    
+    func calculateAmount() -> Double {
+        var price = 0.0
+        for food in items {
+            price += food.price + calculateTax(food.price)
+        }
+        return price
+    }
+    
+    func calculateTax(price: Double) -> Double {
+        return 0.10 * price
+    }
+}
+```
+
+First lets analyse the responsibilties of this class.
