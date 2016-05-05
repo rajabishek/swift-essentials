@@ -279,7 +279,6 @@ class XMLReportGenerator: CanGenerateReport {
 }
 
 let manager = ReportManager(["Apple Watch","Apple iPhone"]);
-
 manager.generateReport(XMLReportGenerator()); //Generates report in XML format
 ```
 If you give it a thought it really makes sense, why should the ReportManager class worry about generating an Excel / PDF / HTML report, all that it cares is that it should have an instance that it can use to generate a report. It should'nt really worry about the lower level implementation details.
