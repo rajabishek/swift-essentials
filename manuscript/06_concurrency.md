@@ -9,3 +9,6 @@ Have you noticed that whenever we do some kind of a heavy tasks ( like database 
 
 This is where concurrency comes handy. We can perform all the heavy tasks concurrently. Now concurrency doesn't mean parallelism. This is a very important concept to understand.
 If you want to delve more deeply into this subject, check out this excellent [talk by Rob Pike](http://vimeo.com/49718712).
+
+## GCD (Grand Central Dispatch)
+GCD is the most commonly used API to manage concurrent code and execute operations asynchronously. GCD is the marketing name for libdispatch, Apple’s library that provides support for concurrent code execution on multicore hardware on iOS and OS X.
