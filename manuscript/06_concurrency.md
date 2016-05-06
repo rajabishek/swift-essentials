@@ -39,3 +39,9 @@ Current queues allows you to execute multiple tasks in concurrently. The tasks t
 Concurrent queues guarantee that tasks start in same order but you will not know the order of completion, execution time or the number of tasks being executed at a given point.
 
 Lets say 3 tasks are added to the concurrent queue. Now 1st task 1 becomes ready and its starts executing. Lets say that task 1 is a very heavy task that takes a very long time to complete. While task 1 is still running task 2 can start, after task 2 starts task 3 will start. Now before task 1 completes task 2 and task 3 can complete executing. Therefore only the order in which the tasks start executing is guaranteed and not anything else.
+
+Some benefits of using a concurrent queue are:
+- Tasks start executing in the same order as they are added in the queue
+- Multiple concurrent queues can be created
+- Apple provides four concurrent queues called as global dispatch queues
+- Tasks need not wait for the previous task to complete its execution before it starts executing
