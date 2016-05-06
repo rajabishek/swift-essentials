@@ -27,3 +27,8 @@ A task in a serial queue will wait only for the preceding task in the same queue
 If lets say we create 3 serial queues and load them with tasks, then each queue executes only one task at a time, but we can have 3 tasks that are executing simultaneously one from each serial queue.
 
 If we are having multiple tasks that share the same piece of data, executing them simultaneously will result in wired errors.This is called as race condition. Serial queues can help us solve this problem. By adding such tasks to a serial queue it is ensured that the tasks are executed sequentially only one at a time.
+
+Some benefits of using a serial queue are:
+- Sequential execution one at a time to avoid race condition of tasks accessing a shared resource
+- Tasks are executed in the same order as they are added in the queue
+- Multiple serial queues can be created
