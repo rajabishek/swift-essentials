@@ -55,7 +55,16 @@ Besides the main queue, we have 4 concurrent queues, which are called the global
 - `DISPATCH_QUEUE_PRIORITY_LOW`
 - `DISPATCH_QUEUE_PRIORITY_BACKGROUND`
 
-The list is in the descending order of priority. Once we add tasks to any one of these 4 queues, lets say 2 tasks are ready for execution one from queue with `DISPATCH_QUEUE_PRIORITY_HIGH` priority and other from queue with `DISPATCH_QUEUE_PRIORITY_BACKGROUND` priority. The task from the queue with higher priority will be given preference first. 
+The list is in the descending order of priority. Once we add tasks to any one of these 4 queues, lets say 2 tasks are ready for execution one from queue with `DISPATCH_QUEUE_PRIORITY_HIGH` priority and other from queue with `DISPATCH_QUEUE_PRIORITY_BACKGROUND` priority. The task from the queue with higher priority will be given preference first.
+
+These constants were a part of Objective-C. In Swift we have the Quality of Service (QoS) class. The QoS classes are meant to express the intent of the submitted task so that GCD can determine how to best prioritize it.
+- `QOS_CLASS_USER_INTERACTIVE`: The user interactive class represents tasks that need to be done immediately in order to provide a nice user experience. Use it for UI updates, event handling and small workloads that require low latency. The total amount of work done in this class during the execution of your app should be small.
+- `QOS_CLASS_USER_INITIATED`: The user initiated class represents tasks that are initiated from the UI and can be performed asynchronously. It should be used when the user is waiting for immediate results, and for tasks required to continue user interaction.
+- `QOS_CLASS_UTILITY`: The utility class represents long-running tasks, typically with a user-visible progress indicator. Use it for computations, I/O, networking, continuous data feeds and similar tasks. This class is designed to be energy efficient.
+
+- `QOS_CLASS_BACKGROUND`: The background class represents tasks that the user is not directly aware of. Use it for prefetching, maintenance, and other tasks that don’t require user interaction and aren’t time-sensitive.
+
+Instead of using the constants we can use the quality of service class. We get the priority value from this class using the static value attribute of the class. 
 
 So you can decide the queue you use based on the priority of the task. Please also note that these queues are being used by Apple’s APIs so your tasks are not the only tasks in these queues.
 
@@ -68,7 +77,7 @@ let mainQueue = dispatch_get_main_queue()
 
 //Get a reference to a global dispatch queue
 //First parameter is the priority and second is always 0
-let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
+let queue = dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.value), 0)
 
 //Creating our own serial queue
 let serialQueue = dispatch_queue_create("com.app.serialQueue", DISPATCH_QUEUE_SERIAL)
