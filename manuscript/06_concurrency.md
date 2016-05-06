@@ -13,4 +13,9 @@ If you want to delve more deeply into this subject, check out this excellent [ta
 ## GCD (Grand Central Dispatch)
 GCD is the most commonly used API to manage concurrent code and execute operations asynchronously. GCD is the marketing name for libdispatch, Apple’s library that provides support for concurrent code execution on multicore hardware on iOS and OS X.
 
-GCD provides dispatch queues to handle submitted tasks; these queues manage the tasks you provide to GCD and execute those tasks in FIFO order.
+GCD provides dispatch queues to handle submitted tasks.
+
+## Dispatch Queues
+These queues manage the tasks you provide to GCD and execute those tasks in FIFO order. There are two varieties of dispatch queues one is serial and the other is concurrent. Any task that is added to any one of the queues are being executed in separate threads than the thread in which they were created on. 
+
+Therefore whenever you want to perform some kind of computationally heavy task you create warp a block of code in a closure ( a task) and submit it to dispatch queues in the main thread. But all these tasks (closures) will run in separate threads instead of the main thread.
