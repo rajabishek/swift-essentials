@@ -45,3 +45,16 @@ Some benefits of using a concurrent queue are:
 - Multiple concurrent queues can be created
 - Apple provides four concurrent queues called as global dispatch queues
 - Tasks need not wait for the previous task to complete its execution before it starts executing
+
+## Dispatch queues in action
+Now that we have seen both the type of queues. Its time to see on how we can put then to use. By default Apple provides 1 serial queue and 4 concurrent queues. The single serial queue is the main queue that executes the tasks on the applications main thread. It should be used to update the application's UI and all tasks that make a change in the user interface. Since its a serial queue only one task can be execute at a time.
+
+Besides the main queue, we have 4 concurrent queues, which are called the global dispatch queues. Each one of this queue has a different priority assigned to it. Before we use any one of them we should get a reference using the `dispatch_get_global_queue` function. The first parameter is priority and the second parameter is 0. The priority can be any one of the following.
+- `DISPATCH_QUEUE_PRIORITY_HIGH`
+- `DISPATCH_QUEUE_PRIORITY_DEFAULT`
+- `DISPATCH_QUEUE_PRIORITY_LOW`
+- `DISPATCH_QUEUE_PRIORITY_BACKGROUND`
+
+The list is in the descending order of priority. Once we add tasks to any one of these 4 queues, lets say 2 tasks are ready for execution one from queue with high priority and other from queue with background priority. The task from the queue with higher priority will be given preference first. 
+
+So you can decide the queue you use based on the priority of the task. Please also note that these queues are being used by Apple’s APIs so your tasks are not the only tasks in these queues.
