@@ -66,7 +66,7 @@ These constants were a part of Objective-C. In Swift we have the Quality of Serv
 - `QOS_CLASS_USER_INITIATED`: The user initiated class represents tasks that are initiated from the UI and can be performed asynchronously. It should be used when the user is waiting for immediate results, and for tasks required to continue user interaction.
 - `QOS_CLASS_UTILITY`: The utility class represents long-running tasks, typically with a user-visible progress indicator. Use it for computations, I/O, networking, continuous data feeds and similar tasks. This class is designed to be energy efficient.
 
-- `QOS_CLASS_BACKGROUND`: The background class represents tasks that the user is not directly aware of. Use it for prefetching, maintenance, and other tasks that don’t require user interaction and aren’t time-sensitive.
+- `QOS_CLASS_BACKGROUND`: The background class represents tasks that the user is not directly aware of. Use it for pre fetching, maintenance, and other tasks that don’t require user interaction and aren't time-sensitive.
 
 Instead of using the constants we can use the quality of service class. We get the priority value from this class using the static value attribute of the class. 
 
