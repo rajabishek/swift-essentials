@@ -7,7 +7,10 @@ In iOS we have multiple APIs that can be used to achieve concurrency. One is NSO
 ## Where is concurrency used ?
 Have you noticed that whenever we do some kind of a heavy tasks ( like database calls, fetching data from network, drawing graphics on screen) the UI is no longer responsive. The reason is that we are executing these heavy tasks on the main queue. iOS internally uses this main queue to respond to UI events. Therefore till out heavy task in completed iOS is not able to respond to user's actions.
 
-This is where concurrency comes in handy. We can perform all the heavy tasks concurrently. Now concurrency doesn't mean parallelism. Both may look similar but they are different concepts to understand.
+This is where concurrency comes in handy. We can perform all the heavy tasks concurrently. 
+
+## Concurrency != Parallelism
+Now concurrency doesn't mean parallelism. Both may look similar but they are different concepts to understand.
 If you want to delve more deeply into this subject, check out this excellent [talk by Rob Pike](http://vimeo.com/49718712).
 
 Concurrency is when two or more tasks can start, run, and complete in overlapping time periods. It doesn't necessarily mean they'll ever both be running at the same instant. For example when multitasking on a single-core machine, the tasks do not literally run at the same time, they appear to run at the same time because time is sliced. For some amount of time one task runs and then another tasks runs for some time. It only looks as though the tasks are running in parallel, but actually they are not. Therefore parallelism comes into picture only when we have a multi core processor. But however the code is still concurrent (it has the ability to run in parallel if the hardware can allow).
