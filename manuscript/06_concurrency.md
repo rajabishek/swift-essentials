@@ -10,6 +10,10 @@ Have you noticed that whenever we do some kind of a heavy tasks ( like database 
 This is where concurrency comes in handy. We can perform all the heavy tasks concurrently. Now concurrency doesn't mean parallelism. Both may look similar but they are different concepts to understand.
 If you want to delve more deeply into this subject, check out this excellent [talk by Rob Pike](http://vimeo.com/49718712).
 
+Concurrency is when two or more tasks can start, run, and complete in overlapping time periods. It doesn't necessarily mean they'll ever both be running at the same instant. For example when multitasking on a single-core machine, the tasks do not literally run at the same time, they appear to run at the same time because time is sliced. For some amount of time one task runs and then another tasks runs for some time. It only looks as though the tasks are running in parallel, but actually they are not. Therefore parallelism comes into picture only when we have a multi core processor. But however the code is still concurrent (it has the ability to run in parallel if the hardware can allow).
+
+Parallelism is when tasks literally run at the same time, Eg. on a multi core processor. Only if the code in concurrent, parallelism can be achieved. If the code does not allow parts of the program to run at the same time (no concurrency) then parallelism cannot be achieved.
+
 ## GCD (Grand Central Dispatch)
 GCD is the most commonly used API to manage concurrent code and execute operations asynchronously. GCD is the marketing name for libdispatch, Apple’s library that provides support for concurrent code execution on multi core hardware on iOS and OS X.
 
@@ -58,7 +62,7 @@ Besides the main queue, we have 4 concurrent queues, which are called the global
 The list is in the descending order of priority. Once we add tasks to any one of these 4 queues, lets say 2 tasks are ready for execution one from queue with `DISPATCH_QUEUE_PRIORITY_HIGH` priority and other from queue with `DISPATCH_QUEUE_PRIORITY_BACKGROUND` priority. The task from the queue with higher priority will be given preference first.
 
 These constants were a part of Objective-C. In Swift we have the Quality of Service (QoS) class. The QoS classes are meant to express the intent of the submitted task so that GCD can determine how to best prioritize it.
-- `QOS_CLASS_USER_INTERACTIVE`: The user interactive class represents tasks that need to be done immediately in order to provide a nice user experience. Use it for UI updates, event handling and small workloads that require low latency. The total amount of work done in this class during the execution of your app should be small.
+- `QOS_CLASS_USER_INTERACTIVE`: The user interactive class represents tasks that need to be done immediately in order to provide a nice user experience. Use it for UI updates, event handling and small workloads that require low latency. The total amount of work done in this class during the execution of your application should be small.
 - `QOS_CLASS_USER_INITIATED`: The user initiated class represents tasks that are initiated from the UI and can be performed asynchronously. It should be used when the user is waiting for immediate results, and for tasks required to continue user interaction.
 - `QOS_CLASS_UTILITY`: The utility class represents long-running tasks, typically with a user-visible progress indicator. Use it for computations, I/O, networking, continuous data feeds and similar tasks. This class is designed to be energy efficient.
 
