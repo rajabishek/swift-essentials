@@ -1,4 +1,7 @@
 00_preface.md
 01_basics.md
+02_arrays.md
+03_sets.md
+04_operators.md
 acknowledgements.md
 
