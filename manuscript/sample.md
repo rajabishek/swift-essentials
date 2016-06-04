@@ -1,2 +1,0 @@
-# The Basics
-Swift is a powerful and intuitive programming language for iOS, OS X, tvOS, and watchOS that is safe fast and interactive. Writing Swift code is interactive and fun, the syntax is concise yet expressive, and apps run lightning-fast. It seems to me that Swift is designed to lure web developers to build apps. The syntax of Swift would be more familiar to web developers. If you have some programming experience with Javascript (or other scripting languages), it would be easier for you to pick up Swift rather than Objective-C.
