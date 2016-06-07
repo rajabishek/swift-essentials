@@ -7,3 +7,5 @@ Like any other language Swift uses variable to store and reference values by an 
 Swift provides its own versions of all fundamental C and Objective-C types, including `Int` for integers, `Double` and `Float` for floating point values, `Bool` for boolean values, and `String` for textual data. These are some of the primitive dataypes that are present in Swift. Apart from these Swift also provides three powerul collection types `Array`,` Set` and `Dictionary`.
 
 Swift also introduces certain advanced types such a tuples. Tuple enables us to create and pass around a group of values. For example we can use this to return multiple values from a function as a single compound value. Lets say we have a function that returns the status of a http request, now using tuples we could return both the status code and the message as a single compound value from the function.
+
+Swift also introduces optional types, which can handle the absense of a value. These are called as optionals. Optionals say either there is a value, and it equals x or there isn't a value at all. They are the heart of many of Swift's most powerful features.
