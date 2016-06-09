@@ -11,3 +11,9 @@ Swift also introduces certain advanced types such a tuples. Tuple enables us to 
 Swift also introduces optional types, which can handle the absense of a value. These are called as optionals. Optionals say either there is a value, and it equals x or there isn't a value at all. They are the heart of many of Swift's most powerful features.
 
 Swift is a type safe language, which means that it helps you to be clear about the type of values your code can work with. If a part of your code expects an `Int`, type safety prevent you from passing it a value of another datatype by mistake. This can help developers catch and fix error as early as possible in the development process itself.
+
+# Variables & Constants
+Variables and constants are just a name given to a piece of data that is stored in memory. The difference between them is that, the value of a constant cannot be changed once it is set, whereas a variable can be set to a different value in the future. Variables are declared with the `var` keyword and constants are declared with the `let` keyword.
+```swift
+let language: String = "Swift"
+var name: String = "Raj Abishek"
