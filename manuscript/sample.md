@@ -12,15 +12,3 @@ Swift also introduces optional types, which can handle the absense of a value. T
 
 Swift is a type safe language, which means that it helps you to be clear about the type of values your code can work with. If a part of your code expects an `Int`, type safety prevent you from passing it a value of another datatype by mistake. This can help developers catch and fix error as early as possible in the development process itself.
 
-# Variables & Constants
-Variables and constants are just a name given to a piece of data that is stored in memory. The difference between them is that, the value of a constant cannot be changed once it is set, whereas a variable can be set to a different value in the future. Variables are declared with the `var` keyword and constants are declared with the `let` keyword.
-```swift
-let language: String = "Swift"
-var name: String = "Raj Abishek"
-
-In this example `language` is declared as a constant and is given a value Swift but `name` is declared a variable and hence we can change its value if we want. You should also note that in Swift a semicolon is not neccessary. You need to use semicolon only when you need to write multiple statements on the same line.
-```swift
-language = "Objective-C"
-```
-
-There are 3 important things that one needs to remember when it come to variable and constants in Swift. Once you have declared a constant or a variable of a certain type, you can't redeclare it again with the same name. You can neither change it to store values of a different type. Nor can you change a variable to a constant or a constant to a variable. Violating any of these above 3 principles gives a compile time error.
