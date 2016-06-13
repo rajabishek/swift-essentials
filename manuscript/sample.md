@@ -24,3 +24,9 @@ language = "Objective-C"
 ```
 
 There are 3 important things that one needs to remember when it come to variable and constants in Swift. Once you have declared a constant or a variable of a certain type, you can't redeclare it again with the same name. You can neither change it to store values of a different type. Nor can you change a variable to a constant or a constant to a variable. Violating any of these above 3 principles gives a compile time error.
+
+# Type Inference & Type Annotation
+We could have declared the `language` and `name` without providing the datatype also. Ok I know what you're thinking "Wait Raj, you just told me Swift is a type safe language, that means every variable or constant should have a definite type and changing data types shouldn't be possible". Yes you are right, but Swift has something called as `Type Inference` using which swift can infer or understand the type of variable/constant based on the initial value that you provide.
+```swift
+let language = "Swift"
+var name = "Raj Abishek"
