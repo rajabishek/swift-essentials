@@ -32,3 +32,9 @@ let language = "Swift"
 var name = "Raj Abishek"
 
 Since we have given the intial values Swift is smart enough to understand that both `language` and `name` are of datatype `String`. During compile time it can deduce the type of a particular expression automatically, simply by examining the nature of the values you provide. Because of this wondeful feature, Swift requires far fewer type declarations than languages such a C or Objective-C.
+
+You should also note that if you want to explicity specify the type of a variable it is no harm in doing so. This is called as `Type Annotation`.
+```swift
+let language: String = "Swift"
+var name: String = "Raj Abishek"
+```
