@@ -38,3 +38,8 @@ You should also note that if you want to explicity specify the type of a variabl
 let language: String = "Swift"
 var name: String = "Raj Abishek"
 ```
+A quick thing to note here is that if you do not provide intial values while declaring a variable or a constant then type annotation is compulsory as shown below.
+```swift
+let language: String
+var name: String
+```
