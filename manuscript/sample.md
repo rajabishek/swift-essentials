@@ -43,3 +43,8 @@ A quick thing to note here is that if you do not provide intial values while dec
 let language: String
 var name: String
 ```
+
+You can declare multiple contants/variables in the same line, separate by commas as shown below.
+```swift
+var i = 0, j = 0, k = 0
+```
