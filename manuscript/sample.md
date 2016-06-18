@@ -48,3 +48,8 @@ You can declare multiple contants/variables in the same line, separate by commas
 ```swift
 var i = 0, j = 0, k = 0
 ```
+
+You can define multiple related variables of the same type on a single line, separated by commas, with a single type annotation after the final variable name.
+```swift
+var name, othername, anotherName: Double
+```
