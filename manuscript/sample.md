@@ -24,32 +24,3 @@ language = "Objective-C"
 ```
 
 There are 3 important things that one needs to remember when it come to variable and constants in Swift. Once you have declared a constant or a variable of a certain type, you can't redeclare it again with the same name. You can neither change it to store values of a different type. Nor can you change a variable to a constant or a constant to a variable. Violating any of these above 3 principles gives a compile time error.
-
-# Type Inference & Type Annotation
-We could have declared the `language` and `name` without providing the datatype also. Ok I know what you're thinking "Wait Raj, you just told me Swift is a type safe language, that means every variable or constant should have a definite type and changing data types shouldn't be possible". Yes you are right, but Swift has something called as `Type Inference` using which swift can infer or understand the type of variable/constant based on the initial value that you provide.
-```swift
-let language = "Swift"
-var name = "Raj Abishek"
-
-Since we have given the intial values Swift is smart enough to understand that both `language` and `name` are of datatype `String`. During compile time it can deduce the type of a particular expression automatically, simply by examining the nature of the values you provide. Because of this wondeful feature, Swift requires far fewer type declarations than languages such a C or Objective-C.
-
-You should also note that if you want to explicity specify the type of a variable it is no harm in doing so. This is called as `Type Annotation`.
-```swift
-let language: String = "Swift"
-var name: String = "Raj Abishek"
-```
-A quick thing to note here is that if you do not provide intial values while declaring a variable or a constant then type annotation is compulsory as shown below.
-```swift
-let language: String
-var name: String
-```
-
-You can declare multiple contants/variables in the same line, separate by commas as shown below.
-```swift
-var i = 0, j = 0, k = 0
-```
-
-You can define multiple related variables of the same type on a single line, separated by commas, with a single type annotation after the final variable name.
-```swift
-var name, othername, anotherName: Double
-```
