@@ -78,3 +78,7 @@ Unlike many other languages, Swift does not require you to write a semicolon (;)
 let language = 'Swift'; print(language)
 //prints "Swift"
 ```
+
+# Type Aliases
+Type aliases define an alternative name for an existing type. You define type aliases with the typealias keyword.
+
