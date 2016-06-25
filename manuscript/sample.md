@@ -82,3 +82,8 @@ let language = 'Swift'; print(language)
 # Type Aliases
 Type aliases define an alternative name for an existing type. You define type aliases with the typealias keyword.
 
+Type aliases are useful when you want to refer to an existing type by a name that is contextually more appropriate, such as when working with data of a specific size from an external source.
+```swift
+typealias AudioSample = UInt16
+```
+
