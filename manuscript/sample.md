@@ -92,3 +92,5 @@ Once you define a type alias, you can use the alias anywhere you might use the o
 var maxAmplitudeFound = AudioSample.min
 // maxAmplitudeFound is now 0
 ```
+
+Here, AudioSample is defined as an alias for UInt16. Because it is an alias, the call to AudioSample.min actually calls UInt16.min, which provides an initial value of 0 for the maxAmplitudeFound variable.
