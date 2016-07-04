@@ -113,3 +113,9 @@ let http404Error = (statusCode: 404, message: "Not Found")
 print(http404Error.statusCode) //404
 print(http404Error.message) //Not Found
 ```
+
+We can also directly extract out the value from the tuple through the following syntax.
+let http404Error = (404, "Not Found")
+let (statusCode, message) = http404Error
+print(statusCode) //404
+print(message) //Not Found
