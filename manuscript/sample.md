@@ -94,28 +94,3 @@ var maxAmplitudeFound = AudioSample.min
 ```
 
 Here, AudioSample is defined as an alias for UInt16. Because it is an alias, the call to AudioSample.min actually calls UInt16.min, which provides an initial value of 0 for the maxAmplitudeFound variable.
-
-# Tuples
-Tuples group multiple values into a single compound value. The values within a tuple can be of any type and do not have to be of the same type as each other.
-```swift
-let http404Error = (404, "Not Found")
-// http404Error is of type (Int, String), and equals (404, "Not Found")”
-```
-The above code creates a tuple called `http404Error` that holds a response data, a status code followed by a message. Now to access the individual elements of the tuple we use the dot syntax on the tuple to access the individual elements.
-```swift
-print(http404Error.0) //404
-print(http404Error.1) //Not Found
-```
-
-We could also give names to the tuple values while assigning them that can help us fetch the individual value using them.
-```swift
-let http404Error = (statusCode: 404, message: "Not Found")
-print(http404Error.statusCode) //404
-print(http404Error.message) //Not Found
-```
-
-We can also directly extract out the value from the tuple through the following syntax.
-let http404Error = (404, "Not Found")
-let (statusCode, message) = http404Error
-print(statusCode) //404
-print(message) //Not Found
