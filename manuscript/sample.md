@@ -8,5 +8,6 @@ var names: [String] //declare names as an array of strings - Shorter form of typ
 
 var array = ["Macbook", "iMac"] //type inference
 
-
+var strings: [String] = [] //Initialise as an empty array
+var anotherArray = [String]() //Initialise as an empty array
 ```
