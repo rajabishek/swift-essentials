@@ -11,3 +11,6 @@ var array = ["Macbook", "iMac"] //type inference
 var strings: [String] = [] //Initialise as an empty array
 var anotherArray = [String]() //Initialise as an empty array
 ```
+
+he statement `var simple = []` will not compile because there is no way for Swift to infer the data type of the simple array. What is the data type of simple array ? Is it an array of `Int`, or array of `String`, or array of `Double` ?
+
