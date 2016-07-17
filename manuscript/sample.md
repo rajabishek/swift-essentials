@@ -14,3 +14,4 @@ var anotherArray = [String]() //Initialise as an empty array
 
 he statement `var simple = []` will not compile because there is no way for Swift to infer the data type of the simple array. What is the data type of simple array ? Is it an array of `Int`, or array of `String`, or array of `Double` ?
 
+It is important to note that as shown above if the context already provides type information, such as a function argument or an already typed variable or constant you can create an empty array with an empty array literal, which is written as `[]`
