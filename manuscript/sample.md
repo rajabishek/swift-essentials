@@ -25,3 +25,11 @@ It is important to note that as shown above if the context already provides type
 - `isEmpty` property returns a boolean indicating whether the array is empty or not. If the array is empty is retuns true otherwise false.
 - `first` gets the first element from the array, if array is empty then returns nil, therefore the return type is essentially an optional.
 - `last` gets the last element from the array, if array is empty then returns nil, therefore the return type is essentially an optional.
+
+```swift
+let array = ["iPhone", "iPad", "Macbook"]
+print("The number of elements in the array is: \(array.count)")
+print("The array contents are \(array.description)");
+print("The next position for insert is: \(array.endIndex)")
+print("The start index for array is: \(array.startIndex)")
+```
