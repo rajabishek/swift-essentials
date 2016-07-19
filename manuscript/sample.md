@@ -45,3 +45,12 @@ array[2] = "Macbook Pro"
 print("The third element in the array is: \(array[2])")
 ``` 
 
+The above statements are perfectly valid because whatever is placed within the square brackets only ranges from 0 to array.count - 1, anything supplied outside this range will result in a run time error. We cannot append an element to the end of the array using the subscript syntax, ie statement `array[array.count] = newvalue` will result in a run time error.
+
+To append elements to the end of the array we use the `append(_:)` method.
+```swift
+var array = ["iPhone", "iPad", "Macbook Pro"] //array is decalared as a variable for mutability
+array.append("iMac")
+array.append("Macbook Air")
+print(array.count) //Prints 5
+```
