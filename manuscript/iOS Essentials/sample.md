@@ -6,5 +6,11 @@ Every app has one window that displays the app’s user interface on an iOS-base
 
 Reference: https://developer.apple.com/library/ios/documentation/WindowsViews/Conceptual/WindowAndScreenGuide/WindowScreenRolesinApp/WindowScreenRolesinApp.html#//apple_ref/doc/uid/TP40012555-CH4-SW3
 
+Read the above document to understand better on what a window is in a iOS app ? What is the role of a window. Read the following subheadings in detail.
+
+The Role of the Window in an iOS App
+A Window’s Root View Contains Your Content
+Xcode and Storyboards Can Create, Configure, and Load Your Window
+
 
 
