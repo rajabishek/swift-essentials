@@ -12,5 +12,22 @@ The Role of the Window in an iOS App
 A Window’s Root View Contains Your Content
 Xcode and Storyboards Can Create, Configure, and Load Your Window
 
+To create your app’s window programmatically. You would use code something like this to programmatically create a window, install the root view controller, and make the window visible:
+```swift
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    //Create a new instance of window object and set its size to the full bounds of the screen object
+    window = UIWindow(frame: UIScreen.mainScreen().bounds)
+    
+    //Set the root view controller of the window object
+    //ViewController is a swift class file that extends the UIViewController
+    window?.rootViewController = UINavigationController(rootViewController: ViewController())
+    
+    //Make the window visible on the screen
+    window?.makeKeyAndVisible()
+    
+    return true
+}
+```
+
 
 
