@@ -28,6 +28,5 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
     return true
 }
 ```
-
 Before the initial view controller is displayed, your app delegate is called to give you a chance to configure the view controller. Here we are saying forget everything you have done so far (Instantiating a window, loading the main storyboard and instantiating the initial view controller and assigning it to the window’s rootViewController property and then making the window visible ), instead create a new instance of window object and set the rootViewController to be an object of UINavigationController and make it visible. In this way we are neglecting the storyboard and creating everything programatically.
 
