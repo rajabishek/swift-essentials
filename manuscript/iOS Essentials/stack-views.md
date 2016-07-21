@@ -5,5 +5,5 @@ In WWDC 2012 when apple introduced iOS 6 it introduced the concept of auto layou
 
 In WWDC 2014 apple introduced adaptive layout that sits on top of auto layout  and allows for universal layout meaning that now we just have a single storyboard bor deigning for iphone or ipad. It introced the concept of sizes classes and simplified the whole process, essentialy allowing to developer layout that adapt to different screen sizes. 
 
-
+In 2015 Apple introduced a new feature for laying out elements called as UIStackView. You should understand here that auto layout and adaptive layout are features that are required. Whereas stack view is a feature that in not absolutely neccessary for you to implement. By using it it just makes your life easy, its not that without stack views we can't build cerating type of user interfaces. If you use stack view its just that you can be quicker and maintaing the project in a better way.
 
