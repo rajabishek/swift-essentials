@@ -7,3 +7,12 @@ In WWDC 2014 apple introduced adaptive layout that sits on top of auto layout  a
 
 In 2015 Apple introduced a new feature for laying out elements called as UIStackView. You should understand here that auto layout and adaptive layout are features that are required. Whereas stack view is a feature that in not absolutely neccessary for you to implement. By using it it just makes your life easy, its not that without stack views we can't build cerating type of user interfaces. If you use stack view its just that you can be quicker and maintaing the project in a better way.
 
+
+#NSLayoutConstraints
+Whenever possible, use Interface Builder to set your constraints. Interface Builder provides a wide range of tools to visualize, edit, manage, and debug your constraints. By analyzing your constraints, it also reveals many common errors at design time, letting you find and fix problems before your app even runs.
+
+Interface Builder can manage an ever-growing number of tasks. You can build almost any type of constraint directly in interface builder (see Working with Constraints in Interface Builder). You can also specify size-class-specific constraints (see Debugging Auto Layout), and with new tools like stack views, you can even dynamically add or remove views at runtime (see Dynamic Stack View). However, some dynamic changes to your view hierarchy can still be managed only in code.
+
+You have three choices when it comes to programmatically creating constraints: You can use layout anchors, you can use the NSLayoutConstraint class, or you can use the Visual Format Language.
+
+
