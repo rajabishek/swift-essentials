@@ -13,6 +13,3 @@ Whenever possible, use Interface Builder to set your constraints. Interface Buil
 
 Interface Builder can manage an ever-growing number of tasks. You can build almost any type of constraint directly in interface builder (see Working with Constraints in Interface Builder). You can also specify size-class-specific constraints (see Debugging Auto Layout), and with new tools like stack views, you can even dynamically add or remove views at runtime (see Dynamic Stack View). However, some dynamic changes to your view hierarchy can still be managed only in code.
 
-You have three choices when it comes to programmatically creating constraints: You can use layout anchors, you can use the NSLayoutConstraint class, or you can use the Visual Format Language.
-
-
