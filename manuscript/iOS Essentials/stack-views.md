@@ -9,5 +9,4 @@ In 2015 Apple introduced a new feature for laying out elements called as UIStack
 
 
 #NSLayoutConstraints
-Whenever possible, use Interface Builder to set your constraints. Interface Builder provides a wide range of tools to visualize, edit, manage, and debug your constraints. By analyzing your constraints, it also reveals many common errors at design time, letting you find and fix problems before your app even runs.
 
