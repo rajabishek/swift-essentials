@@ -7,6 +7,3 @@ In WWDC 2014 apple introduced adaptive layout that sits on top of auto layout an
 
 In 2015 Apple introduced a new feature for laying out elements called as UIStackView. You should understand here that auto layout and adaptive layout are features that are required. Whereas stack view is a feature that in not absolutely neccessary for you to implement. By using it it just makes your life easy, its not that without stack views we can't build certain type of user interfaces. If you use stack view its just that you can be quicker and maintain the project in a better way.
 
-
-#NSLayoutConstraints
-
