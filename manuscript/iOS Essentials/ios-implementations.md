@@ -17,4 +17,5 @@ if let barFont = UIFont(name: "Avenir-Light", size: 24.0) {
     UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor(), NSFontAttributeName:barFont]
 }
 ```
+3. Obviosly if you add in both the places 1 would override 2 because that is a more specific one wrt a view controller
 
