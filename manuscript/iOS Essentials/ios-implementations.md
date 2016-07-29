@@ -10,5 +10,11 @@
 
 1. In the viewDidLoad method of the view controller you can do self.navigationController.navigationBar.tintColor = UIColor.redColor()
 2. Since the release of iOS 5, Apple introduced the Appearance API. Developers can easily customize the visual appearance of most UIKit controls, including navigation bar across the entire application, through an appearance proxy of a specific class. For example, to customize the appearance of navigation bar, you use appearance() to get the appearance proxy of the class. The following can be added to didFinishLaunchingWithOptions method of app delegate to change the tint color globally.
-
+```swift 
+UINavigationBar.appearance().barTintColor = UIColor.brownColor()
+//To change the title font attributes on the navigation bar
+if let barFont = UIFont(name: "Avenir-Light", size: 24.0) {
+    UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor(), NSFontAttributeName:barFont]
+}
+```
 
