@@ -20,6 +20,7 @@ if let barFont = UIFont(name: "Avenir-Light", size: 24.0) {
 3. Obviosly if you add in both the places 1 would override 2 because that is a more specific one wrt a view controller
 
 #Customising a UIButton
+
 1. Drag a button onto the storyboard scene
 2. Drag the button background to the image assets catalog - either all 3 sizes(@1x,@2x,@3x) or a single png vector format @1x
 3. Set the image property on the button in attibutes panel of storyboard to the image background asset added to the image catalog
