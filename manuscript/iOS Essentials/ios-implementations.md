@@ -108,3 +108,6 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 3. Now lets add the outlet and the actions, add an outlet for the play(pause) button because we will be changing the button title as we play and pause the music file. Add 3 actions for the restart, stop and the start button.
 4. Get the path of the music file by using the following code.
 ```let path = NSBundle.mainBundle().pathForResource("musicname", ofType: "mp3")```
+5. Once you have the path of the resource create an instance of NSURL from the path
+```let audioUrl = NSURL(fileURLWithPath: path)```
+
