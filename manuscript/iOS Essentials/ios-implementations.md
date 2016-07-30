@@ -25,3 +25,10 @@ if let barFont = UIFont(name: "Avenir-Light", size: 24.0) {
 2. Drag the button background to the image assets catalog - either all 3 sizes(@1x,@2x,@3x) or a single png vector format @1x
 3. Set the image property on the button in attibutes panel of storyboard to the image background asset added to the image catalog
 
+
+#Rotating views in iOS
+1. Drag any view on the storyboard scene from the object library and style and position the segement control the way you want
+2. Ctrl drag from the stoyboard to the view controller code using the assistant editor with the view as an outlet and call it randomView
+3. Now to actually rotate the view in the viewDidLoad method add the code. We give the degree in radians to rotate the view.
+```swift randomView.CGAffineTransformMakeRotation(3.14) ```
+
