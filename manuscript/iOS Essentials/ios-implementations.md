@@ -25,3 +25,12 @@ if let barFont = UIFont(name: "Avenir-Light", size: 24.0) {
 2. Drag the button background to the image assets catalog - either all 3 sizes(@1x,@2x,@3x) or a single png vector format @1x
 3. Set the image property on the button in attibutes panel of storyboard to the image background asset added to the image catalog
 
+#Dragging a view around with the finger
+
+1. Drag a uiview from the object library onto the stroybaord scene and style it with a spceific width and height and a color
+2. Ctrl drag from the stoyboard to the view controller code using the assistant editor with the uiview as an outlet and call it draggableView
+3. Now to keep track of the location of the finger while deagging let create an instance variable on the viewcontroller of type CGPoint
+```swift var location = CGPoint(x: 0, y:0) ```
+4. Now how to get the location of the finger, the place where we tap on the screen not only tapping on the screen, but as we move the finger around we need the coordinates of the movement of the finger. There are 2 methods in the UIViewController class that we can make use of to get this information.
+5. touchesBegan method is called everytime we tap on the device & similarily the touchesMoved method is called evertytime we move our finger on the device.
+
