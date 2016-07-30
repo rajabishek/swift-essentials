@@ -33,5 +33,6 @@ if let barFont = UIFont(name: "Avenir-Light", size: 24.0) {
 ```swift randomView.CGAffineTransformMakeRotation(3.14) ```
 
 #Sending an email
+1. 1st step would be to design the mail form on the stroyboard scene and add the subject,body fields as outlets and connect the send mail button as an a action
 
 
