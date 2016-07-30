@@ -112,4 +112,80 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 ```let audioUrl = NSURL(fileURLWithPath: path)```
 6. Next we need to import the AVFoundation framework in the view controller file, this allows us to use the speakers on the iphone to play the music file that we have. There are 2 steps to be done here 1st is to place the code ```import AVFoundation``` in top of view controller file and the other step is to click on the project settings in the file explorer, the go to build phases, and make sure you are selected on target, the click the + button in link binary with libraries, type AVFoundation in the dialog and click add.
 7. Next step is to create a audio player and give it the contents of the music file that we have with us.
+8. To start playing the music we can call the play method on the audio player, to pause playing the music we can call the stop method on the audio player, to change the timings of the music we can use the currentTime property of the audio player.
+```swift
+import UIKit
+import AVFoundation
 
+class ViewController: UIViewController {
+
+    @IBOutlet weak var pauseOrPlayButton: UIButton!
+    
+    let audioPlayer: AVAudioPlayer? = {
+        if let audioPath = NSBundle.mainBundle().pathForResource("audi", ofType: "mp3") {
+            let audioUrl = NSURL(fileURLWithPath: audioPath)
+            
+            do {
+                let player = try AVAudioPlayer(contentsOfURL: audioUrl)
+                return player
+            } catch let error as NSError {
+                print(error.localizedDescription)
+                return nil
+            }
+
+        } else {
+            print("Music file not found.")
+            return nil
+
+        }
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if let player = audioPlayer {
+            player.play()
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if audioPlayer == nil {
+            let alert = UIAlertController(title: "Opps", message: "Audio Error", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+            presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+
+    @IBAction func restartAudio(sender: AnyObject) {
+        if let player = audioPlayer {
+            player.stop()
+            player.currentTime = 0
+            player.play()
+        }
+    }
+    
+    @IBAction func pauseOrPlayAudio(sender: AnyObject) {
+        if let player = audioPlayer {
+            if player.playing {
+                //User pressed the pause button
+                player.stop()
+                pauseOrPlayButton.setTitle("Play", forState: .Normal)
+            } else {
+                player.play()
+                pauseOrPlayButton.setTitle("Pause", forState: .Normal)
+            }
+        }
+    }
+
+    @IBAction func stopAudio(sender: AnyObject) {
+        if let player = audioPlayer {
+            player.stop()
+            player.currentTime = 0
+            pauseOrPlayButton.setTitle("Play", forState: .Normal)
+        }
+    }
+
+}
+```
