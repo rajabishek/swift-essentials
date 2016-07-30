@@ -34,5 +34,6 @@ if let barFont = UIFont(name: "Avenir-Light", size: 24.0) {
 
 #Sending an email
 1. 1st step would be to design the mail form on the stroyboard scene and add the subject,body fields as outlets and connect the send mail button as an a action
+2. Now we need to import the MessageUI framework to send a mail from the view controller, the MessageUI framework encomposes all the email related classes and protocols
 
 
