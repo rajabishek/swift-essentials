@@ -38,5 +38,5 @@ if let barFont = UIFont(name: "Avenir-Light", size: 24.0) {
 3. Also make the view contoller to conform to the MFMailComposeViewControllerDelegate, what we are actually doing is we will be presenting a view controller that will be responsible for sending the email and that controller will respong back to its delegate with information such as mail was sent succeesfully, mail was cancelled, error in sending email etc, so we are essentially conforming to the delegate protocol as we want our view controller to be the delegate of that mail controller which we present eventually
 4. Now the next step would be to create the mail view controller will the subject, recepinets, body
 5. Next we set the delegate of this newly created mail controller to be the view controller itself
-
+6. Now we present the mail controller on the screen
 
