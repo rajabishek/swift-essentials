@@ -110,4 +110,4 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 ```let path = NSBundle.mainBundle().pathForResource("musicname", ofType: "mp3")```
 5. Once you have the path of the resource create an instance of NSURL from the path
 ```let audioUrl = NSURL(fileURLWithPath: path)```
-
+6. Next we need to import the AVFoundation framework in the view controller file, this allows us to use the speakers on the iphone to play the music file that we have. There are 2 steps to be done here 1st is to place the code ```import AVFoundation``` in top of view controller file and the other step is to click on the project settings in the file explorer, the go to build phases, and make sure you are selected on target, the click the + button in link binary with libraries, type AVFoundation in the dialog and click add.
