@@ -104,4 +104,4 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
 ## Using Audio in iOS
 1. Drag and drop 4 buttons on the storyboard scene from the object library and style and position the segment control the way you want, the 4 buttons are start, restart, play(pause), stop. The first button is use to load the music and start playing it. Its used for nothing else. The other 3 buttons will be the most used ones. The restart button will take the music to start and play it from first, the play(pause) is a single toggle button that is use for playing and pausing, the stop button will take the music to start and stop playing it.
-
+2. Ctrl drag from the storyboard to the view controller code using the assistant editor with the segment control as an outlet and call it segmentControl
