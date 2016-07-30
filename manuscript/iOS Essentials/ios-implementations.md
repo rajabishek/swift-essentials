@@ -32,3 +32,6 @@ if let barFont = UIFont(name: "Avenir-Light", size: 24.0) {
 3. Now to actually rotate the view in the viewDidLoad method add the code. We give the degree in radians to rotate the view.
 ```swift randomView.CGAffineTransformMakeRotation(3.14) ```
 
+#Sending an email
+
+
