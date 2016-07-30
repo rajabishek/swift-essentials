@@ -113,6 +113,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 6. Next we need to import the AVFoundation framework in the view controller file, this allows us to use the speakers on the iphone to play the music file that we have. There are 2 steps to be done here 1st is to place the code ```import AVFoundation``` in top of view controller file and the other step is to click on the project settings in the file explorer, the go to build phases, and make sure you are selected on target, the click the + button in link binary with libraries, type AVFoundation in the dialog and click add.
 7. Next step is to create a audio player and give it the contents of the music file that we have with us.
 8. To start playing the music we can call the play method on the audio player, to pause playing the music we can call the stop method on the audio player, to change the timings of the music we can use the currentTime property of the audio player.
+9. In the code below we start playing the music once the view is loaded into the memory, we can't present the alert controller here because it can be presented only when the view controller hierarchy is set up, that is why we present the alert controller in the viewDidAppear method which is called after the view hierarchy is setup, ie after the views appear on the screen. 
 ```swift
 import UIKit
 import AVFoundation
