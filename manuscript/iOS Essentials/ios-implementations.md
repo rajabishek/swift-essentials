@@ -39,4 +39,5 @@ if let barFont = UIFont(name: "Avenir-Light", size: 24.0) {
 4. Now the next step would be to create the mail view controller will the subject, recepinets, body
 5. Next we set the delegate of this newly created mail controller to be the view controller itself
 6. Now we present the mail controller on the screen
+7. Now we add the delegate methods to which the mail controller will respond back with information
 
