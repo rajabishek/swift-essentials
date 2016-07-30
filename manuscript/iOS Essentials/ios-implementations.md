@@ -122,8 +122,10 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var pauseOrPlayButton: UIButton!
     
+    @IBOutlet weak var audioTimer: UISlider!
+    
     let audioPlayer: AVAudioPlayer? = {
-        if let audioPath = NSBundle.mainBundle().pathForResource("audi", ofType: "mp3") {
+        if let audioPath = NSBundle.mainBundle().pathForResource("audio", ofType: "wav") {
             let audioUrl = NSURL(fileURLWithPath: audioPath)
             
             do {
@@ -141,12 +143,23 @@ class ViewController: UIViewController {
         }
     }()
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        audioTimer.setThumbImage(UIImage(named: "slider-thumbnail"), forState: .Normal)
+        audioTimer.setThumbImage(UIImage(named: "slider-thumbnail"), forState: .Highlighted)
+        
+        
         if let player = audioPlayer {
             player.play()
+            audioTimer.maximumValue = Float(player.duration)
         }
+        
+        NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(ViewController.updateAudioTimer), userInfo: nil, repeats: true)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -188,5 +201,19 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBAction func changeAudioTime(sender: AnyObject) {
+        if let player = audioPlayer {
+            player.stop()
+            player.currentTime = NSTimeInterval(audioTimer.value)
+            //player.prepareToPlay()
+            player.play()
+        }
+    }
+    
+    func updateAudioTimer() {
+        if let player = audioPlayer {
+            audioTimer.value = Float(player.currentTime)
+        }
+    }
 }
 ```
