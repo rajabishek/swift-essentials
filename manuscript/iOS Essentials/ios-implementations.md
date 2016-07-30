@@ -8,7 +8,7 @@
 
 ## Add tint color to navigation bar
 
-1. In the viewDidLoad method of the view controller you can do self.navigationController.navigationBar.tintColor = UIColor.redColor()
+1. In the viewDidLoad method of the view controller you can do ```self.navigationController.navigationBar.tintColor = UIColor.redColor()```
 2. Since the release of iOS 5, Apple introduced the Appearance API. Developers can easily customize the visual appearance of most UIKit controls, including navigation bar across the entire application, through an appearance proxy of a specific class. For example, to customize the appearance of navigation bar, you use appearance() to get the appearance proxy of the class. The following can be added to didFinishLaunchingWithOptions method of app delegate to change the tint color globally.
 ```swift 
 UINavigationBar.appearance().barTintColor = UIColor.brownColor()
@@ -30,7 +30,7 @@ if let barFont = UIFont(name: "Avenir-Light", size: 24.0) {
 1. Drag any view on the storyboard scene from the object library and style and position the segment control the way you want
 2. Ctrl drag from the storyboard to the view controller code using the assistant editor with the view as an outlet and call it randomView
 3. Now to actually rotate the view in the viewDidLoad method add the code. We give the degree in radians to rotate the view.
-```swift randomView.CGAffineTransformMakeRotation(3.14) ```
+```randomView.CGAffineTransformMakeRotation(3.14) ```
 
 ## Sending an email
 1. 1st step would be to design the mail form on the storyboard scene and add the subject,body fields as outlets and connect the send mail button as an a action
@@ -101,4 +101,6 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
     }
 }
 ```
+
+## Using Audio in iOS
 
