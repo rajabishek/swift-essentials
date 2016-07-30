@@ -37,5 +37,6 @@ if let barFont = UIFont(name: "Avenir-Light", size: 24.0) {
 2. Now we need to import the MessageUI framework to send a mail from the view controller, the MessageUI framework encomposes all the email related classes and protocols
 3. Also make the view contoller to conform to the MFMailComposeViewControllerDelegate, what we are actually doing is we will be presenting a view controller that will be responsible for sending the email and that controller will respong back to its delegate with information such as mail was sent succeesfully, mail was cancelled, error in sending email etc, so we are essentially conforming to the delegate protocol as we want our view controller to be the delegate of that mail controller which we present eventually
 4. Now the next step would be to create the mail view controller will the subject, recepinets, body
+5. Next we set the delegate of this newly created mail controller to be the view controller itself
 
 
