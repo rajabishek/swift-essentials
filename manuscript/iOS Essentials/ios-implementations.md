@@ -40,4 +40,65 @@ if let barFont = UIFont(name: "Avenir-Light", size: 24.0) {
 5. Next we set the delegate of this newly created mail controller to be the view controller itself
 6. Now we present the mail controller on the screen
 7. Now we add the delegate methods to which the mail controller will respond back with information
+```
+import Foundation
+import UIKit
+import MessageUI
+ 
+class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    @IBAction func sendEmailButtonTapped(sender: AnyObject) {
+        let mailComposeViewController = configuredMailComposeViewController()
+        if MFMailComposeViewController.canSendMail() {
+            self.presentViewController(mailComposeViewController, animated: true, completion: nil)
+        } else {
+            self.showSendMailErrorAlert()
+        }
+    }
+    
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposeViewController = MFMailComposeViewController()
+
+        // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+        mailComposeViewController.mailComposeDelegate = self 
+        
+        mailComposeViewController.setToRecipients(["someone@somewhere.com"])
+        mailComposeViewController.setSubject("Sending you an in-app e-mail...")
+        mailComposeViewController.setMessageBody("Sending e-mail in-app is not so bad!", isHTML: false)
+        
+        return mailComposeViewController
+    }
+    
+    func showSendMailErrorAlert() {
+        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+        sendMailErrorAlert.show()
+    }
+    
+    // MARK: MFMailComposeViewControllerDelegate Method
+    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+    	switch (result) {
+	        
+	        case MFMailComposeResultSent:
+	            print("The email message was queued in the user’s outbox. It is ready to send the next time the user connects to email.")
+	        
+	        case MFMailComposeResultSaved:
+	            print("The email message was saved in the user’s Drafts folder.")
+	        
+	        case MFMailComposeResultCancelled:
+	            print("The user cancelled the operation. No email message was queued.")
+	        
+	        case MFMailComposeResultFailed:
+	            print("The email message was not saved or queued, possibly due to an error.")
+	        
+	        default:
+	            print("An error occurred when trying to compose this email")
+	    }
+        controller.dismissViewControllerAnimated(true, completion: nil)
+    }
+}
+```
 
