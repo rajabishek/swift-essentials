@@ -355,4 +355,4 @@ func makePostRequest() {
 
 
 ## Dismissing the iOS Keyboard
-* 
+* One way is to call resignFirstResponder on the ui element that is active
