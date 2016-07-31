@@ -348,3 +348,4 @@ func makePostRequest() {
 
 ## Leveraging Alamofire & SwiftyJSON for REST API Calls
 * The session.dataTaskWithRequest works just fine for simple cases but these days lots of apps have tons of web service calls that are just begging for better handling, like a higher level of abstraction, concise syntax, simpler streaming, pause/resume, progress indicators.
+* In Objective-C, we had the AFNetworking addressing this problem. In Swift, Alamofire is our option for elegance.
