@@ -251,21 +251,18 @@ cell.textView.attributedText = NSAttributedString(string: "you text string goes 
 * Then we need to create a NSURLRequest object with the url object
 * Create a session object to create a task to send the request
 * Create a task to send the request from the session object
-* Start the task to actually send the http request
+* Start the task to actually send the http requestg
 ```swift
 if let url = NSURL(string: "http://endpoint.com/data") {
     let request = NSURLRequest(URL: url)
+    let config = NSURLSessionConfiguration.defaultSessionConfiguration()
+    //To create a session we need a configuration, so we create that first and pass it
+    let session = NSURLSession(configuration: config)
+
+    //We create a task using the session to send the request
+    let task = session.dataTaskWithRequest(request, completionHandler:{ _, _, _ in })
+
+    //Actual sending of the request, cause by default when we create a task its in suspended state
+    task.resume()
 }
-```
-* So far we have just created a request we haven't sent it yet, to send the request we need a NSURLSession instance
-```swift
-let config = NSURLSessionConfiguration.defaultSessionConfiguration()
-//To create a session we need a configuration, so we create that first and pass it
-let session = NSURLSession(configuration: config)
-
-//We create a task using the session to send the request
-let task = session.dataTaskWithRequest(request, completionHandler:{ _, _, _ in })
-
-//Actual sending of the request, cause by default when we create a task its in suspended state
-task.resume()
 ```
