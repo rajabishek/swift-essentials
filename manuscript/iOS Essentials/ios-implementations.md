@@ -252,19 +252,6 @@ cell.textView.attributedText = NSAttributedString(string: "you text string goes 
 * Create a session object to create a task to send the request
 * Create a task to send the request from the session object
 * Start the task to actually send the http request
-```swift
-if let url = NSURL(string: "http://endpoint.com/data") {
-    let request = NSURLRequest(URL: url)
-    let config = NSURLSessionConfiguration.defaultSessionConfiguration()
-    //To create a session we need a configuration, so we create that first and pass it
-    let session = NSURLSession(configuration: config)
-
-    //We create a task using the session to send the request
-    let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) in
-        // do stuff with response, data & error here
-    })
-
-    //Actual sending of the request, by default when we create a task its in suspended state
-    task.resume()
-}
-```
+* Now once we get the response the callback that we gave will be executed, make sure we got data and no error
+* Try to transform the data into JSON (since that’s the format returned by the API)
+* Access the todo object in the JSON and print out the title
