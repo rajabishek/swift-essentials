@@ -248,4 +248,20 @@ cell.textView.attributedText = NSAttributedString(string: "you text string goes 
 * To create the exception we’ll need to add some keys to the info.plist in our project. We’ll add a new row and select App Transport Security Settings from the drop down. That will create a dictionary for us. Then we’ll click the + sign to add a row to the dictionary and choose Exception Domains. And add a row in that dictionary. Change the new row to a dictionary and change its name to jsonplaceholder.typicode.com (note: no trailing slashes and no http or https prefix). Within the jsonplaceholder.typicode.com dictionary, add a single boolean entry NSThirdPartyExceptionAllowsInsecureHTTPLoads set to YES
 * JSONPlaceholder is a fake online REST API for testing and prototyping. You can check it out at http://jsonplaceholder.typicode.com
 * First step would be to create a NSURL instance of the endpoint and then create a NSURLRequest object out of it, and then create a task to send the request and then actually send the request
+```swift
+if let url = NSURL(string: "http://endpoint.com/data") {
+    let request = NSURLRequest(URL: url)
+}
+```
+* So far we have just created a request we haven't sent it yet, to send the request we need a NSURLSession instance
+```swift
+let config = NSURLSessionConfiguration.defaultSessionConfiguration()
+//To create a session we need a configuration, so we create that first and pass it
+let session = NSURLSession(configuration: config)
 
+//We create a task using the session to send the request
+let task = session.dataTaskWithRequest(request, completionHandler:{ _, _, _ in })
+
+//Actual sending of the request, cause by default when we create a task its in suspended state
+task.resume()
+```
