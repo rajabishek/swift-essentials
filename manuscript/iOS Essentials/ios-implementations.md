@@ -224,9 +224,9 @@ class ViewController: UIViewController {
 
 ## See the fonts
 ```swift
-for family: String in UIFont.familyNames() {
-    print("\(family)")
-    for names: String in UIFont.fontNamesForFamilyName(family) {
+for family in UIFont.familyNames() {
+    print(family)
+    for names in UIFont.fontNamesForFamilyName(family) {
         print("== \(names)")
     }
 }
@@ -358,4 +358,5 @@ func makePostRequest() {
 * One way is to call resignFirstResponder on the ui element that is active
 * Another way is to add touchesBegan method in the view controller
 
-## Customizing UIButtons
+## UITextView With Placeholder Text
+* 
