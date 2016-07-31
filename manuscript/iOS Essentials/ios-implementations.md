@@ -357,3 +357,5 @@ func makePostRequest() {
 ## Dismissing the iOS Keyboard
 * One way is to call resignFirstResponder on the ui element that is active
 * Another way is to add touchesBegan method in the view controller
+
+## Customizing UIButtons
