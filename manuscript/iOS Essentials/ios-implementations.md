@@ -250,7 +250,7 @@ cell.textView.attributedText = NSAttributedString(string: "you text string goes 
 * First step would be to create a NSURL instance of the endpoint
 * Then we need to create a NSURLRequest object with the url object
 * Create a session object to create a task to send the request
-, and then create a task to send the request and then actually send the request
+* Create a task to send the request from the session object
 ```swift
 if let url = NSURL(string: "http://endpoint.com/data") {
     let request = NSURLRequest(URL: url)
