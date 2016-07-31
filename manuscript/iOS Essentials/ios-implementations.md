@@ -249,6 +249,7 @@ cell.textView.attributedText = NSAttributedString(string: "you text string goes 
 * JSONPlaceholder is a fake online REST API for testing and prototyping. You can check it out at http://jsonplaceholder.typicode.com
 * First step would be to create a NSURL instance of the endpoint
 * Then we need to create a NSURLRequest object with the url object
+* Create a session object to create a task to send the request
 , and then create a task to send the request and then actually send the request
 ```swift
 if let url = NSURL(string: "http://endpoint.com/data") {
