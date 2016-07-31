@@ -352,3 +352,7 @@ func makePostRequest() {
 * Remember when writing everything from scratch that the JSON parsing was pretty ugly, SwiftyJSON can help fix this problem.
 * We’ll need to bypass ATS just like last time. Add an exception to App Transport Security for http://jsonplaceholder.typicode.com/ by adding the following to your info.plist
 * First add the Alamofire library to your project, refer https://github.com/Alamofire/Alamofire#installation
+
+
+## Dismissing the iOS Keyboard
+* 
