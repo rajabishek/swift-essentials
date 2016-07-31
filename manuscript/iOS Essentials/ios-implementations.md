@@ -254,3 +254,44 @@ cell.textView.attributedText = NSAttributedString(string: "you text string goes 
 * Now once we get the response the callback that we gave will be executed, make sure we got data and no error
 * Try to transform the data into JSON (since that’s the format returned by the API)
 * Access the todo object in the JSON and print out the title
+```swift
+func makeRequest() {
+    if let url = NSURL(string: "http://jsonplaceholder.typicode.com/todos/1") {
+        
+        let request = NSURLRequest(URL: url)
+        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        
+        let task = session.dataTaskWithRequest(request, completionHandler: { data, response, error in
+            if let responseError = error {
+                print("Error calling GET on /todos/1")
+                print(responseError)
+            }
+            
+            if let responseData = data {
+                do {
+                    if let todo = try NSJSONSerialization.JSONObjectWithData(responseData, options: []) as? [String: AnyObject] {
+                        if let title = todo["title"] {
+                            if let name = title as? String {
+                                print(name)
+                            } else {
+                                print("The title could not be converted to a string")
+                            }
+                        } else {
+                            print("There was not title in the dictionary")
+                        }
+                        
+                    } else {
+                        print("Unable to convert the data to JSON")
+                    }
+                } catch {
+                    print("Unable to convert the data to JSON")
+                }
+            }
+        })
+        task.resume()
+        
+    } else {
+        print("The url is not a valid one")
+    }
+}
+```
