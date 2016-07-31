@@ -241,3 +241,5 @@ paragraphStyle.minimumLineHeight = 20.0
 let attributes = [NSFontAttributeName: UIFont(name: "Karla-Regular", size: 14.0)!, NSParagraphStyleAttributeName: paragraphStyle]
 cell.textView.attributedText = NSAttributedString(string: "you text string goes here", attributes: attributes)
 ```
+
+## Http request using swift
