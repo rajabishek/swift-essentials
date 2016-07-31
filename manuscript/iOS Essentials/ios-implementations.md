@@ -244,4 +244,5 @@ cell.textView.attributedText = NSAttributedString(string: "you text string goes 
 
 ## Http request using swift
 * Apple has introduced App Transport Security(ATS) in iOS 9. ATS requires SSL to be used for transferring data and it is pretty picky about how it’s implemented. Sadly this means that a lot of servers out there don’t meet the ATS requirements. So what can we do if we need to work with one of these servers? We’ll have to add an exception to App Transport Security for that server.
+* While we could just disable ATS itself, but it’s much more secure to create an exception only for the one server that we need to access which is not ATS compliant. The API that we’ll be using in this chapter is at http://jsonplaceholder.typicode.com/ so that’s what we’ll create the exception for.
 
