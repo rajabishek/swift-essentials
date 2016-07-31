@@ -255,7 +255,7 @@ cell.textView.attributedText = NSAttributedString(string: "you text string goes 
 * Try to transform the data into JSON (since that’s the format returned by the API)
 * Access the todo object in the JSON and print out the title
 ```swift
-func makeRequest() {
+func makeGetRequest() {
     if let url = NSURL(string: "http://jsonplaceholder.typicode.com/todos/1") {
         
         let request = NSURLRequest(URL: url)
@@ -290,6 +290,55 @@ func makeRequest() {
         })
         task.resume()
         
+    } else {
+        print("The url is not a valid one")
+    }
+}
+
+func makePostRequest() {
+    if let url = NSURL(string: "http://jsonplaceholder.typicode.com/todos") {
+        
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        let newTodo = ["title": "Frist todo", "completed": false, "userId": 1]
+        do {
+            let jsonData = try NSJSONSerialization.dataWithJSONObject(newTodo, options: [])
+            request.HTTPBody = jsonData
+            
+            let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+            
+            let task = session.dataTaskWithRequest(request, completionHandler: { data, response, error in
+                if let responseError = error {
+                    print("Error calling GET on /todos/1")
+                    print(responseError)
+                }
+                
+                if let responseData = data {
+                    do {
+                        if let todo = try NSJSONSerialization.JSONObjectWithData(responseData, options: []) as? [String: AnyObject] {
+                            if let id = todo["id"] {
+                                if let identifier = id as? Int {
+                                    print(identifier)
+                                } else {
+                                    print("The identifier could not be converted to a integer")
+                                }
+                            } else {
+                                print("There was not identifier in the dictionary")
+                            }
+                            
+                        } else {
+                            print("Unable to convert the data to JSON")
+                        }
+                    } catch {
+                        print("Unable to convert the data to JSON")
+                    }
+                }
+            })
+            task.resume()
+
+        } catch {
+            print("Cannot create data from JSON object")
+        }
     } else {
         print("The url is not a valid one")
     }
