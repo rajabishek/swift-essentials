@@ -350,3 +350,5 @@ func makePostRequest() {
 * The session.dataTaskWithRequest works just fine for simple cases but these days lots of apps have tons of web service calls that are just begging for better handling, like a higher level of abstraction, concise syntax, simpler streaming, pause/resume, progress indicators.
 * In Objective-C, we had the AFNetworking addressing this problem. In Swift, Alamofire is our option for elegance.
 * Remember when writing everything from scratch that the JSON parsing was pretty ugly, SwiftyJSON can help fix this problem.
+* We’ll need to bypass ATS just like last time. Add an exception to App Transport Security for http://jsonplaceholder.typicode.com/ by adding the following to your info.plist
+* First add the Alamofire library to your project, refer https://github.com/Alamofire/Alamofire#installation
