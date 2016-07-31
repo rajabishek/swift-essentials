@@ -114,7 +114,6 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 * To start playing the music we can call the play method on the audio player, to pause playing the music we can call the stop method on the audio player, to change the timings of the music we can use the currentTime property of the audio player.
 * In the code below we start playing the music once the view is loaded into the memory, we can't present the alert controller here because it can be presented only when the view controller hierarchy is set up, that is why we present the alert controller in the viewDidAppear method which is called after the view hierarchy is setup, ie after the views appear on the screen.
 * Always remember that you must stop playing the audio before manipulating with the currentTime of the audio player
-* 
 ```swift
 import UIKit
 import AVFoundation
