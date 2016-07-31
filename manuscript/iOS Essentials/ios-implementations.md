@@ -253,3 +253,4 @@ cell.textView.attributedText = NSAttributedString(string: "you text string goes 
 * Create a task to send the request from the session object
 * Start the task to actually send the http request
 * Now once we get the response the callback that we gave will be executed, make sure we got data and no error
+* Try to transform the data into JSON (since that’s the format returned by the API)
