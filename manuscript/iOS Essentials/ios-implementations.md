@@ -222,3 +222,14 @@ class ViewController: UIViewController {
     }
 }
 ```
+
+## See the fonts
+```swift
+for family: String in UIFont.familyNames() {
+    print("\(family)")
+    for names: String in UIFont.fontNamesForFamilyName(family) {
+        print("== \(names)")
+    }
+}
+```
+
