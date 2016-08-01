@@ -369,3 +369,85 @@ func makePostRequest() {
 * Add the search bar as the header of the table view
 * updateSearchResultsForSearchController method is called every time a user changes the contents if the search bar text. It is method of the UISearchResultsUpdating protocol, it is the only compulsory method of the protocol.
 * selectedScopeButtonIndexDidChange method is called every time a different scope button is pressed. This method is from the UISearchBarDelegate protocol, however it is not a compulsory method.
+```swift
+import UIKit
+
+class DevicesTableViewController: UITableViewController {
+    
+    let devices = [Device(name: "Iphone 5c", type: "Mobile"), Device(name: "Oneplus x", type: "Mobile"), Device(name: "Macbook Pro", type: "Laptop"), Device(name: "Apple Watch", type: "Watch"), Device(name: "Moto 360", type: "Watch"), Device(name: "Samsung Galaxy", type: "Mobile"), Device(name: "Dell Vostro", type: "Laptop"), Device(name: "Dell Inspiron", type: "Laptop")]
+    
+    var filteredDevices = [Device]()
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        searchController.searchBar.scopeButtonTitles = ["All", "Mobile", "Laptop", "Watch"]
+        searchController.searchBar.delegate = self
+        tableView.tableHeaderView = searchController.searchBar
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    // MARK: - Table view data source
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.active {
+            return filteredDevices.count
+        }
+        return devices.count
+    }
+
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+
+        // Configure the cell...
+        let device = searchController.active ? filteredDevices[indexPath.row] : devices[indexPath.row]
+        cell.textLabel?.text = device.name
+        cell.detailTextLabel?.text = device.type
+
+        return cell
+    }
+}
+
+extension DevicesTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        
+        if searchText == "" {
+            filteredDevices = devices.filter { device in
+                return (scope == "All") || (device.type == scope)
+            }
+        } else {
+            filteredDevices = devices.filter { device in
+                let categoryMatch = (scope == "All") || (device.type == scope)
+                return categoryMatch && device.name.lowercaseString.containsString(searchController.searchBar.text!.lowercaseString)
+            }
+        }
+        
+        tableView.reloadData()
+    }
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        filterContentForSearchText(searchController.searchBar.text!, scope: scope)
+    }
+    
+    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        let searchBar = searchController.searchBar
+        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        filterContentForSearchText(searchController.searchBar.text!, scope: scope)
+    }
+}
+```
