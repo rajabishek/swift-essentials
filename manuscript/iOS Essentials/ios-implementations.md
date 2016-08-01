@@ -360,4 +360,4 @@ func makePostRequest() {
 
 
 ## Adding search feature in table view in iOS
-* 
+* Create a UISearchController instance as an instance of the view controller, give the searchResultsController while creating as nil meaning we would like to use the same table for search results also
