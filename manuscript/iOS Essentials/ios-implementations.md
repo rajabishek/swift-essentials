@@ -358,5 +358,6 @@ func makePostRequest() {
 * One way is to call resignFirstResponder on the ui element that is active
 * Another way is to add touchesBegan method in the view controller
 
-## UITextView With Placeholder Text
+
+## Adding search feature in table view in iOS
 * 
