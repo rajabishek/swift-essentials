@@ -368,4 +368,4 @@ func makePostRequest() {
 * Set the delegate of the search bar to the view controller. View controller has to conform to UISearchBarDelegate protocol.
 * Add the search bar as the header of the table view
 * updateSearchResultsForSearchController method is called every time a user changes the contents if the search bar text. It is method of the UISearchResultsUpdating protocol, it is the only compulsory method of the protocol.
-
+* selectedScopeButtonIndexDidChange method is called every time a different scope button is pressed. This method is from the UISearchBarDelegate protocol, however it is not a compulsory method.
