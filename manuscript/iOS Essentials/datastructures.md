@@ -27,6 +27,17 @@ class Graph {
         adj[node1].add(node2);
     }
 
+    public void dfs(int node) {
+        System.out.print(node + " ");
+        visited[node] = true;
+
+        for(int n : adj[node]) {
+            if(visited[n] == false) {
+                dfs(n);
+            }
+        }
+    }
+
     public void bfs(int node) {
         Arrays.fill(visited, false);
         LinkedList<Integer> queue = new LinkedList<>();
