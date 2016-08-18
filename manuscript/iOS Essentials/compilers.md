@@ -149,3 +149,7 @@ S -> AA
 A -> aA | b
 ```
 As usual we start with the augmented production S' -> .S and the look ahead is $, see the LR(0) item is S' -> .S and the lookahead here is $ which gives the LR(1) item S' -> .S, $ now as usual we find the closure, but how do we get the lookaheads at each step, the lookahead is the whatever is remaining after the next symbol to dot. Whenever we apply transition on a state the lookahead doesn't change. Using this we form the canonical collection of LR(1) items.
+
+## CLR(1) parsing table
+The shift and the goto entries as the same as LR(0) and SLR(1) parsing. There are no changes in that, only for the final items the entries are going to change. As I mentioned earlier in CLR(1) parsing table we are going to place the reduce entries only in the lookahead columns of the final item. If the final item corresponds to the 3rd production A -> b., a|b then we are going to place the entry r3 only in the column and column b. The number of reduce entries in CLR(1) is smaller than SLR(1) and LR(0). Therefore here there will be even lesser number of conflicts. The numbers of black spaces will increase therefore thus resulting in increase in error detecting capability. Here the only issue is the number of states will increase because for the same LR(0) items we many have different lookaheads therefore resulting in different states. As the number of states is more the size of the CLR(1) parsing table is also more.
+
