@@ -57,3 +57,13 @@ The technique use here is called as left factoring. As you can see above, lets s
 
 ## Parsers
 The top down parsers without backtracking, the grammar must not be left recursive and it should not have non determinism. Any parser can work only with unambiguous grammars, expect one which is the operator precedence parser. Operator precedence parser can also handle ambiguous grammars because we define the operator precedence parsing table, in which we tell about the precedence and associativity of the operators thereby making it possible for the parser to work with it. See the parser needs to know about the precedence and associativity of the operators, if its present in the grammar itself it can identify it, but if it is not present then we can tell the parse about it and help it in the parsing, this is what we do with operator precedence parsers. Top down parser think about when to use a production rules and bottom up parsers think about when to reduce an expression. Top down parsers follow left most derivation and bottom up parsers follow reverse of right most derivation.
+
+## First and Follow
+First of a variable is if you start deriving from the variable and generate all the strings from it the what are the terminal that you see first. For example from a variable A you are able to generate string { aax, badb, ccaa, aama, ccc, bca} then {a,b,c} is the first of A. Whenever you get any epsilon you substitute that and look for the first of the next variable.
+```
+S -> AB
+A -> a | e (e is epsilon)
+B -> b
+```
+Now since A can generate epsilon when you look for first of S substituting e in S -> AB gives S -> B, therefore first of S is equal to first of B. Another things to note here is that the 2nd production rule generates epsilon therefore the first of A is {a,e}. So epsilon can be in the first of a variable if the variable directly generates it.
+
