@@ -116,3 +116,6 @@ S' -> S
 S -> AA(1)
 A -> aA(2) | b(3)
 ```
+
+## Construction of LR(0) parsing table
+As you can see the final item corresponds to the production number 3. Therefore in the construction of LR(0) parsing table, in row 4 add reduced move completely in the action columns. i.e add r3 as the entry in all the action columns. We have seen everything on the right side of the final item therefore we can reduce the 3rd production i.e why we are writing r3 in all the action columns of the 4th row.
