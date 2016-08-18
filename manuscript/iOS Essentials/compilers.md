@@ -67,3 +67,14 @@ B -> b
 ```
 Now since A can generate epsilon when you look for first of S substituting e in S -> AB gives S -> B, therefore first of S is equal to first of B. Another things to note here is that the 2nd production rule generates epsilon therefore the first of A is {a,e}. So epsilon can be in the first of a variable if the variable directly generates it.
 
+Follow of a variable is, in the process of deriving a string the set of terminal that follow a variable. Its the set of terminals that could follow a variable in the process of deriving a string. We are always going to start deriving the string from S$, this is the step from where we will start the derivation process. Therefore $ will always be in the follow of the starting symbol. Every string is actually formed using the right hand side of the productions so you can look at that to tell about the follow of a variable. To find the follow of a variable see the right hand side of all the productions, if a variable is there anywhere in the right hand side of a production then follow will be the first of the next variable following it.
+```
+S -> ABCD
+A -> b
+B -> c | e
+C -> d | e
+D -> m | e
+```
+In the above grammar to find the follow of A see the right hand side of all the productions yes in the first production there is A on the right hand side. Now follow of A is first of BCD. First of BCD is first of B. First of B is c and epsilon therefore c will be in the follow of A. Now substitute epsilon, in BCD which gives CD therefore first of CD is first of C, which is d and epsilon. Therefore d will be in the follow of A, now substituting epsilon gives D, therefore first of D is m and epsilon, therefore follow of A will have m now substituting give epsilon. Since we are getting epsilon follow of A is follow of the left hand side (S -> ABCD), i.e follow of S. Follow of S is $, therefore $ will be in the follow of A. Therefore follow of A is {c,d,m,$}. 
+
+Also if a variable is at the right end of the production and there is nothing after it, then follow of that variable is follow of the left hand side. Whenever while finding the first of the string that follows the variable(BCD) if the string ends up being epsilon after continuous substitution then follow of the variable is the follow of the left hand side.
