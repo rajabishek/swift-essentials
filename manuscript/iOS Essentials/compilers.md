@@ -94,3 +94,14 @@ Therefore given a grammar check this for each production. If a variable generate
 A -> B | e (where e is epsilon)
 ``
 Here if first of B and follow of A has intersection then this grammar cannot be used for LL(1) parsing.
+
+## LR parsers
+All LR parsers have the same parsing algorithm, only the parsing table will change for all of them. Here like first and follow we have concepts called closure and goto. The LR(0) and SLR(1) parsing use what's called as canonical collection of LR(0) items for the construction of the parsing table. And the CLR(1) and LALR(1) parsing use what's called as LR(1) items.
+
+## Canonical collection of LR(0) items
+Whenever any grammar is given you add an extra production to the grammar, you augment it. The result is called as augmented grammar. Do this S' -> S, S -> .... 
+Any production with a dot in the right hand side is called as an item. Now start with S' -> .S this is the LR(0) item for the first production, now apply the closure. Closure is nothing but, whenever there is a dot to the left of a variable then you have a write all the productions of that variable with dot in the beginning. You keep on applying the closure for every production you get in this process. This set of productions that you get is called closure of S' -> .S
+
+The closure that we got is a state. Now we have to do the goto. Wherever there is a dot we have to move it to the next symbol. For every goto apply the closure and get that state, if that state is already present then just link it. Whenever dot is to the right most side we get whats called as a final item. For final items you can't proceed any further. For the other states repeat the same process by finding the goto for each state and the closure for the goto items.
+
+The final items are those in which the dot is on the right most side. The significance of the final items is that, we have seen everything in the right hand side therefore we can reduce the right hand side to the left variable. This state diagram is called as canonical collection of LR(0) items and using this we are going to construct the parsing table. Name every state with I suffix a number like I0, I1, I2 ... and so on.
