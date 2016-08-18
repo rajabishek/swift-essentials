@@ -134,3 +134,6 @@ The only difference here is the entries of the reduced moves, we are not going t
 
 ## SR conflicts
 Lets say that we have a state and it has a production with the . at the end, it is a final item we have to write a reduce entry for this. That state also has another production that transitions with a literal(lets say a) to another state, we have to write a shift entry for this. In LR(0) parsing table we write the reduce entries blindly. Thus we will definitely have a clash because the same table cell will have multiple entries. But in SLR(1) parsing table, if the follow of left hand side contains the a then there is a conflict.
+
+## RR conflicts
+Or lets say we have a state in which we have two productions that end with a dot, now for both of the productions we have to enter the reduce entries. In LR(0) parsing table we blindly write the reduce entries in all action columns of the row, so definitely there is a clash. In SLR(1) parsing table if there is intersection in the follow of the left hand sides then there is a clash.
