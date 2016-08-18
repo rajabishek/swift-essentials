@@ -105,3 +105,14 @@ Any production with a dot in the right hand side is called as an item. Now start
 The closure that we got is a state. Now we have to do the goto. Wherever there is a dot we have to move it to the next symbol. For every goto apply the closure and get that state, if that state is already present then just link it. Whenever dot is to the right most side we get whats called as a final item. For final items you can't proceed any further. For the other states repeat the same process by finding the goto for each state and the closure for the goto items.
 
 The final items are those in which the dot is on the right most side. The significance of the final items is that, we have seen everything in the right hand side therefore we can reduce the right hand side to the left variable. This state diagram is called as canonical collection of LR(0) items and using this we are going to construct the parsing table. Name every state with I suffix a number like I0, I1, I2 ... and so on.
+
+## Construction of LR(0) & SLR(1) parsing table
+The rows are the states, if there are 4 states I0, I1, I2, I3 then the rows are 0,1,2,3. The columns are divided into two parts one is the action part and the other one is the called the goto. The action part will only contain the terminals including $. The goto part will contain all the variables. To fill every row see that state in the state diagram. See the goto whenever you have a transition on variable you have to write the state number to which the transition takes you to. Whenever you have a transition on a terminal you have to write S suffix state number to which the transition takes you to. For example if state I0 takes you to I4 due to goto(a) then under the a column S4. S3 means shift 3, we will see this while seeing the parsing algorithm. Until this step the construction of parsing table is same for LR(0) and SLR(1) parsing table.
+
+Only the entries for the final item will change for LR(0) and SLR(1) parsing table. And the among the final items, if it has the augment production that we introduced that is the accept state. Only this is exception and this is used for accepting. Whenever you get the final item of the production which is augmented, its a special production which was added because we want to accept it.
+Now give every production in the augmented grammar except the augmented production a number starting from 1. If lets say a final item I4 contains the production A -> b. then see the production number which this corresponds to. Lets say we have the following augmented grammar.
+```
+S' -> S
+S -> AA(1)
+A -> aA(2) | b(3)
+```
