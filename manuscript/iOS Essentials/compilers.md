@@ -96,7 +96,7 @@ A -> B | e (where e is epsilon)
 Here if first of B and follow of A has intersection then this grammar cannot be used for LL(1) parsing.
 
 ## LR parsers
-All LR parsers have the same parsing algorithm, only the parsing table will change for all of them. Here like first and follow we have concepts called closure and goto. The LR(0) and SLR(1) parsing use what's called as canonical collection of LR(0) items for the construction of the parsing table. And the CLR(1) and LALR(1) parsing use what's called as LR(1) items.
+All LR parsers have the same parsing algorithm, only the parsing table will change for all of them. Here like first and follow we have concepts called closure and goto. The LR(0) and SLR(1) parsing use what's called as canonical collection of LR(0) items for the construction of the parsing table. And the CLR(1) and LALR(1) parsing use what's called as canonical collection of LR(1) items for the construction of the parsing table.
 
 ## Canonical collection of LR(0) items
 Whenever any grammar is given you add an extra production to the grammar, you augment it. The result is called as augmented grammar. Do this S' -> S, S -> .... 
@@ -140,3 +140,12 @@ Or lets say we have a state in which we have two productions that end with a dot
 
 ## Grammar suitable for LR(0) and SLR(1) parsing
 If there are multiple entries in a table cell while constructing the LR(0) table then the grammar is not suitable for LR(0) parsing, similarly if there are multiple entries in a table cell while constructing the SLR(1) table then the grammar is not suitable for SLR(1) parsing. Its important to understand here that if a grammar is suitable for LR(0) parsing the it is definitely suitable for SLR(1) parsing, because by reducing the number of reduced entries we are not going to introduce clashes.
+
+## LR(1) item
+We have already seen that anything with a dot in the right hand side is called as LR(0) item. LR(1) item is nothing but LR(0) item plus a look ahead. So if you add look ahead to LR(0) items we are going to get LR(1) items. The significance of the look aheads is that don't place the reduce entries in the entire action columns of the row or in the follow of the left hand side instead just place it in the columns of look aheads. If the lookaheads are a and b, then just place the reduce entries in a and b.
+So lets say that the grammar is.
+```
+S -> AA
+A -> aA | b
+```
+As usual we start with the augmented production S' -> .S and the look ahead is $, see the LR(0) item is S' -> .S and the lookahead here is $ which gives the LR(1) item S' -> .S, $ now as usual we find the closure, but how do we get the lookaheads at each step, the lookahead is the whatever is remaining after the next symbol to dot. Whenever we apply transition on a state the lookahead doesn't change. Using this we form the canonical collection of LR(1) items.
