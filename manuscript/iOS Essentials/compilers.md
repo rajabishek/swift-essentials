@@ -137,3 +137,6 @@ Lets say that we have a state and it has a production with the . at the end, it 
 
 ## RR conflicts
 Or lets say we have a state in which we have two productions that end with a dot, now for both of the productions we have to enter the reduce entries. In LR(0) parsing table we blindly write the reduce entries in all action columns of the row, so definitely there is a clash. In SLR(1) parsing table if there is intersection in the follow of the left hand sides then there is a clash.
+
+## Grammar suitable for LR(0) and SLR(1) parsing
+If there are multiple entries in a table cell while constructing the LR(0) table then the grammar is not suitable for LR(0) parsing, similarly if there are multiple entries in a table cell while constructing the SLR(1) table then the grammar is not suitable for SLR(1) parsing. Its important to understand here that if a grammar is suitable for LR(0) parsing the it is definitely suitable for SLR(1) parsing, because by reducing the number of reduced entries we are not going to introduce clashes.
