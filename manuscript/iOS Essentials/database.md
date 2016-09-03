@@ -157,14 +157,14 @@ Or you can also do the following. MySQL SUBSTR() returns the specified number of
 ```sql
 SELECT DISTINCT(CITY) 
 FROM STATION 
-WHERE SUBSTR(CITY,LENGTH(CITY),1) IN ('A', 'E', 'I', 'O', 'U');
+WHERE SUBSTR(CITY,LENGTH(CITY),1) IN ('A','E','I','O','U');
 ```
 
 MySQL RIGHT() extracts a specified number of characters from the right side of a string. So you can also do the following.
 ```sql
 SELECT DISTINCT(CITY)
 FROM STATION 
-WHERE RIGHT(CITY,1) IN ('A', 'E', 'I', 'O', 'U');
+WHERE RIGHT(CITY,1) IN ('A','E','I','O','U');
 ```
 
 A regular expression is a powerful way of specifying a pattern for a complex search.The $ symbol marks the end of the string. So it matches strings that end with a,e,i,o, or u. So you could also do.
@@ -181,3 +181,234 @@ FROM STATION
 WHERE RIGHT(CITY,1) IN ('A', 'E', 'I', 'O', 'U')
 AND LEFT(CITY,1) IN ('A', 'E', 'I', 'O', 'U');
 ```
+Or you could use the following.
+```sql
+SELECT DISTINCT CITY
+FROM STATION
+WHERE SUBSTR(CITY,1,1) IN ('A','E','I','O','U')
+AND SUBSTR(CITY,LENGTH(CITY),1) IN ('A','E','I','O','U');
+```
+Or you could use regular expressions like the following.
+```sql
+SELECT DISTINCT CITY
+FROM STATION
+WHERE CITY REGEXP '^[aeiou]'
+AND CITY REGEXP '[aeiou]$';
+```
+Infact since you we using regular expression we can combine the pattern. ^ represents the start and $ represents end. [aeiou] means we can have any one of them in this set. . represents any character, so we are saying it should start with a vowel followed by an character and then end with a vowel.
+```sql
+SELECT DISTINCT CITY
+FROM STATION
+WHERE CITY REGEXP '^[aeiou].*[aeiou]$'
+```
+
+Query the list of CITY names from STATION that do not start with vowels. Your result cannot contain duplicates. Equating the regexp to zero is how we negate the regular expression.
+```sql
+SELECT DISTINCT CITY
+FROM STATION
+WHERE CITY REGEXP '^[aeiou]' = '0';
+```
+Or instead of regular expression if you are using the left or substr solution then you use the not in.
+```sql
+SELECT DISTINCT CITY
+FROM STATION
+WHERE SUBSTR(CITY,1,1) NOT IN ('A','E','I','O','U');
+```
+
+Query the list of CITY names from STATION that do not end with vowels. Your result cannot contain duplicates.
+```sql
+SELECT DISTINCT CITY
+FROM STATION
+WHERE SUBSTR(CITY,-1,1) NOT IN ('A','E','I','O','U');
+```
+Or you could do the following.
+```sql
+SELECT DISTINCT CITY
+FROM STATION
+WHERE CITY REGEXP '[aeiou]$' = '0';
+```
+
+Query the list of CITY names from STATION that either do not start with vowels or do not end with vowels. Your result cannot contain duplicates.
+```sql
+SELECT DISTINCT CITY
+FROM STATION
+WHERE CITY REGEXP '^[^aeiou]'
+OR CITY REGEXP '[^aeiou]$';
+```
+Or you could do the following.
+```sql
+SELECT DISTINCT CITY
+FROM STATION
+WHERE SUBSTR(CITY,1,1) NOT IN ('A','E','I','O','U')
+OR SUBSTR(CITY,-1,1) NOT IN ('A','E','I','O','U');
+```
+
+Query the list of CITY names from STATION that do not start with vowels and do not end with vowels. Your result cannot contain duplicates.
+```sql
+SELECT DISTINCT CITY
+FROM STATION
+WHERE SUBSTR(CITY,1,1) NOT IN ('A','E','I','O','U')
+AND SUBSTR(CITY,-1,1) NOT IN ('A','E','I','O','U');
+```
+Or you could do the following.
+```sql
+SELECT DISTINCT CITY
+FROM STATION
+WHERE CITY REGEXP '^[^aeiou].*[^aeiou]$';
+```
+
+Query the Name of any student in STUDENTS who scored higher than  Marks. Order your output by the last three characters of each name. If two or more students both have names ending in the same last three characters (i.e.: Bobby, Robby, etc.), secondary sort them by ascending ID.
+```sql
+SELECT DISTINCT Name
+FROM STUDENTS
+WHERE Marks > 75
+ORDER BY SUBSTR(Name,-3,3) ASC, ID ASC;
+```
+Or you could also run the following.
+```sql
+SELECT DISTINCT Name
+FROM STUDENTS
+WHERE Marks > 75
+ORDER BY RIGHT(Name,3) ASC, ID ASC;
+```
+
+Write a query that prints a list of employee names (i.e.: the name attribute) for employees in Employee having a salary greater than 2000 per month who have been employees for less than  months. Sort your result by ascending employee_id.
+```sql
+SELECT name
+FROM Employee
+WHERE salary > 2000 AND months < 10
+ORDER BY employee_id ASC;
+```
+
+Write a query identifying the type of each record in the TRIANGLES table using its three side lengths. Output one of the following statements for each record in the table:
+
+- Not A Triangle: The given values of A, B, and C don't form a triangle.
+- Equilateral: It's a triangle with  sides of equal length.
+- Isosceles: It's a triangle with  sides of equal length.
+- Scalene: It's a triangle with  sides of differing lengths.
+
+```sql
+SELECT CASE WHEN (a+b <= c OR b+c <= a OR a+c <= b) THEN
+'Not A Triangle'
+WHEN (a = b AND b = c) THEN
+'Equilateral'
+WHEN (a = b OR b = c OR a = c) THEN
+'Isosceles '
+ELSE
+'Scalene'
+END FROM TRIANGLES;
+```
+
+Generate the following two result sets:
+
+1.Query an alphabetically ordered list of all names in OCCUPATIONS, immediately followed by the first letter of each profession as a parenthetical (i.e.: enclosed in parentheses). For example: AnActorName(A), ADoctorName(D), AProfessorName(P), and ASingerName(S).
+1. Query the number of occurrences of each occupation in OCCUPATIONS. Sort the occurrences in ascending order, and output them in the following format: 
+
+There are total occupation_count occupations.
+where occupationcount is the number of occurrences of an occupation in OCCUPATIONS and [occupation] is the lowercase occupation name. If more than one Occupation has the same occupationcount, they should be ordered alphabetically.
+
+Note: There will be at least two entries in the table for each type of occupation.
+```sql
+SELECT CONCAT(name,'(',LEFT(occupation,1),')')
+FROM OCCUPATIONS
+ORDER BY name ASC;
+
+SELECT CONCAT('There are total ',COUNT(occupation),' ',LOWER(occupation),'s.')
+FROM OCCUPATIONS
+GROUP BY occupation
+ORDER BY COUNT(occupation) ASC, occupation ASC;
+```
+
+Query a count of the number of cities in CITY with populations larger than 100,000.
+```sql
+SELECT COUNT(NAME)
+FROM CITY 
+WHERE POPULATION > 100000;
+```
+
+Query the total population of all cities in CITY where District is California.
+```sql
+SELECT SUM(POPULATION)
+FROM CITY
+WHERE DISTRICT = 'California';
+```
+
+Query the average population of all cities in CITY where District is California.
+```sql
+SELECT AVG(POPULATION)
+FROM CITY
+WHERE DISTRICT = 'California';
+```
+
+Query the average population for all cities in CITY, rounded down to the nearest integer.
+```sql
+SELECT FLOOR(AVG(POPULATION)) FROM CITY;
+```
+
+Query the sum of the populations for all Japanese cities in CITY. The COUNTRYCODE for Japan is JPN.
+```sql
+SELECT SUM(POPULATION)
+FROM CITY
+WHERE COUNTRYCODE = 'JPN';
+```
+
+Query the difference between the maximum and minimum populations in CITY.
+```sql
+SELECT MAX(POPULATION) - MIN(POPULATION) FROM CITY;
+```
+
+Samantha was tasked with calculating the average monthly salaries for all employees in the EMPLOYEES table, but did not realize her keyboard's 0 key was broken until after completing the calculation. She wants your help finding the difference between her miscalculation (using salaries with any zeroes removed), and the actual average salary.
+
+Write a query calculating the amount of error (i.e.: actually miscalculated average monthly salaries), and round it up to the next integer.
+```sql
+SELECT CEIL(AVG(Salary)-AVG(REPLACE(Salary,'0',''))) 
+FROM EMPLOYEES;
+```
+
+We define an employee's total earnings to be their monthly  worked, and the maximum total earnings to be the maximum total earnings for any employee in the Employee table. Write a query to find the maximum total earnings for all employees as well as the total number of employees who have maximum total earnings. Then print these values as 2 space-separated integers.
+```sql
+SELECT SALARY*MONTHS, COUNT(*)
+FROM EMPLOYEE
+WHERE SALARY*MONTHS = (SELECT MAX(SALARY*MONTHS) FROM EMPLOYEE)
+```
+
+Query the sum of LAT_N, followed by the sum of LONG_W, from STATION. The two results should be separated by a space and rounded to 2 decimal places.
+```sql
+SELECT CONCAT(ROUND(SUM(LAT_N),2), ' ', ROUND(SUM(LONG_W),2))
+FROM STATION;
+```
+
+Query the sum of Northern Latitudes (LAT_N) from STATION having values greater than 38.788 and less than 137.2345. Truncate your answer to 4 decimal places.
+```sql
+SELECT ROUND(SUM(LAT_N),4)
+FROM STATION
+WHERE LAT_N > 38.788 AND LAT_N < 137.2345
+```
+
+Query the greatest value of the Northern Latitudes (LAT_N) from STATION that is less than 137.2345. Truncate your answer to 4  decimal places.
+```sql
+SELECT ROUND(MAX(LAT_N),4)
+FROM STATION
+WHERE LAT_N < 137.2345;
+```
+
+Query the Western Longitude (LONG_W) for the largest Northern Latitude (LAT_N) in STATION that is less than 137.2345. Round your answer to 4 decimal places.
+```sql
+SELECT ROUND(LONG_W,4) 
+FROM STATION 
+WHERE LAT_N = (SELECT MAX(LAT_N) FROM STATION WHERE LAT_N < 137.2345);
+```
+Query the smallest Northern Latitude (LAT_N) from STATION that is greater than 38.7780. Round your answer to 4 decimal places.
+```sql
+SELECT ROUND(MIN(LAT_N),4) 
+FROM STATION 
+WHERE LAT_N > 38.7880;
+```
+
+Query the Western Longitude (LONG_W) for the smallest Northern Latitude (LAT_N) in STATION that is greater than 38.7780. Round your answer to 4 decimal places.
+```sql
+SELECT ROUND(LONG_W,4) 
+FROM STATION 
+WHERE LAT_N = (SELECT MIN(LAT_N) FROM STATION WHERE LAT_N > 38.778);
+```
+
