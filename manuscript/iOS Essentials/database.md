@@ -584,3 +584,20 @@ ELSE
 name
 END ASC;
 ```
+
+Julia just finished conducting a coding contest, and she needs your help assembling the leaderboard! Write a query to print the respective hackerid and name of hackers who achieved full scores for more than one challenge. Order your output in descending order by the total number of challenges in which the hacker earned a full score. If more than one hacker received full scores in same number of challenges, then sort them by ascending hackerid.
+- Hackers: The hacker_id is the id of the hacker, and name is the name of the hacker.
+- Difficulty: The difficult_level is the level of difficulty of the challenge, and score is the score of the challenge for the difficulty level.
+- Challenges: The challenge_id is the id of the challenge, the hacker_id is the id of the hacker who created the challenge, and difficulty_level is the level of difficulty of the challenge.
+- Submissions: The submission_id is the id of the submission, hacker_id is the id of the hacker who made the submission, challenge_id is the id of the challenge that the submission belongs to, and score is the score of the submission.
+```sql
+SELECT hk.hacker_id AS hacker_id, hk.name AS name
+FROM Submissions AS sb INNER JOIN CHALLENGES AS ch
+ON sb.challenge_id = ch.challenge_id
+INNER JOIN Difficulty AS df ON df.difficulty_level = ch.difficulty_level
+INNER JOIN Hackers hk ON hk.hacker_id = sb.hacker_id
+WHERE sb.score = df.score
+GROUP BY hk.hacker_id
+HAVING COUNT(sb.challenge_id) > 1
+ORDER BY COUNT(sb.challenge_id) DESC, hk.hacker_id ASC;
+```
