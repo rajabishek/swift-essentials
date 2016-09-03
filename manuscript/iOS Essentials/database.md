@@ -115,3 +115,69 @@ This is our first foray into SQL's aggregate functions. They're used to extract 
 
 The MAX aggregate function here is very simple: it receives all the possible values for joindate, and outputs the one that's biggest. There's a lot more power to aggregate functions.
 ```
+You'd like to get the first and last name of the last member(s) who signed up - not just the date. How can you do that?
+You can order by joindate and apply limit but note that this approach does not cover the extremely unlikely eventuality of two people joining at the exact same time. So instead use the normal where clause with sub query.
+```sql
+SELECT firstname, surname, joindate
+FROM cd.members
+WHERE joindate = (SELECT MAX(joindate) FROM cd.members);
+```
+In the suggested approach above, you use a subquery to find out what the most recent joindate is. This subquery returns a scalar table - that is, a table with a single column and a single row. Since we have just a single value, we can substitute the subquery anywhere we might put a single constant value. In this case, we use it to complete the WHERE clause of a query to find a given member.
+
+You might hope that you'd be able to do something like below:
+```sql
+SELECT firstname, surname, max(joindate)
+FROM cd.members;
+```
+Unfortunately, this doesn't work. The MAX function doesn't restrict rows like the WHERE clause does - it simply takes in a bunch of values and returns the biggest one. The database is then left wondering how to pair up a long list of names with the single join date that's come out of the max function, and fails. Instead, you're left having to say 'find me the row(s) which have a join date that's the same as the maximum join date'.
+
+Let  be the number of CITY entries in STATION, and let  be the number of distinct CITY names in STATION; query the value of  from STATION. In other words, find the difference between the total number of CITY entries in the table and the number of distinct CITY entries in the table.
+```sql
+SELECT COUNT(CITY) - COUNT(DISTINCT CITY) FROM STATION;
+```
+
+Query the two cities in STATION with the shortest and longest CITY names, as well as their respective lengths (i.e.: number of characters in the name). If there is more than one smallest or largest city, choose the one that comes first when ordered alphabetically.
+```sql
+(SELECT CITY, LENGTH(CITY) AS CITY_LENGTH FROM STATION ORDER BY CITY_LENGTH LIMIT 1)
+UNION
+(SELECT CITY, LENGTH(CITY) AS CITY_LENGTH FROM STATION ORDER BY CITY_LENGTH DESC LIMIT 1);
+```
+Query the list of CITY names starting with vowels (a, e, i, o, u) from STATION. Your result cannot contain duplicates.
+```sql
+SELECT DISTINCT CITY
+FROM STATION
+WHERE CITY LIKE 'a%' 
+OR CITY LIKE 'e%' 
+OR CITY LIKE 'i%' 
+OR CITY LIKE 'o%' 
+OR CITY LIKE 'u%';
+```
+
+Or you can also do the following. MySQL SUBSTR() returns the specified number of characters from a particular position of a given string. 
+```sql
+SELECT DISTINCT(CITY) 
+FROM STATION 
+WHERE SUBSTR(CITY,LENGTH(CITY),1) IN ('A', 'E', 'I', 'O', 'U');
+```
+
+MySQL RIGHT() extracts a specified number of characters from the right side of a string. So you can also do the following.
+```sql
+SELECT DISTINCT(CITY)
+FROM STATION 
+WHERE RIGHT(CITY,1) IN ('A', 'E', 'I', 'O', 'U');
+```
+
+A regular expression is a powerful way of specifying a pattern for a complex search.The $ symbol marks the end of the string. So it matches strings that end with a,e,i,o, or u. So you could also do.
+```sql
+SELECT DISTINCT(CITY) 
+FROM STATION
+WHERE CITY REGEXP '[A,E,I,O,U]$';
+```
+
+Query the list of CITY names from STATION which have vowels (i.e., a, e, i, o, and u) as both their first and last characters. Your result cannot contain duplicates.
+```sql
+SELECT DISTINCT CITY
+FROM STATION
+WHERE RIGHT(CITY,1) IN ('A', 'E', 'I', 'O', 'U')
+AND LEFT(CITY,1) IN ('A', 'E', 'I', 'O', 'U');
+```
