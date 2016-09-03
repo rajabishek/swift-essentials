@@ -465,3 +465,17 @@ ON memr.memid = mema.recommendedby
 ORDER BY surname ASC, firstname ASC;
 ```
 
+How can you output a list of all members, including the individual who recommended them (if any)? Ensure that results are ordered by (surname, firstname).
+```sql
+SELECT mems.firstname AS memfname, mems.surname AS memsname, 
+recs.firstname AS recfname, recs.surname AS recsname
+FROM cd.members mems
+left outer JOIN cd.members recs
+ON recs.memid = mems.recommendedby
+ORDER BY memsname, memfname;
+```
+Let's introduce another new concept: the LEFT OUTER JOIN. These are best explained by the way in which they differ from inner joins. Inner joins take a left and a right table, and look for matching rows based on a join condition (ON). When the condition is satisfied, a joined row is produced. A LEFT OUTER JOIN operates similarly, except that if a given row on the left hand table doesn't match anything, it still produces an output row. That output row consists of the left hand table row, and a bunch of NULLS in place of the right hand table row.
+
+This is useful in situations like this question, where we want to produce output with optional data. We want the names of all members, and the name of their recommender if that person exists. You can't express that properly with an inner join.
+
+As you may have guessed, there's other outer joins too. The RIGHT OUTER JOIN is much like the LEFT OUTER JOIN, except that the left hand side of the expression is the one that contains the optional data. The rarely-used FULL OUTER JOIN treats both sides of the expression as optional.
