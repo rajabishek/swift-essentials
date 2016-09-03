@@ -1,4 +1,4 @@
-Program to find the largest plaindromic substring
+Program to find the largest palindromic substring
 ```java
 package com.rajabishek;
 
