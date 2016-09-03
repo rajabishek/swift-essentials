@@ -479,3 +479,108 @@ Let's introduce another new concept: the LEFT OUTER JOIN. These are best explain
 This is useful in situations like this question, where we want to produce output with optional data. We want the names of all members, and the name of their recommender if that person exists. You can't express that properly with an inner join.
 
 As you may have guessed, there's other outer joins too. The RIGHT OUTER JOIN is much like the LEFT OUTER JOIN, except that the left hand side of the expression is the one that contains the optional data. The rarely-used FULL OUTER JOIN treats both sides of the expression as optional.
+
+How can you produce a list of all members who have used a tennis court? Include in your output the name of the court, and the name of the member formatted as a single column. Ensure no duplicate data, and order by the member name.
+```sql
+SELECT DISTINCT CONCAT(mems.firstname,' ',mems.surname) AS member, facs.name AS facility
+FROM cd.members mems inner JOIN cd.bookings bks
+ON mems.memid = bks.memid
+inner JOIN cd.facilities facs
+ON bks.facid = facs.facid
+WHERE facs.name LIKE 'Tennis Court%'
+ORDER BY member 
+```
+
+How can you produce a list of bookings on the day of 2012-09-14 which will cost the member (or guest) more than $30? Remember that guests have different costs to members, and the guest user is always ID 0. Include in your output the name of the facility, the name of the member formatted as a single column, and the cost. Order by descending cost, and do not use any subqueries.
+```sql
+SELECT mems.firstname || ' ' || mems.surname AS member, 
+	facs.name AS facility, 
+	CASE 
+		WHEN mems.memid = 0 THEN
+			bks.slots*facs.guestcost
+		ELSE
+			bks.slots*facs.membercost
+	END AS cost
+        FROM
+                cd.members mems                
+                INNER JOIN cd.bookings bks
+                        ON mems.memid = bks.memid
+                INNER JOIN cd.facilities facs
+                        ON bks.facid = facs.facid
+        WHERE
+		bks.starttime >= '2012-09-14' AND 
+		bks.starttime < '2012-09-15' AND (
+			(mems.memid = 0 AND bks.slots*facs.guestcost > 30) OR
+			(mems.memid != 0 AND bks.slots*facs.membercost > 30)
+		)
+ORDER BY cost DESC;
+```
+
+The below answer provides a mild simplification to the previous iteration: in the no-subquery version, we had to calculate the member or guest's cost in both the WHERE clause and the CASE statement. In our new version, we produce an inline query that calculates the total booking cost for us, allowing the outer query to simply select the bookings it's looking for. For reference, you may also see subqueries in the FROM clause referred to as inline views.
+```sql
+select member, facility, cost from (
+	select 
+		mems.firstname || ' ' || mems.surname as member,
+		facs.name as facility,
+		case
+			when mems.memid = 0 then
+				bks.slots*facs.guestcost
+			else
+				bks.slots*facs.membercost
+		end as cost
+		from
+			cd.members mems
+			inner join cd.bookings bks
+				on mems.memid = bks.memid
+			inner join cd.facilities facs
+				on bks.facid = facs.facid
+		where
+			bks.starttime >= '2012-09-14' and
+			bks.starttime < '2012-09-15'
+	) as bookings
+	where cost > 30
+order by cost desc;          
+```
+
+Given the CITY and COUNTRY tables, query the sum of the populations of all cities where the CONTINENT is 'Asia'.
+```sql
+SELECT SUM(ct.POPULATION)
+FROM CITY AS ct INNER JOIN COUNTRY AS co
+ON ct.COUNTRYCODE = co.CODE
+WHERE co.CONTINENT = 'Asia';
+```
+
+Given the CITY and COUNTRY tables, query the names of all cities where the CONTINENT is 'Africa'.
+```sql
+SELECT ct.name
+FROM CITY AS ct INNER JOIN COUNTRY AS co
+ON ct.COUNTRYCODE = co.CODE
+WHERE co.CONTINENT = 'Africa';
+```
+
+Given the CITY and COUNTRY tables, query the names of all the continents (COUNTRY.Continent) and their respective average city populations (CITY.Population) rounded down to the nearest integer.
+```sql
+SELECT country.continent, FLOOR(AVG(city.population)) 
+from country INNER JOIN city ON country.code = city.countrycode 
+GROUP BY country.continent;
+```
+
+You are given two tables: Students and Grades. Students contains three columns ID, Name and Marks.
+Ketty gives Eve a task to generate a report containing three columns:  Name, Grade and Mark. Ketty doesn't want the NAMES of those students who received a grade lower than 8. The report must be in descending order by grade -- i.e. higher grades are entered first. If there is more than one student with the same grade (1-10) assigned to them, order those particular students by their name alphabetically. Finally, if the grade is lower than 8, use "NULL" as their name and list them by their marks in ascending order.
+```sql
+SELECT CASE WHEN grade < 8 THEN
+NULL
+ELSE
+st.name
+END AS name, 
+gd.Grade AS grade,
+st.Marks AS marks
+FROM Students AS st INNER JOIN Grades gd 
+ON (st.Marks >= gd.Min_Mark AND st.Marks <= gd.Max_Mark)
+ORDER BY grade DESC,
+CASE WHEN grade < 8 THEN
+marks
+ELSE
+name
+END ASC;
+```
