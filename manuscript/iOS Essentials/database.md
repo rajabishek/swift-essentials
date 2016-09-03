@@ -435,3 +435,33 @@ GROUP BY x.LAT_N
 HAVING SUM(SIGN(1-SIGN(y.LAT_N-x.LAT_N)))/COUNT(*) > .5
 LIMIT 1;
 ```
+
+## Joins
+How can you produce a list of the start times for bookings by members named 'David Farrell'?
+```sql
+SELECT starttime 
+FROM cd.bookings bks INNER JOIN cd.members as mems
+ON bks.memid = mems.memid
+WHERE mems.firstname = 'David'
+AND mems.surname = 'Farrell';
+```
+
+How can you produce a list of the start times for bookings for tennis courts, for the date '2012-09-21'? Return a list of start time and facility name pairings, ordered by the time.
+```sql
+SELECT bks.starttime as start, fcs.name
+FROM cd.bookings bks INNER JOIN cd.facilities fcs
+ON bks.facid = fcs.facid
+WHERE fcs.name LIKE '%Tennis Court%'
+AND bks.starttime >= '2012-09-21' 
+AND bks.starttime < '2012-09-22'
+ORDER BY bks.starttime;
+```
+
+How can you output a list of all members who have recommended another member? Ensure that there are no duplicates in the list, and that results are ordered by (surname, firstname).
+```sql
+SELECT DISTINCT memr.firstname as firstname, memr.surname as surname
+FROM cd.members memr INNER JOIN cd.members mema
+ON memr.memid = mema.recommendedby
+ORDER BY surname ASC, firstname ASC;
+```
+
