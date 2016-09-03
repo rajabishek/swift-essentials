@@ -412,3 +412,26 @@ FROM STATION
 WHERE LAT_N = (SELECT MIN(LAT_N) FROM STATION WHERE LAT_N > 38.778);
 ```
 
+Consider P1(a,b) and P2(b,c) to be two points on a 2D plane.
+- a happens to equal the minimum value in Northern Latitude (LAT_N in STATION).
+- b happens to equal the maximum value in Northern Latitude (LAT_N in STATION).
+- c happens to equal the minimum value in Western Longitude (LONG_W in STATION).
+- d happens to equal the maximum value in Western Longitude (LONG_W in STATION).
+Query the Manhattan Distance between points P1 and P2 and round it to a scale of 4 decimal places.
+```sql
+SELECT ROUND(ABS(MIN(LAT_N) - MIN(LONG_W)) + ABS(MAX(LAT_N) - MAX(LONG_W)),4)
+FROM STATION;
+```
+The following command can be used to get the euclidean distance.
+```sql
+SELECT ROUND(SQRT(POWER(MIN(LAT_N) - MIN(LONG_W),2) + POW(MAX(LAT_N) - MAX(LONG_W),2)),4)
+FROM STATION;
+```
+
+A median is defined as a number separating the higher half of a data set from the lower half. Query the median of the Northern Latitudes (LAT_N) from STATION and round your answer to 4 decimal places.
+```sql
+SELECT ROUND(x.LAT_N,4) FROM STATION x, STATION y
+GROUP BY x.LAT_N
+HAVING SUM(SIGN(1-SIGN(y.LAT_N-x.LAT_N)))/COUNT(*) > .5
+LIMIT 1;
+```
