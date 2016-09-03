@@ -72,3 +72,46 @@ FROM cd.members
 WHERE joindate > '2012-09-01';
 ```
 This is our first look at SQL timestamps. They're formatted in descending order of magnitude: YYYY-MM-DD HH:MM:SS.nnnnnn. We can compare them just like we might a unix timestamp, although getting the differences between dates is a little more involved (and powerful!). In this case, we've just specified the date portion of the timestamp. This gets automatically cast by postgres into the full timestamp 2012-09-01 00:00:00.
+
+How can you produce an ordered list of the first 10 surnames in the members table? The list must not contain duplicates.
+```sql
+SELECT DISTINCT surname
+FROM cd.members
+ORDER by surname
+LIMIT 10;
+```
+There's three new concepts here, but they're all pretty simple.
+
+Specifying DISTINCT after SELECT removes duplicate rows from the result set. Note that this applies to rows: if row A has multiple columns, row B is only equal to it if the values in all columns are the same. As a general rule, don't use DISTINCT in a willy-nilly fashion - it's not free to remove duplicates from large query result sets, so do it as-needed.
+Specifying ORDER BY (after the FROM and WHERE clauses, near the end of the query) allows results to be ordered by a column or set of columns (comma separated).
+The LIMIT keyword allows you to limit the number of results retrieved. This is useful for getting results a page at a time, and can be combined with the OFFSET keyword to get following pages. This is the same approach used by MySQL and is very convenient - you may, unfortunately, find that this process is a little more complicated in other DBs.
+
+```sql
+SELECT surname 
+FROM cd.members
+UNION
+SELECT name
+FROM cd.facilities;        
+```
+The UNION operator does what you might expect: combines the results of two SQL queries into a single table. The caveat is that both results from the two queries must have the same number of columns and compatible data types.
+UNION removes duplicate rows, while UNION ALL does not. Use UNION ALL by default, unless you care about duplicate results.
+
+You'd like to get the signup date of your last member. How can you retrieve this information?
+```sql
+SELECT joindate
+FROM cd.members
+ORDER BY joindate DESC
+LIMIT 1;
+```
+Or you can also write the following.
+```sql
+SELECT max(joindate) AS latest
+FROM cd.members;
+This is our first foray into SQL's aggregate functions. They're used to extract information about whole groups of rows, and allow us to easily ask questions like:
+
+- What's the most expensive facility to maintain on a monthly basis?
+- Who has recommended the most new members?
+- How much time has each member spent at our facilities?
+
+The MAX aggregate function here is very simple: it receives all the possible values for joindate, and outputs the one that's biggest. There's a lot more power to aggregate functions.
+```
