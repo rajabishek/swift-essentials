@@ -7,7 +7,28 @@ Almost all parsers except one will not allow or cannot work with ambiguous gramm
 
 A grammar, if the production that generates the operator is left recursive the that operator is left associative. Similarly in a grammar, if the production that generates the operator is right recursive the that operator is right associative. The precedence for operator is introduced by the concept of levels. Defining the correct associativity and precedence for grammar avoids ambiguity in the grammar.
 
+## Removing ambiguity
+Lets say we have a production rule such as E -> E + E | id, when we have such a rule the grammar allows us to grow the tree in both the direction, i.e the associativity of + operator is nor defined. If + operator is left associative then the tree should be allowed to grow only in the left direction. The rules most be E -> E + id | id, because we want the left subtree to be evaluated first if there are two + operators, thats what left associative means right. There if we need the operator to be left associative then ensure that the grammar is left recursive i.e the left most symbol in RHS is equal to LHS.
 
+Secondly when there are 2 different operators, the highest precedence operator must be at the deepest level in the ensuring that only after evaluating that we come and evaluate the lower precedence operators. Therefore to solve the problem define the grammar to be of different levels.
+```
+E -> E + T | T (we are defining the E -> T production because the string may not have any + at all)
+T -> T * F | F (we are defining the T -> F production because the string may not have any * at all)
+F -> id
+```
+If you observe closely, the * is in the next level of +. Once we have reached a T in the tree we can never reach a +, thus making sure all the Ts are evaluated first. If you see the production rules + and * both are left associative and once we reach the 2nd production we can't generate any + at all, this makes sure that in the tree all expressions having * are evaluated first.
+```
+E -> E + T | T
+T -> T * F | F
+F -> G ^ F | G
+G -> id
+```
+See the above rules the ^ power operator is right associative and the * and + operators are left associative and the precedence is ^ > * > +.
+```
+E -> E * F | F + E | F
+F -> F - F | id
+```
+In the above grammar + and * are defined at the same level, therefore they have the same precedence. - is farther away from the start symbol there fore it has higher precedence than * and + operators. The precedence is - > + = *. The + operator is defined as right recursive and therefore making it right associative. The * operator is defined as left recursive and therefore making it left associative. For - the associativity in undefined cause its defines as both left ans right recursive thereby making the grammar ambiguous.
 
 ## Removing left recursion
 Not all parsers are comfortable with left recursive grammars, especially the top down parsers have problems working with left recursive grammars. Therefore we have to convert left recursive grammars right recursive grammars.
