@@ -5,3 +5,4 @@
 - Running `android list avd` will list all the existing virtual devices.
 - Run the `emulator -avd <avd-name>` to launch the virtual device. Pressing ctrl+c will abort the process and sometimes curropt the ondisk storage of the virtual device. This isn't a disaster, you can wipe the storage clean and start over.
 - Run the `adb devices` command to list the currently attached devices, i.e these are the devices in which you can launch the app.
+- Running the `monitor` command will open the android device monitor tool.
