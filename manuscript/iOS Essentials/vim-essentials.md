@@ -10,3 +10,6 @@
 - ^ - Move to the first non blank character in the line
 - $ - Move to the end of the line
 - 0 - Move to the start of the line, includes blank character also
+- } - Move to the next paragraph
+- { - Move to the previous paragraph
+- f<character> - Moves to the first word that starts with that character in that line
