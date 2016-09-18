@@ -12,5 +12,10 @@
 - 0 - Move to the start of the line, includes blank character also
 - } - Move to the next paragraph
 - { - Move to the previous paragraph
-- f<character> - Moves to the first word that starts with that character in that line
+- f<character> - Moves to the first word in that line moving forward that starts with that character
+- F<character> - Moves to the first word in that line moving backward that starts with that character
+- t<character> - Same as the f<character> but puts that cursor before the character
+- T<character> - Same as F<character> but puts the cursor after the character
 - o - Insert a new line below and enter into the insert mode
+- <n><vim-command> - This performs the vim command n number of times
+- <n>gg - Will go n lines below the beginning of the file, i.e will go to line number n
