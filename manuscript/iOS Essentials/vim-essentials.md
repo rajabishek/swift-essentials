@@ -13,3 +13,4 @@
 - } - Move to the next paragraph
 - { - Move to the previous paragraph
 - f<character> - Moves to the first word that starts with that character in that line
+- o - Insert a new line below and enter into the insert mode
