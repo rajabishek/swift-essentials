@@ -1,0 +1,12 @@
+## Vim Essentials
+- h - Move Leftwards
+- l - Move Rightwards
+- j - Move Downwards
+- k - Move Upwards
+- w - Move to next word(Special characters also counted)
+- W - Move to next word(Based on space separation)
+- b - Move back to previous word(Special characters also counted)
+- B - Move back to previous word(Based on space separation)
+- ^ - Move to the first non blank character in the line
+- $ - Move to the end of the line
+- 0 - Move to the start of the line, includes blank character also
