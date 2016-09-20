@@ -18,4 +18,4 @@
 - T<character> - Same as F<character> but puts the cursor after the character
 - o - Insert a new line below and enter into the insert mode
 - <n><vim-command> - This performs the vim command n number of times
-- <n>gg - Will go n lines below the beginning of the file, i.e will go to line number n
+- <n>gg / <n>G / :<n> - Will go n lines below the beginning of the file, i.e will go to line number n
