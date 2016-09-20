@@ -9,6 +9,7 @@
 - Running the command `android create project --target 1 --name SampleApplication --path ~/Desktop/SampleApplication --activity MainActivity --package com.rajabishek.sampleapplication` will create a new project call SampleApplication in the Desktop within a folder name called Samplepplication with a main activity called MainActivity with a package called `com.rajabishek.sampleapplication` with the 1st sdk image(target 1), we have anyway only 1 sdk image installed for API 24.
 
 
+## Handling device orientations
 When we change the orientation of the device the activity is destroyed and recreated. Now how do we listen to these orientation changes. In the app maifest files in the activity XML tag we have to add an attribute android:configChanges="orientation|screenSize", by doing this android will inform us whenever the orientation was changes. It informs us by calling the onConfigurationChanged method on the activity class. The code is shown below.
 ```java
 @Override
