@@ -1,5 +1,11 @@
+## Android
+- In J2ME UI code is embedded within the Java code
+- In Android they separated the different responsibilities
+- In Android we have Java code files, resources and configuration files
+- In the resources folder we have all the resources in separate folders drawable(images + other stuff), layout(xml files for the appearance), values(xml files for defining the text)
 
 
+## Command Line
 - The `android` command opens the standalone android SDK manager application.
 - Running the `android avd` command will open the AVD manager that is used to manage the virtual devices.
 - Running `android list avd` will list all the existing virtual devices.
