@@ -2,7 +2,7 @@
 - In J2ME UI code is embedded within the Java code
 - In Android they separated the different responsibilities
 - In Android we have Java code files, resources and configuration files
-- In the resources folder we have all the resources in separate folders drawable(images + other stuff), layout(xml files for the appearance), values(xml files for defining the text)
+- In the resources folder we have all the resources in separate folders drawable(images + other stuff), layout(XML files for the appearance), values(XML files for defining the text)
 
 
 ## Command Line
