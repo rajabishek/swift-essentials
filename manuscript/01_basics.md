@@ -19,7 +19,7 @@ let language: String = "Swift"
 var name: String = "Raj Abishek"
 ```
 
-In this example `language` is declared as a constant and is given a value Swift but `name` is declared a variable and hence we can change its value if we want. You should also note that in Swift a semicolon is not neccessary. You need to use semicolon only when you need to write multiple statements on the same line.
+In this example `language` is declared as a constant and is given a value Swift but `name` is declared a variable and hence we can change its value if we want. You should also note that in Swift a semicolon is not necessary. You need to use semicolon only when you need to write multiple statements on the same line.
 ```swift
 language = "Objective-C"
 ```
