@@ -1,0 +1,2 @@
+## Programming Paradigms
+Lets learn a bit about function programming from first principles. We will look at functional programming, methods to construct them and ways to reason about them. Functional programming is a paradigm that is quite different from the classical imperative paradigm that we know from languages such as Java, C++ or C. Infact we can combine the two paradigms and its one of the Scala's strengths that it provides a gradual migration path from a more concise Java like language to a full functional programming.
