@@ -28,3 +28,7 @@ Every non-trivial language provides:
 - Primitive expressions expressing the simplest elements
 - Ways to combine expressions
 - Ways to abstract expressions - Introducing a name for an expression by which it can then be referred to
+
+## The Read-Eval-Print Loop
+Functional programming is a bit like using the calculator. An interactive shell(or REPL, for Read-Eval-Print Loop) lets one write expressions and responds with their value.
+To start the REPL in scala type `scala` from the command line.
