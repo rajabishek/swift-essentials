@@ -14,3 +14,11 @@ Orthogonal to it :
 - Object oriented programming
 
 Many people call object oriented programming as a paradigm but I see it as orthogonal in nature, meaning it can be combined with any of the 3 programming paradigms. We can combine it with imperative, functional or logic programming paradigm.
+
+## Imperative Programming
+Imperative programming is about
+- Modifying mutable variables
+- Using assignments
+- And control structures such as if-else, loops, break, continue, return.
+
+The most informal way to understand imperative programs is as instructions for a Von Neumann computer.
