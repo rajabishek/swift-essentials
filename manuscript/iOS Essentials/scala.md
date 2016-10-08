@@ -22,3 +22,9 @@ Imperative programming is about
 - And control structures such as if-else, loops, break, continue, return.
 
 The most informal way to understand imperative programs is as instructions for a Von Neumann computer.
+
+## Elements of programming
+Every non-trivial language provides:
+- Primitive expressions expressing the simplest elements
+- Ways to combine expressions
+- Ways to abstract expressions - Introducing a name for an expression by which it can then be referred to
