@@ -1,3 +1,4 @@
+```python
 class Employee:
     empCount = 0
 
@@ -14,3 +15,4 @@ class Employee:
 
 rajabishek = Employee('Raj Abishek', 12000)
 rajabishek.displayEmployee()
+```
