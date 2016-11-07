@@ -10,3 +10,11 @@ So far we have seen how to forecast the efforts required for the project as a wh
 > R Dhana Sundar mentally trained .
 
 Monitoring the project's progress is ensuring that the deliverables of each activity are delivered on time. It is unlikely that everything will go as per plan. The activity plan should provides means of evaluating the consequences of not meeting any of the activity target dates and guidance as to how the plan most effectively be modified to bring the project back to target, i.e when something has gone wrong, understanding the consequences and identifying it causes to re plan mitigating its effects.
+
+The objectives of activity planning are as follows:
+- **Feasibility assessment**
+- **Resource Allocation**
+- **Detailed Costing**
+- **Motivation**
+- **Co-ordination**
+**F R D M C** can be used to remember the above points. Activity planning mainly focusses on completing the project in minimal time at a acceptable cost. One effective way of shortening project duration is to carry out activities in parallel.
