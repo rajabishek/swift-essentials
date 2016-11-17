@@ -22,6 +22,7 @@ When we change the orientation of the device the activity is destroyed and recre
 public void onConfigurationChanged(Configuration newConfig) {
     super.onConfigurationChanged(newConfig);
 
+    //Log the configuration change with a message tag
     Log.d(MESSAGE_TAG, "The configuration was changed.");
 
     if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
