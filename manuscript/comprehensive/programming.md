@@ -1,5 +1,3 @@
-1. The question is incomplete.
-2. If its not passed by reference then it would pass by value. If the argument is passed by value, its copy constructor would call itself to copy the actual parameter to formal parameter. This process would go on until the system runs out of memory.
 3. Classes
 4. There is no question at all.
 5. Standard input(cin) stream object.
