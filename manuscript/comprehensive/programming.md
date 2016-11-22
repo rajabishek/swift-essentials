@@ -1,29 +1,3 @@
-11. Think of a reference as an alias. When you invoke something on a reference, you're really invoking it on the object to which the reference refers.
-```c++
-int i;
-int& j = i; // j is an alias to i
-
-j = 5; // same as i = 5
-
-
-//int i is a value and the argument passed is passed by value.
-//i will be a copy of x. Thus setting i to 5 has no effect on x, because it's the copy of x being changed.
-void foo(int i)
-{
-    i = 5;
-}
-int x = 2;
-foo(x);
-
-//foo(x) no longer makes a copy of x; i is x.
-//So if we say foo(x), inside the function i = 5; is exactly the same as x = 5;, and x changes.
-void foo(int& i) // i is an alias for a variable
-{
-    i = 5;
-}
-int x = 2;
-foo(x);
-```
 12. The parameter is converted to **int * a**. Remember that an array name in internally a pointer to the array.
 13. There are no options for the questions.
 14. x takes the default value of 3, therefore y and z take default values. Therefore answer is: 2.
