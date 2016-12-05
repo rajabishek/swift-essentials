@@ -44,3 +44,9 @@ Trial run
 Day 5 - 
 Research
 5 - one of one interviews with paid customers - data without launching
+5 one on one interviews
+ket the team watch the interview in real time & take notes
+organise the notes
+look for patterns & sould have answered monday's questions
+make a plan on what to do next
+Repeat the last 2 days alone in the next sprint
