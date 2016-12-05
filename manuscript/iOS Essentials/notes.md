@@ -27,3 +27,16 @@ Desicion making process should not be design by commitee, instead a better way w
 Everyone gets a limited stickets. Put the stickers by the parts of ideas you like. So quickly you get a heat map on all these drawings.
 Now call the COOs and CEOs - call on which protoytpe to build, which design goes forward
 Battle royale
+
+The sticky decision
+Structured critique
+Decide makes a call
+Storyboarding
+
+Day 4 - Prototyping
+
+Get into prototyping mindset
+Build a facade
+Pick the right tools
+Divide & conquer - Write, Asset collector, sticher
+Trial run
