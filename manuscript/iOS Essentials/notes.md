@@ -17,3 +17,7 @@ Day 2 -
 Find more than one solution
 No group brainstormings - instead let individuals sketch in a detailed way
 End of the day 10/12 different designs that are very detailed competing with eath other.
+
+Lightning demos
+Lunch
+Sketch
