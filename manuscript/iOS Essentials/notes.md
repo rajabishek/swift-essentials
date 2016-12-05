@@ -40,3 +40,7 @@ Build a facade
 Pick the right tools
 Divide & conquer - Write, Asset collector, sticher
 Trial run
+
+Day 5 - 
+Research
+5 - one of one interviews with paid customers - data without launching
