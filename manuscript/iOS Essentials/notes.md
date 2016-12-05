@@ -50,3 +50,11 @@ organise the notes
 look for patterns & sould have answered monday's questions
 make a plan on what to do next
 Repeat the last 2 days alone in the next sprint
+
+3 Steps are there basically
+1. Creating a time pressure
+2. Getting into a prototyping mindset
+3. Doing quick reasearch which doesn't have to be complicated
+
+Ship early, shif often - No
+Learn early, learn often - Yes i.e Rent before you buy
