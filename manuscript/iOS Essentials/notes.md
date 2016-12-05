@@ -21,3 +21,9 @@ End of the day 10/12 different designs that are very detailed competing with eat
 Lightning demos
 Lunch
 Sketch
+
+Day 3 - Make good, quick decisions
+Desicion making process should not be design by commitee, instead a better way would be through weighted voting.
+Everyone gets a limited stickets. Put the stickers by the parts of ideas you like. So quickly you get a heat map on all these drawings.
+Now call the COOs and CEOs - call on which protoytpe to build, which design goes forward
+Battle royale
