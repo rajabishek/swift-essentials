@@ -14,3 +14,10 @@
 - The correct shape or form of the product should be dictated by the psychology and behavior of the users rather than the functionality.
 - User centric design - Take the user into account every step of the way as you develop your product. In this way you will know all the ramifications of your decisions and compromises will not happen by accident.
 
+## Web sites
+- Bad design makes people look stupid. People blame themselves even though it’s not their fault when the site doesn’t work the way they expect it to.
+- Web site is a self-service product. No training. No instruction manual.
+- Paying attention to what people want and need is what matters. Faster market entry is not the complete success and having more features is only a temporary source of competitive advantage. Keep it [simple](https://en.wikipedia.org/wiki/KISS_principle).
+- It is user experience that determines whether your customer will ever come back.
+- Effective communication is a key factor in the success of your product. If users can’t figure out how to make it work they will never use that functionality.
+
