@@ -21,3 +21,8 @@
 - It is user experience that determines whether your customer will ever come back.
 - Effective communication is a key factor in the success of your product. If users can’t figure out how to make it work they will never use that functionality.
 
+## Business
+- Good user experience increases ROI, improves the customer loyalty and brings customer back. You usually don’t get much of a second chance if you failed once.
+- Conversion rate(what percentage of users you convert to the next level) is a common way of measuring the effectiveness of a user experience.
+- Conversion rates are very helpful in measuring e-commerce websites. There is huge potential to convert casual browsers into active buyers by delivering satisfactory user experience.
+- Sales can suffer because of poor marketing but measuring success through conversion rates tracks how successful you are in getting those who visit to spend some money.
