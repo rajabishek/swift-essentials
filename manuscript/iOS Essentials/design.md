@@ -9,3 +9,8 @@
 - Greater the complexity the more difficult it becomes to identify exactly how to deliver a successful experience to the user.
 - User experience effort aims to improve efficiency i.e helping people work faster(time is money) and helping them make fewer mistakes(greater job satisfaction == less people quit, more experienced staff provide higher quality work).
 
+## Principles
+- Sound is an important part of the aesthetic appeal of a product.
+- The correct shape or form of the product should be dictated by the psychology and behavior of the users rather than the functionality.
+- User centric design - Take the user into account every step of the way as you develop your product. In this way you will know all the ramifications of your decisions and compromises will not happen by accident.
+
